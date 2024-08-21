@@ -22,7 +22,7 @@ namespace CharityHub.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CharityHub.Data.Models.AdminActions", b =>
+            modelBuilder.Entity("CharityHub.Data.Models.AdminAction", b =>
                 {
                     b.Property<Guid>("ActionId")
                         .ValueGeneratedOnAdd()
@@ -36,13 +36,10 @@ namespace CharityHub.Data.Migrations
                     b.Property<Guid>("AdminId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CampaignId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("CompletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("TargetCampaignId")
+                    b.Property<Guid>("TargetCampaignId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("TargetUserId")
@@ -51,8 +48,6 @@ namespace CharityHub.Data.Migrations
                     b.HasKey("ActionId");
 
                     b.HasIndex("AdminId");
-
-                    b.HasIndex("CampaignId");
 
                     b.HasIndex("TargetCampaignId");
 
@@ -63,12 +58,12 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            ActionId = new Guid("fe17465a-d9ae-4e41-b33f-f7b7996ec5f2"),
+                            ActionId = new Guid("5c197a0c-d433-4718-89a9-7bbb8c4c8c5a"),
                             ActionType = "BanUser",
-                            AdminId = new Guid("e3622868-08c1-487d-924d-5d184977979f"),
-                            CompletedAt = new DateTime(2024, 8, 21, 11, 50, 57, 454, DateTimeKind.Local).AddTicks(5384),
-                            TargetCampaignId = new Guid("9153c19f-9369-421c-bf79-9e50eadc50ef"),
-                            TargetUserId = new Guid("ec6ed7ea-7e70-4d45-8926-f4c97af48ee6")
+                            AdminId = new Guid("6e168ab2-f753-42e3-a7fa-52c1389503bf"),
+                            CompletedAt = new DateTime(2024, 8, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4329),
+                            TargetCampaignId = new Guid("a90c326f-edd2-462e-8080-2b97fd932021"),
+                            TargetUserId = new Guid("e42e1e51-1b1c-4a09-864c-6675b4ff119c")
                         });
                 });
 
@@ -134,19 +129,19 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            CampaignId = new Guid("9153c19f-9369-421c-bf79-9e50eadc50ef"),
+                            CampaignId = new Guid("a90c326f-edd2-462e-8080-2b97fd932021"),
                             CampaignCode = 123,
                             CampaignDescription = "This is a charity campaign.",
                             CampaignStatus = "InProgress",
                             CampaignThumbnail = "path/to/thumbnail.jpg",
                             CampaignTitle = "Charity Campaign",
                             CurrentAmount = 5000.00m,
-                            DateCreated = new DateTime(2024, 8, 21, 11, 50, 57, 454, DateTimeKind.Local).AddTicks(5380),
-                            EndDate = new DateTime(2024, 9, 21, 11, 50, 57, 454, DateTimeKind.Local).AddTicks(5306),
+                            DateCreated = new DateTime(2024, 8, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4328),
+                            EndDate = new DateTime(2024, 9, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4279),
                             PartnerLogo = "path/to/logo.jpg",
                             PartnerName = "Partner Organization",
                             PartnerNumber = "0987654321",
-                            StartDate = new DateTime(2024, 8, 21, 11, 50, 57, 454, DateTimeKind.Local).AddTicks(5283),
+                            StartDate = new DateTime(2024, 8, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4267),
                             TargetAmount = 10000.00m
                         });
                 });
@@ -188,13 +183,13 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            DonationId = new Guid("d7fc5fd3-b68c-4bf9-9714-0f93d2b07d26"),
+                            DonationId = new Guid("619e3f80-bafb-48f9-9fc8-6656f4eab17e"),
                             Amount = 100.00m,
-                            CampaignId = new Guid("9153c19f-9369-421c-bf79-9e50eadc50ef"),
-                            DateDonated = new DateTime(2024, 8, 21, 11, 50, 57, 454, DateTimeKind.Local).AddTicks(5390),
+                            CampaignId = new Guid("a90c326f-edd2-462e-8080-2b97fd932021"),
+                            DateDonated = new DateTime(2024, 8, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4332),
                             IsConfirm = true,
                             PaymentMethod = "Paypal",
-                            UserId = new Guid("ec6ed7ea-7e70-4d45-8926-f4c97af48ee6")
+                            UserId = new Guid("e42e1e51-1b1c-4a09-864c-6675b4ff119c")
                         });
                 });
 
@@ -228,12 +223,12 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("af3e6bc9-eae2-4c8f-af73-1b7107a3f2e8"),
+                            Id = new Guid("c1690b49-4678-4ef4-98d8-3092defa7acb"),
                             Name = "User"
                         },
                         new
                         {
-                            Id = new Guid("7c81c2a0-ef77-4ce6-bff0-4d92fdc19f43"),
+                            Id = new Guid("0be6e455-f445-4bb0-b7d5-5adc8e84722f"),
                             Name = "Admin"
                         });
                 });
@@ -318,16 +313,16 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ec6ed7ea-7e70-4d45-8926-f4c97af48ee6"),
+                            Id = new Guid("e42e1e51-1b1c-4a09-864c-6675b4ff119c"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fdf53da0-3971-4936-9384-dd46c5f16ef5",
-                            DateCreated = new DateTime(2024, 8, 21, 11, 50, 57, 344, DateTimeKind.Local).AddTicks(6971),
+                            ConcurrencyStamp = "044b4d8f-3a04-4387-a8f1-8068272c8f1a",
+                            DateCreated = new DateTime(2024, 8, 21, 16, 6, 37, 427, DateTimeKind.Local).AddTicks(5459),
                             Email = "datdq@gmail.com",
                             EmailConfirmed = false,
                             IsActive = true,
-                            LastLoginDate = new DateTime(2024, 8, 21, 11, 50, 57, 344, DateTimeKind.Local).AddTicks(6984),
+                            LastLoginDate = new DateTime(2024, 8, 21, 16, 6, 37, 427, DateTimeKind.Local).AddTicks(5471),
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEINtnyn8Tx9rU/buxARkmbHBm9DqSvP7DezQCtyrWW5UFHvl2hgwZXHQZgBbAen0YA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBQKxM2Y6d38j0Zbjf+VVAXGhZSR5x2nJit2RfPqDPkEiJsFDJqr2VsYj2E1rR35xQ==",
                             PhoneNumber = "0123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -335,16 +330,16 @@ namespace CharityHub.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e3622868-08c1-487d-924d-5d184977979f"),
+                            Id = new Guid("6e168ab2-f753-42e3-a7fa-52c1389503bf"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "52e01fd4-e40b-41f7-9299-c111f2e1d90c",
-                            DateCreated = new DateTime(2024, 8, 21, 11, 50, 57, 399, DateTimeKind.Local).AddTicks(7216),
+                            ConcurrencyStamp = "c4290150-a6a3-43c5-be93-6d2a267a020c",
+                            DateCreated = new DateTime(2024, 8, 21, 16, 6, 37, 483, DateTimeKind.Local).AddTicks(662),
                             Email = "Anv@gmail.com",
                             EmailConfirmed = false,
                             IsActive = true,
-                            LastLoginDate = new DateTime(2024, 8, 21, 11, 50, 57, 399, DateTimeKind.Local).AddTicks(7238),
+                            LastLoginDate = new DateTime(2024, 8, 21, 16, 6, 37, 483, DateTimeKind.Local).AddTicks(678),
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEHd+rS9Vn2X5rtUeNZFTs9bUKhzWq8c9Ty1a07/jHiZFpzYRbJRJZMLZFXo/h4/u5A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP3bCVIDpZsmtTd2rw6zfCb20GXnSsc4+F2MPGT7ury0zjKHpvzkdGeOY5sY6gi69Q==",
                             PhoneNumber = "0987654321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -375,9 +370,9 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("ec6ed7ea-7e70-4d45-8926-f4c97af48ee6"),
-                            CampaignId = new Guid("9153c19f-9369-421c-bf79-9e50eadc50ef"),
-                            DateFollowed = new DateTime(2024, 8, 21, 11, 50, 57, 454, DateTimeKind.Local).AddTicks(5392),
+                            UserId = new Guid("e42e1e51-1b1c-4a09-864c-6675b4ff119c"),
+                            CampaignId = new Guid("a90c326f-edd2-462e-8080-2b97fd932021"),
+                            DateFollowed = new DateTime(2024, 8, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4334),
                             IsNotified = true
                         });
                 });
@@ -468,13 +463,13 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("ec6ed7ea-7e70-4d45-8926-f4c97af48ee6"),
-                            RoleId = new Guid("af3e6bc9-eae2-4c8f-af73-1b7107a3f2e8")
+                            UserId = new Guid("e42e1e51-1b1c-4a09-864c-6675b4ff119c"),
+                            RoleId = new Guid("c1690b49-4678-4ef4-98d8-3092defa7acb")
                         },
                         new
                         {
-                            UserId = new Guid("e3622868-08c1-487d-924d-5d184977979f"),
-                            RoleId = new Guid("7c81c2a0-ef77-4ce6-bff0-4d92fdc19f43")
+                            UserId = new Guid("6e168ab2-f753-42e3-a7fa-52c1389503bf"),
+                            RoleId = new Guid("0be6e455-f445-4bb0-b7d5-5adc8e84722f")
                         });
                 });
 
@@ -497,7 +492,7 @@ namespace CharityHub.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CharityHub.Data.Models.AdminActions", b =>
+            modelBuilder.Entity("CharityHub.Data.Models.AdminAction", b =>
                 {
                     b.HasOne("CharityHub.Data.Models.User", "Admin")
                         .WithMany("AdminActions")
@@ -505,14 +500,11 @@ namespace CharityHub.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("CharityHub.Data.Models.Campaign", null)
-                        .WithMany("AdminActions")
-                        .HasForeignKey("CampaignId");
-
                     b.HasOne("CharityHub.Data.Models.Campaign", "TargetCampaign")
-                        .WithMany()
+                        .WithMany("AdminActions")
                         .HasForeignKey("TargetCampaignId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("CharityHub.Data.Models.User", "TargetUser")
                         .WithMany()

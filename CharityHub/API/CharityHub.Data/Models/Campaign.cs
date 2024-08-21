@@ -46,6 +46,6 @@ namespace CharityHub.Data.Models
 
         public IList<Donation> Donations { get; set; }
         public IList<UserFollows> UserFollows { get; set; }
-        public IList<AdminActions> AdminActions { get; set; }
+        public IList<AdminAction> AdminActions { get; set; }
     }
 }

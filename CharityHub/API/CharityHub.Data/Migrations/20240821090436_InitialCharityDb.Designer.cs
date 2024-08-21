@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CharityHub.Data.Migrations
 {
     [DbContext(typeof(CharityHubDbContext))]
-    [Migration("20240821040122_InitialChariryDb")]
-    partial class InitialChariryDb
+    [Migration("20240821090436_InitialCharityDb")]
+    partial class InitialCharityDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace CharityHub.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CharityHub.Data.Models.AdminActions", b =>
+            modelBuilder.Entity("CharityHub.Data.Models.AdminAction", b =>
                 {
                     b.Property<Guid>("ActionId")
                         .ValueGeneratedOnAdd()
@@ -39,13 +39,10 @@ namespace CharityHub.Data.Migrations
                     b.Property<Guid>("AdminId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CampaignId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("CompletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("TargetCampaignId")
+                    b.Property<Guid>("TargetCampaignId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("TargetUserId")
@@ -54,8 +51,6 @@ namespace CharityHub.Data.Migrations
                     b.HasKey("ActionId");
 
                     b.HasIndex("AdminId");
-
-                    b.HasIndex("CampaignId");
 
                     b.HasIndex("TargetCampaignId");
 
@@ -389,7 +384,7 @@ namespace CharityHub.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CharityHub.Data.Models.AdminActions", b =>
+            modelBuilder.Entity("CharityHub.Data.Models.AdminAction", b =>
                 {
                     b.HasOne("CharityHub.Data.Models.User", "Admin")
                         .WithMany("AdminActions")
@@ -397,14 +392,11 @@ namespace CharityHub.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("CharityHub.Data.Models.Campaign", null)
-                        .WithMany("AdminActions")
-                        .HasForeignKey("CampaignId");
-
                     b.HasOne("CharityHub.Data.Models.Campaign", "TargetCampaign")
-                        .WithMany()
+                        .WithMany("AdminActions")
                         .HasForeignKey("TargetCampaignId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("CharityHub.Data.Models.User", "TargetUser")
                         .WithMany()

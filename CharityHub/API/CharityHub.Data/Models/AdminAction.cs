@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CharityHub.Data.Models
 {
-    public class AdminActions
+    public class AdminAction
     {
         [Required]
         [Key]
@@ -20,7 +20,7 @@ namespace CharityHub.Data.Models
         public Guid? TargetUserId { get; set; }
         public User TargetUser { get; set; }
 
-        public Guid? TargetCampaignId { get; set; }
+        public Guid TargetCampaignId { get; set; }
         public Campaign TargetCampaign { get; set; }
     }
 }

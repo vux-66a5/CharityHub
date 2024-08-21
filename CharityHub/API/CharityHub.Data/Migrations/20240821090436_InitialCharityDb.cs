@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CharityHub.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialChariryDb : Migration
+    public partial class InitialCharityDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -192,8 +192,7 @@ namespace CharityHub.Data.Migrations
                     CompletedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AdminId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TargetUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    TargetCampaignId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    CampaignId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    TargetCampaignId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -210,11 +209,6 @@ namespace CharityHub.Data.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_AdminActions_Campaigns_CampaignId",
-                        column: x => x.CampaignId,
-                        principalTable: "Campaigns",
-                        principalColumn: "CampaignId");
                     table.ForeignKey(
                         name: "FK_AdminActions_Campaigns_TargetCampaignId",
                         column: x => x.TargetCampaignId,
@@ -282,11 +276,6 @@ namespace CharityHub.Data.Migrations
                 name: "IX_AdminActions_AdminId",
                 table: "AdminActions",
                 column: "AdminId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AdminActions_CampaignId",
-                table: "AdminActions",
-                column: "CampaignId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AdminActions_TargetCampaignId",

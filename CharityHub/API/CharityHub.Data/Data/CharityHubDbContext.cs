@@ -9,7 +9,7 @@ namespace CharityHub.Data.Data
     {
         public DbSet<Donation> Donations { get; set; }
         public DbSet<Campaign> Campaigns { get; set; }
-        public DbSet<AdminActions> AdminActions { get; set; }
+        public DbSet<AdminAction> AdminActions { get; set; }
         public DbSet<UserFollows> UserFollows { get; set; }
 
         /*public CharityHubDbContext(DbContextOptions<CharityHubDbContext> options) : base(options)
@@ -20,7 +20,7 @@ namespace CharityHub.Data.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=LAPTOP-GEIJRR8I;database=CharityAppDatabase;Trusted_Connection=True;TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("Server=LAPTOP-GEIJRR8I;database=CharityAppDbContext;Trusted_Connection=True;TrustServerCertificate=True");
             }
         }
 
@@ -34,9 +34,9 @@ namespace CharityHub.Data.Data
                 .IsRequired();
 
             modelBuilder.Entity<User>()
-            .Property(u => u.Email)
-            .HasMaxLength(256)
-            .IsRequired();
+                .Property(u => u.Email)
+                .HasMaxLength(256)
+                .IsRequired();
 
             modelBuilder.Entity<User>()
                 .Property(u => u.PasswordHash)
@@ -47,6 +47,7 @@ namespace CharityHub.Data.Data
                 .Property(u => u.PhoneNumber)
                 .HasColumnType("varchar(10)");
 
+            // fluent api
             modelBuilder.Entity<Donation>()
                 .HasOne(d => d.User)
                 .WithMany(u => u.Donations)
@@ -70,21 +71,21 @@ namespace CharityHub.Data.Data
                 .WithMany(c => c.UserFollows)
                 .HasForeignKey(uf => uf.CampaignId);
 
-            modelBuilder.Entity<AdminActions>()
+            modelBuilder.Entity<AdminAction>()
                 .HasOne(aa => aa.Admin)
                 .WithMany(u => u.AdminActions)
                 .HasForeignKey(aa => aa.AdminId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<AdminActions>()
+            modelBuilder.Entity<AdminAction>()
                 .HasOne(aa => aa.TargetUser)
                 .WithMany()
                 .HasForeignKey(aa => aa.TargetUserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<AdminActions>()
+            modelBuilder.Entity<AdminAction>()
                 .HasOne(aa => aa.TargetCampaign)
-                .WithMany()
+                .WithMany(c => c.AdminActions)
                 .HasForeignKey(aa => aa.TargetCampaignId)
                 .OnDelete(DeleteBehavior.Restrict);
 
@@ -172,7 +173,7 @@ namespace CharityHub.Data.Data
             };
 
             // Seed AdminActions
-            var adminAction = new AdminActions
+            var adminAction = new AdminAction
             {
                 ActionId = actionId,
                 AdminId = adminId,
@@ -208,7 +209,7 @@ namespace CharityHub.Data.Data
             modelBuilder.Entity<Role>().HasData(roleUser, roleAdmin);
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(userRole, adminRole);
             modelBuilder.Entity<Campaign>().HasData(campaign);
-            modelBuilder.Entity<AdminActions>().HasData(adminAction);
+            modelBuilder.Entity<AdminAction>().HasData(adminAction);
             modelBuilder.Entity<Donation>().HasData(donation);
             modelBuilder.Entity<UserFollows>().HasData(userFollow);
         }
