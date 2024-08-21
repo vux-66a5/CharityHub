@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\CharityHub.WebAPI.props" />
+</Project>
