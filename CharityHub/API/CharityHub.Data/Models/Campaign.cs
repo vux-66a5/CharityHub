@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using CharityHub.Data.Validation;
 
 namespace CharityHub.Data.Models
 {
@@ -20,6 +21,10 @@ namespace CharityHub.Data.Models
         [Column(TypeName = "text")]
         public string CampaignDescription { get; set; }
         [Required]
+        [MaxLength(11)]
+        [CampaignStatusValidation]
+        public string CampaignStatus { get; set; }
+        [Required]
         [Column(TypeName = "decimal(10,2)")]
         public decimal TargetAmount { get; set; }
         [Required]
@@ -35,9 +40,6 @@ namespace CharityHub.Data.Models
         [Required]
         [Column(TypeName = "nvarchar(MAX)")]
         public string PartnerLogo { get; set; }
-        [Required]
-        [MaxLength (11)]
-        public string CampaignStatus { get; set; }
         [Required]
         [Column(TypeName = "nvarchar(10)")]
         public string PartnerNumber { get; set; }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CharityHub.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCharityDb : Migration
+    public partial class InitialCharityDbContext : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -62,13 +62,13 @@ namespace CharityHub.Data.Migrations
                     CampaignTitle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CampaignThumbnail = table.Column<string>(type: "nvarchar(MAX)", nullable: false),
                     CampaignDescription = table.Column<string>(type: "text", nullable: false),
+                    CampaignStatus = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     TargetAmount = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     CurrentAmount = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PartnerName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PartnerLogo = table.Column<string>(type: "nvarchar(MAX)", nullable: false),
-                    CampaignStatus = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     PartnerNumber = table.Column<string>(type: "nvarchar(10)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },

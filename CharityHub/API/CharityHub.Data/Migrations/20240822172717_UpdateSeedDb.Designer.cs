@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CharityHub.Data.Migrations
 {
     [DbContext(typeof(CharityHubDbContext))]
-    [Migration("20240821090637_UpdateSeedData")]
-    partial class UpdateSeedData
+    [Migration("20240822172717_UpdateSeedDb")]
+    partial class UpdateSeedDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,12 +61,12 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            ActionId = new Guid("5c197a0c-d433-4718-89a9-7bbb8c4c8c5a"),
+                            ActionId = new Guid("790e2a9a-1690-47e0-8d2e-200d4047bb85"),
                             ActionType = "BanUser",
-                            AdminId = new Guid("6e168ab2-f753-42e3-a7fa-52c1389503bf"),
-                            CompletedAt = new DateTime(2024, 8, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4329),
-                            TargetCampaignId = new Guid("a90c326f-edd2-462e-8080-2b97fd932021"),
-                            TargetUserId = new Guid("e42e1e51-1b1c-4a09-864c-6675b4ff119c")
+                            AdminId = new Guid("1cb61da8-24ac-4a36-b181-a19064f561d8"),
+                            CompletedAt = new DateTime(2024, 8, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(382),
+                            TargetCampaignId = new Guid("21af526b-af55-4d76-bdfc-946690cfa2d6"),
+                            TargetUserId = new Guid("75915256-3f7d-4028-96b2-f9b6f8820a8b")
                         });
                 });
 
@@ -132,19 +132,19 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            CampaignId = new Guid("a90c326f-edd2-462e-8080-2b97fd932021"),
+                            CampaignId = new Guid("21af526b-af55-4d76-bdfc-946690cfa2d6"),
                             CampaignCode = 123,
                             CampaignDescription = "This is a charity campaign.",
                             CampaignStatus = "InProgress",
                             CampaignThumbnail = "path/to/thumbnail.jpg",
                             CampaignTitle = "Charity Campaign",
                             CurrentAmount = 5000.00m,
-                            DateCreated = new DateTime(2024, 8, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4328),
-                            EndDate = new DateTime(2024, 9, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4279),
+                            DateCreated = new DateTime(2024, 8, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(378),
+                            EndDate = new DateTime(2024, 9, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(329),
                             PartnerLogo = "path/to/logo.jpg",
                             PartnerName = "Partner Organization",
                             PartnerNumber = "0987654321",
-                            StartDate = new DateTime(2024, 8, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4267),
+                            StartDate = new DateTime(2024, 8, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(318),
                             TargetAmount = 10000.00m
                         });
                 });
@@ -186,13 +186,13 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            DonationId = new Guid("619e3f80-bafb-48f9-9fc8-6656f4eab17e"),
+                            DonationId = new Guid("778e22b9-df07-47e6-aa4d-4dc55d0b63c7"),
                             Amount = 100.00m,
-                            CampaignId = new Guid("a90c326f-edd2-462e-8080-2b97fd932021"),
-                            DateDonated = new DateTime(2024, 8, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4332),
+                            CampaignId = new Guid("21af526b-af55-4d76-bdfc-946690cfa2d6"),
+                            DateDonated = new DateTime(2024, 8, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(385),
                             IsConfirm = true,
                             PaymentMethod = "Paypal",
-                            UserId = new Guid("e42e1e51-1b1c-4a09-864c-6675b4ff119c")
+                            UserId = new Guid("75915256-3f7d-4028-96b2-f9b6f8820a8b")
                         });
                 });
 
@@ -226,12 +226,12 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c1690b49-4678-4ef4-98d8-3092defa7acb"),
+                            Id = new Guid("f6348b92-d1a3-484e-a2bf-58739f870075"),
                             Name = "User"
                         },
                         new
                         {
-                            Id = new Guid("0be6e455-f445-4bb0-b7d5-5adc8e84722f"),
+                            Id = new Guid("a98900e2-232e-471c-94b3-b4b44367233c"),
                             Name = "Admin"
                         });
                 });
@@ -316,16 +316,16 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e42e1e51-1b1c-4a09-864c-6675b4ff119c"),
+                            Id = new Guid("75915256-3f7d-4028-96b2-f9b6f8820a8b"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "044b4d8f-3a04-4387-a8f1-8068272c8f1a",
-                            DateCreated = new DateTime(2024, 8, 21, 16, 6, 37, 427, DateTimeKind.Local).AddTicks(5459),
+                            ConcurrencyStamp = "14dad404-8666-4c16-99ac-5faf71b9e31f",
+                            DateCreated = new DateTime(2024, 8, 23, 0, 27, 17, 288, DateTimeKind.Local).AddTicks(4061),
                             Email = "datdq@gmail.com",
                             EmailConfirmed = false,
                             IsActive = true,
-                            LastLoginDate = new DateTime(2024, 8, 21, 16, 6, 37, 427, DateTimeKind.Local).AddTicks(5471),
+                            LastLoginDate = new DateTime(2024, 8, 23, 0, 27, 17, 288, DateTimeKind.Local).AddTicks(4073),
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEBQKxM2Y6d38j0Zbjf+VVAXGhZSR5x2nJit2RfPqDPkEiJsFDJqr2VsYj2E1rR35xQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKFTmujkJ8rNG1J4NfUONdAhY2zZFx/Z5p+lEFkdnzOSaxcBdVDbkWljJ+yh5SlzQw==",
                             PhoneNumber = "0123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -333,16 +333,16 @@ namespace CharityHub.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6e168ab2-f753-42e3-a7fa-52c1389503bf"),
+                            Id = new Guid("1cb61da8-24ac-4a36-b181-a19064f561d8"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c4290150-a6a3-43c5-be93-6d2a267a020c",
-                            DateCreated = new DateTime(2024, 8, 21, 16, 6, 37, 483, DateTimeKind.Local).AddTicks(662),
+                            ConcurrencyStamp = "2286d120-90aa-479b-9e17-0a2d0426b42c",
+                            DateCreated = new DateTime(2024, 8, 23, 0, 27, 17, 342, DateTimeKind.Local).AddTicks(7893),
                             Email = "Anv@gmail.com",
                             EmailConfirmed = false,
                             IsActive = true,
-                            LastLoginDate = new DateTime(2024, 8, 21, 16, 6, 37, 483, DateTimeKind.Local).AddTicks(678),
+                            LastLoginDate = new DateTime(2024, 8, 23, 0, 27, 17, 342, DateTimeKind.Local).AddTicks(7896),
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEP3bCVIDpZsmtTd2rw6zfCb20GXnSsc4+F2MPGT7ury0zjKHpvzkdGeOY5sY6gi69Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEH4PeZmo19RPRQLLs2v8szynOaInQ/tKwyUefiXlXGxSgI/PvPZnJa1Wy7HenjfMyg==",
                             PhoneNumber = "0987654321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -373,9 +373,9 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("e42e1e51-1b1c-4a09-864c-6675b4ff119c"),
-                            CampaignId = new Guid("a90c326f-edd2-462e-8080-2b97fd932021"),
-                            DateFollowed = new DateTime(2024, 8, 21, 16, 6, 37, 537, DateTimeKind.Local).AddTicks(4334),
+                            UserId = new Guid("75915256-3f7d-4028-96b2-f9b6f8820a8b"),
+                            CampaignId = new Guid("21af526b-af55-4d76-bdfc-946690cfa2d6"),
+                            DateFollowed = new DateTime(2024, 8, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(387),
                             IsNotified = true
                         });
                 });
@@ -466,13 +466,13 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("e42e1e51-1b1c-4a09-864c-6675b4ff119c"),
-                            RoleId = new Guid("c1690b49-4678-4ef4-98d8-3092defa7acb")
+                            UserId = new Guid("75915256-3f7d-4028-96b2-f9b6f8820a8b"),
+                            RoleId = new Guid("f6348b92-d1a3-484e-a2bf-58739f870075")
                         },
                         new
                         {
-                            UserId = new Guid("6e168ab2-f753-42e3-a7fa-52c1389503bf"),
-                            RoleId = new Guid("0be6e455-f445-4bb0-b7d5-5adc8e84722f")
+                            UserId = new Guid("1cb61da8-24ac-4a36-b181-a19064f561d8"),
+                            RoleId = new Guid("a98900e2-232e-471c-94b3-b4b44367233c")
                         });
                 });
 
