@@ -300,5 +300,5 @@ D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Deb
 D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Debug\net8.0\AutoMapper.dll
 D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Debug\net8.0\CharityHub.Business.dll
 D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Debug\net8.0\CharityHub.Business.pdb
-D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
-D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Debug\net8.0\PayPal.dll
+D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Debug\net8.0\BraintreeHttp-Dotnet.dll
+D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Debug\net8.0\Source.dll

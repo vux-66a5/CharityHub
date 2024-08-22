@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CharityHub.Business")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef7a2b901a9dc3abbf8fe3c0b2b3490399afc0e0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+752efef6a532d77eba04c839fd705fce52367cac")]
 [assembly: System.Reflection.AssemblyProductAttribute("CharityHub.Business")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CharityHub.Business")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
