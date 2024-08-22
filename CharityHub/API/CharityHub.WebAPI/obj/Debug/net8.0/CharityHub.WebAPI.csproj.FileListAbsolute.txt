@@ -302,3 +302,4 @@ D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Deb
 D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Debug\net8.0\CharityHub.Business.pdb
 D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Debug\net8.0\BraintreeHttp-Dotnet.dll
 D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Debug\net8.0\Source.dll
+D:\Workspace\fpt\MockProject\CharityHub\CharityHub\API\CharityHub.WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

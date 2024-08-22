@@ -2,6 +2,7 @@
 using CharityHub.Business.ViewModels;
 using CharityHub.Data.Data;
 using CharityHub.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ namespace CharityHub.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class AdminCampaignController : ControllerBase
     {
         private readonly CharityHubDbContext dbContext;

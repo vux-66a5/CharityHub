@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CharityHub.Data.Migrations
 {
     [DbContext(typeof(CharityHubDbContext))]
-    [Migration("20240822172717_UpdateSeedDb")]
-    partial class UpdateSeedDb
+    [Migration("20240822190837_UpdateRoles")]
+    partial class UpdateRoles
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,17 +57,6 @@ namespace CharityHub.Data.Migrations
                     b.HasIndex("TargetUserId");
 
                     b.ToTable("AdminActions");
-
-                    b.HasData(
-                        new
-                        {
-                            ActionId = new Guid("790e2a9a-1690-47e0-8d2e-200d4047bb85"),
-                            ActionType = "BanUser",
-                            AdminId = new Guid("1cb61da8-24ac-4a36-b181-a19064f561d8"),
-                            CompletedAt = new DateTime(2024, 8, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(382),
-                            TargetCampaignId = new Guid("21af526b-af55-4d76-bdfc-946690cfa2d6"),
-                            TargetUserId = new Guid("75915256-3f7d-4028-96b2-f9b6f8820a8b")
-                        });
                 });
 
             modelBuilder.Entity("CharityHub.Data.Models.Campaign", b =>
@@ -128,25 +117,6 @@ namespace CharityHub.Data.Migrations
                     b.HasKey("CampaignId");
 
                     b.ToTable("Campaigns");
-
-                    b.HasData(
-                        new
-                        {
-                            CampaignId = new Guid("21af526b-af55-4d76-bdfc-946690cfa2d6"),
-                            CampaignCode = 123,
-                            CampaignDescription = "This is a charity campaign.",
-                            CampaignStatus = "InProgress",
-                            CampaignThumbnail = "path/to/thumbnail.jpg",
-                            CampaignTitle = "Charity Campaign",
-                            CurrentAmount = 5000.00m,
-                            DateCreated = new DateTime(2024, 8, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(378),
-                            EndDate = new DateTime(2024, 9, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(329),
-                            PartnerLogo = "path/to/logo.jpg",
-                            PartnerName = "Partner Organization",
-                            PartnerNumber = "0987654321",
-                            StartDate = new DateTime(2024, 8, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(318),
-                            TargetAmount = 10000.00m
-                        });
                 });
 
             modelBuilder.Entity("CharityHub.Data.Models.Donation", b =>
@@ -182,18 +152,6 @@ namespace CharityHub.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Donations");
-
-                    b.HasData(
-                        new
-                        {
-                            DonationId = new Guid("778e22b9-df07-47e6-aa4d-4dc55d0b63c7"),
-                            Amount = 100.00m,
-                            CampaignId = new Guid("21af526b-af55-4d76-bdfc-946690cfa2d6"),
-                            DateDonated = new DateTime(2024, 8, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(385),
-                            IsConfirm = true,
-                            PaymentMethod = "Paypal",
-                            UserId = new Guid("75915256-3f7d-4028-96b2-f9b6f8820a8b")
-                        });
                 });
 
             modelBuilder.Entity("CharityHub.Data.Models.Role", b =>
@@ -226,13 +184,17 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f6348b92-d1a3-484e-a2bf-58739f870075"),
-                            Name = "User"
+                            Id = new Guid("800033f6-c39d-4561-8806-a20175a8f406"),
+                            ConcurrencyStamp = "06fdd11c-399e-4d77-993a-9a70e976449d",
+                            Name = "User",
+                            NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = new Guid("a98900e2-232e-471c-94b3-b4b44367233c"),
-                            Name = "Admin"
+                            Id = new Guid("06fdd11c-399e-4d77-993a-9a70e976449d"),
+                            ConcurrencyStamp = "06fdd11c-399e-4d77-993a-9a70e976449d",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
                         });
                 });
 
@@ -312,42 +274,6 @@ namespace CharityHub.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("75915256-3f7d-4028-96b2-f9b6f8820a8b"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "14dad404-8666-4c16-99ac-5faf71b9e31f",
-                            DateCreated = new DateTime(2024, 8, 23, 0, 27, 17, 288, DateTimeKind.Local).AddTicks(4061),
-                            Email = "datdq@gmail.com",
-                            EmailConfirmed = false,
-                            IsActive = true,
-                            LastLoginDate = new DateTime(2024, 8, 23, 0, 27, 17, 288, DateTimeKind.Local).AddTicks(4073),
-                            LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEKFTmujkJ8rNG1J4NfUONdAhY2zZFx/Z5p+lEFkdnzOSaxcBdVDbkWljJ+yh5SlzQw==",
-                            PhoneNumber = "0123456789",
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "datdq@gmail.com"
-                        },
-                        new
-                        {
-                            Id = new Guid("1cb61da8-24ac-4a36-b181-a19064f561d8"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "2286d120-90aa-479b-9e17-0a2d0426b42c",
-                            DateCreated = new DateTime(2024, 8, 23, 0, 27, 17, 342, DateTimeKind.Local).AddTicks(7893),
-                            Email = "Anv@gmail.com",
-                            EmailConfirmed = false,
-                            IsActive = true,
-                            LastLoginDate = new DateTime(2024, 8, 23, 0, 27, 17, 342, DateTimeKind.Local).AddTicks(7896),
-                            LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEH4PeZmo19RPRQLLs2v8szynOaInQ/tKwyUefiXlXGxSgI/PvPZnJa1Wy7HenjfMyg==",
-                            PhoneNumber = "0987654321",
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "Anv@gmail.com"
-                        });
                 });
 
             modelBuilder.Entity("CharityHub.Data.Models.UserFollows", b =>
@@ -369,15 +295,6 @@ namespace CharityHub.Data.Migrations
                     b.HasIndex("CampaignId");
 
                     b.ToTable("UserFollows");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = new Guid("75915256-3f7d-4028-96b2-f9b6f8820a8b"),
-                            CampaignId = new Guid("21af526b-af55-4d76-bdfc-946690cfa2d6"),
-                            DateFollowed = new DateTime(2024, 8, 23, 0, 27, 17, 398, DateTimeKind.Local).AddTicks(387),
-                            IsNotified = true
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -462,18 +379,6 @@ namespace CharityHub.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = new Guid("75915256-3f7d-4028-96b2-f9b6f8820a8b"),
-                            RoleId = new Guid("f6348b92-d1a3-484e-a2bf-58739f870075")
-                        },
-                        new
-                        {
-                            UserId = new Guid("1cb61da8-24ac-4a36-b181-a19064f561d8"),
-                            RoleId = new Guid("a98900e2-232e-471c-94b3-b4b44367233c")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>

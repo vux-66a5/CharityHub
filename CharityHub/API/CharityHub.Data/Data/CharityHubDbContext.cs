@@ -89,16 +89,14 @@ namespace CharityHub.Data.Data
                 .HasForeignKey(aa => aa.TargetCampaignId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            var userId = Guid.NewGuid();
-            var adminId = Guid.NewGuid();
+            /*var userId = Guid.NewGuid();
+            var adminId = Guid.NewGuid();*/
             var roleUserId = Guid.NewGuid();
             var roleAdminId = Guid.NewGuid();
-            var campaignId = Guid.NewGuid();
+            /*var campaignId = Guid.NewGuid();
             var actionId = Guid.NewGuid();
             var donationId = Guid.NewGuid();
             var followId = Guid.NewGuid();
-
-            var passwordHasher = new PasswordHasher<User>();
 
             // Tạo dữ liệu cho user
             var user = new User
@@ -109,10 +107,9 @@ namespace CharityHub.Data.Data
                 PhoneNumber = "0123456789",
                 DateCreated = DateTime.Now,
                 IsActive = true,
-                LastLoginDate = DateTime.Now
+                LastLoginDate = DateTime.Now,
+                PasswordHash = "dat@123"
             };
-
-            user.PasswordHash = passwordHasher.HashPassword(user, "dat@123");
 
             // Tạo dữ liệu cho admin
             var admin = new User
@@ -123,24 +120,30 @@ namespace CharityHub.Data.Data
                 PhoneNumber = "0987654321",
                 DateCreated = DateTime.Now,
                 IsActive = true,
-                LastLoginDate = DateTime.Now
-            };
-            admin.PasswordHash = passwordHasher.HashPassword(admin, "Anv@123");
+                LastLoginDate = DateTime.Now,
+                PasswordHash = "dat@123"
+            };*/
 
             // Seed Roles
-            var roleUser = new Role
+            var roles = new List<Role>
             {
-                Id = roleUserId,
-                Name = "User"
+                new Role
+                {
+                    Id = roleUserId,
+                    ConcurrencyStamp = roleAdminId.ToString(),
+                    Name = "User",
+                    NormalizedName = "User".ToUpper()
+                },
+                new Role
+                {
+                    Id = roleAdminId,
+                    ConcurrencyStamp = roleAdminId.ToString(),
+                    Name = "Admin",
+                    NormalizedName = "Admin".ToUpper()
+                }
             };
 
-            var roleAdmin = new Role
-            {
-                Id = roleAdminId,
-                Name = "Admin"
-            };
-
-            // Seed UserRoles
+            /*// Seed UserRoles
             var userRole = new IdentityUserRole<Guid>
             {
                 UserId = userId,
@@ -205,13 +208,13 @@ namespace CharityHub.Data.Data
             };
 
             // Add Data Using HasData
-            modelBuilder.Entity<User>().HasData(user, admin);
-            modelBuilder.Entity<Role>().HasData(roleUser, roleAdmin);
-            modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(userRole, adminRole);
+            modelBuilder.Entity<User>().HasData(user, admin);*/
+            modelBuilder.Entity<Role>().HasData(roles);
+            /*modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(userRole, adminRole);
             modelBuilder.Entity<Campaign>().HasData(campaign);
             modelBuilder.Entity<AdminAction>().HasData(adminAction);
             modelBuilder.Entity<Donation>().HasData(donation);
-            modelBuilder.Entity<UserFollows>().HasData(userFollow);
+            modelBuilder.Entity<UserFollows>().HasData(userFollow);*/
         }
     }
 }

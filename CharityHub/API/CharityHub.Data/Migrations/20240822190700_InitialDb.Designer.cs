@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CharityHub.Data.Migrations
 {
     [DbContext(typeof(CharityHubDbContext))]
-    [Migration("20240822172612_InitialCharityDbContext")]
-    partial class InitialCharityDbContext
+    [Migration("20240822190700_InitialDb")]
+    partial class InitialDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
