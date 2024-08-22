@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Donate PayPal tại CharityHub</a></h1>
+</div>
+
+<div class="table-responsive">
+    <form action="/Home/CreatePaymentUrl" id="frmCreateOrder" method="POST">
+@*         <div class="form-group">
+            <label for="Name">Tên khách hàng</label>
+            <input class="form-control"
+                   id="Name"
+                   name="Name"
+                   type="text"
+                   value="Code Mega">
+        </div>
+        <br/> *@
+        <div class="form-group">
+            <label for="Amount">Số tiền</label>
+            <input class="form-control"
+                   id="Amount"
+                   name="Amount"
+                   type="text"
+                   value="20000000">
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary">Xác nhận quyên góp</button>
+    </form>
+</div>
+
