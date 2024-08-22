@@ -12,9 +12,9 @@ namespace CharityHub.Data.Data
         public DbSet<AdminAction> AdminActions { get; set; }
         public DbSet<UserFollows> UserFollows { get; set; }
 
-        /*public CharityHubDbContext(DbContextOptions<CharityHubDbContext> options) : base(options)
+        public CharityHubDbContext(DbContextOptions<CharityHubDbContext> options) : base(options)
         {
-        }*/
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
