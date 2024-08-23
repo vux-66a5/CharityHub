@@ -1,0 +1,29 @@
+<div class="auth-form__container">
+    <div class="auth-form__header">
+        <span class="auth-form__switch-btn" (click)="openLoginDialog()">Đăng nhập</span>
+        <h3 class="auth-form__heading">Đăng kí</h3>
+    </div>
+    
+    <div class="auth-form__form">
+      <div class="auth-form__group">
+        <p class="auth-form__group__title">Tên hiển thị</p>
+        <input type="text" class="auth-form__input" placeholder="Tên muốn hiển thị" [(ngModel)]="registerData.displayName">
+      </div>
+      <div class="auth-form__group">
+        <p class="auth-form__group__title">Email</p>
+        <input type="text" class="auth-form__input" placeholder="user@example.com" [(ngModel)]="registerData.username">
+      </div>
+      <div class="auth-form__group">
+        <p class="auth-form__group__title">Password</p>
+        <input type="password" class="auth-form__input" placeholder="Password" [(ngModel)]="registerData.password">
+      </div>
+    </div>
+    
+    <div class="auth-form__controls">
+      <button type="button" class="btn btn-outline-primary me-2" (click)="register()">Đăng kí</button>
+    </div>
+    
+    <div class="auth-form__notlogin">
+        <p>Hoặc là không cần đăng kí? <a href="/">Quyên góp ngay</a></p>
+    </div>
+</div>
