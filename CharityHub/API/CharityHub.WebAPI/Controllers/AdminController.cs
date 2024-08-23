@@ -131,7 +131,9 @@ namespace CharityHub.WebAPI.Controllers
         [HttpGet("paginated")]
         public async Task<IActionResult> GetUsers([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 20)
         {
-            var users = await userManager.Users.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+            var userRole = await userManager.GetUsersInRoleAsync("User");
+
+            var users = userRole.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
 
             var userDtos = mapper.Map<List<UserDto>>(users);
 

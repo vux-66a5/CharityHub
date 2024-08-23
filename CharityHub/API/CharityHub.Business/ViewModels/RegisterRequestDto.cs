@@ -12,7 +12,7 @@ namespace CharityHub.Business.ViewModels
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        public string[] Roles { get; set; }
+        [Required]
+        public string DisplayName { get; set; }
     }
 }

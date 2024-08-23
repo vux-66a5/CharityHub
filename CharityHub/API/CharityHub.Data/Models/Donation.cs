@@ -18,7 +18,7 @@ namespace CharityHub.Data.Models
         [Required]
         public DateTime DateDonated { get; set; }
 
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
         public User User { get; set; }
 
         public Guid CampaignId { get; set; }

@@ -20,7 +20,7 @@ namespace CharityHub.WebAPI.Controllers
             this.tokenRepository = tokenRepository;
         }
 
-        //POST: /api/Auth/Register
+        //POST: /api/NoUser/Register
         [HttpPost]
         [Route("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto registerRequestDto)
@@ -28,7 +28,10 @@ namespace CharityHub.WebAPI.Controllers
             var identityUser = new User
             {
                 UserName = registerRequestDto.Username,
-                Email = registerRequestDto.Username
+                Email = registerRequestDto.Username,
+                DisplayName = registerRequestDto.DisplayName,
+                DateCreated = DateTime.Now,
+                LastLoginDate = DateTime.Now
             };
 
             var identityResult = await userManager.CreateAsync(identityUser, registerRequestDto.Password);
@@ -36,15 +39,14 @@ namespace CharityHub.WebAPI.Controllers
             if (identityResult.Succeeded)
             {
                 //Add roles to this User
-                if (registerRequestDto.Roles != null && registerRequestDto.Roles.Any())
-                {
-                    identityResult = await userManager.AddToRolesAsync(identityUser, registerRequestDto.Roles);
+                
+                identityResult = await userManager.AddToRoleAsync(identityUser, "User");
 
-                    if (identityResult.Succeeded)
-                    {
-                        return Ok("User was regitered! Please Login.");
-                    }
+                if (identityResult.Succeeded)
+                {
+                   return Ok("User was regitered! Please Login.");
                 }
+                
             }
 
             return BadRequest("Something went wrong!");

@@ -20,9 +20,12 @@ namespace CharityHub.Business.Services.TokenRepository
         public string CreateJWTToken(User user, List<string> roles)
         {
             // Create claims
-            var claims = new List<Claim>();
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+            };
 
-            claims.Add(new Claim(ClaimTypes.Email, user.Email));
 
             foreach (var role in roles)
             {
