@@ -31,13 +31,17 @@ namespace CharityHub.WebAPI.Controllers
             return Ok(mapper.Map<List<CampaignDto>>(campaigns));
         }
 
-        // danh sách những người đã quyên góp vào 1 đợt quyên góp
-        [HttpGet("campaigns/{id}/donors")]
-        public async Task<IActionResult> GetDonorsCampaignId(Guid id)
+        // xem được danh sách những người đã quyên góp trên một đợt quyên góp
+        [HttpGet("campaigns/{code}/donors")]
+        public async Task<IActionResult> GetDonorsByCampaignCode(int code)
         {
+            var campaign = await dbContext.Campaigns
+                .Where(c => c.CampaignCode == code)
+                .FirstOrDefaultAsync();
+
             var donors = await (from d in dbContext.Donations
                                 join u in dbContext.Users on d.UserId equals u.Id
-                                where d.CampaignId == id
+                                where d.CampaignId == campaign.CampaignId
                                 select new
                                 {
                                     u.UserName,
@@ -47,17 +51,17 @@ namespace CharityHub.WebAPI.Controllers
             return Ok(donors);
         }
 
-        // xem số tiền đã quyên góp và số tiền cần quyên góp
-        [HttpGet("campaigns/{id}/amounts")]
-        public async Task<IActionResult> GetCampaignsAmounts(Guid id)
+        // Xem số tiền đã quyên góp và số tiền cần quyên góp 
+        [HttpGet("campaigns/{code}/amounts")]
+        public async Task<IActionResult> GetCampaignAmountsByCampaignCode(int code)
         {
             var campaign = await dbContext.Campaigns
-                .Where(c => c.CampaignId == id)
+                .Where(c => c.CampaignCode == code)
                 .Select(c => new
                 {
                     c.TargetAmount,
                     CurrentAmount = dbContext.Donations
-                    .Where(d => d.CampaignId == id)
+                    .Where(d => d.CampaignId == c.CampaignId)
                     .Sum(d => d.Amount)
                 }).FirstOrDefaultAsync();
 

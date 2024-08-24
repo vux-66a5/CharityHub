@@ -15,6 +15,7 @@ namespace CharityHub.Business.Mappings
             CreateMap<Campaign, CampaignDto>().ReverseMap();
             CreateMap<UpdateCampaignRequestDto, Campaign>().ReverseMap();
             CreateMap<AddDonationRequestDto, Donation>().ReverseMap();
+            CreateMap<Donation, DonationDto>().ReverseMap();
         }
     }
 }

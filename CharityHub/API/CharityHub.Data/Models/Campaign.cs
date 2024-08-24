@@ -30,10 +30,8 @@ namespace CharityHub.Data.Models
         [Required]
         [Column(TypeName = "decimal(10,2)")]
         public decimal CurrentAmount { get; set; }
-        [Required]
-        public DateTime StartDate { get; set; }
-        [Required]
-        public DateTime EndDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         [Required]
         [MaxLength(100)]
         public string PartnerName { get; set; }

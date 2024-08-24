@@ -43,6 +43,10 @@ namespace CharityHub.Data.Data
                 .HasColumnType("nvarchar(MAX)")
                 .IsRequired();
 
+            modelBuilder.Entity<Campaign>()
+                .HasIndex(c => c.CampaignCode)
+                .IsUnique();
+
             modelBuilder.Entity<User>()
                 .Property(u => u.PhoneNumber)
                 .HasColumnType("varchar(10)");

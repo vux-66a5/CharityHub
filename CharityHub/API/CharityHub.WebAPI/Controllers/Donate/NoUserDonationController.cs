@@ -3,27 +3,25 @@ using CharityHub.Business.Services;
 using CharityHub.Business.ViewModels;
 using CharityHub.Data.Data;
 using CharityHub.Data.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace CharityHub.WebAPI.Controllers.Donations
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "User")]
-    public class UserDonationController : ControllerBase
+    public class NoUserDonationController : ControllerBase
     {
         private readonly CharityHubDbContext dbContext;
         private readonly IPayPalService payPalService;
-        private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly IMapper mapper;
 
-        public UserDonationController(CharityHubDbContext dbContext, IPayPalService payPalService, IHttpContextAccessor httpContextAccessor)
+        public NoUserDonationController(CharityHubDbContext dbContext, IPayPalService payPalService, IMapper mapper)
         {
             this.dbContext = dbContext;
             this.payPalService = payPalService;
-            this.httpContextAccessor = httpContextAccessor;
+            this.mapper = mapper;
         }
 
         // POST: api/NoUserDonation/paypal/create
@@ -32,21 +30,18 @@ namespace CharityHub.WebAPI.Controllers.Donations
         {
             var donationId = Guid.NewGuid();
 
-            var userIdString = httpContextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (string.IsNullOrEmpty(userIdString) || !Guid.TryParse(userIdString, out Guid userId))
-            {
-                return BadRequest("Invalid or missing user ID.");
-            }
+            var campaign = await dbContext.Campaigns
+                .Where(c => c.CampaignCode == donationRequest.CampaignCode)
+                .FirstOrDefaultAsync();
 
             var donation = new Donation
             {
-                CampaignId = donationRequest.CampaignId,
+                CampaignId = campaign.CampaignId,
                 DonationId = donationId,
                 DateDonated = DateTime.Now,
                 IsConfirm = false,
                 Amount = donationRequest.Amount,
-                PaymentMethod = donationRequest.PaymentMethod,
-                UserId = userId
+                PaymentMethod = donationRequest.PaymentMethod
             };
 
             var paymentUrl = await payPalService.CreatePaymentUrl(new PaymentInformation
@@ -65,6 +60,7 @@ namespace CharityHub.WebAPI.Controllers.Donations
 
             return Ok(new { PaymentUrl = paymentUrl });
         }
+
 
         // GET: api/NoUserDonation/ExecutePayment
         [HttpGet("ExecutePayment")]
@@ -89,12 +85,6 @@ namespace CharityHub.WebAPI.Controllers.Donations
                 return BadRequest("Payment failed or was not confirmed.");
             }
 
-            var userIdString = httpContextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (string.IsNullOrEmpty(userIdString) || !Guid.TryParse(userIdString, out Guid userId))
-            {
-                return BadRequest("Invalid or missing user ID.");
-            }
-
             using (var transaction = await dbContext.Database.BeginTransactionAsync())
             {
                 try
@@ -106,13 +96,21 @@ namespace CharityHub.WebAPI.Controllers.Donations
                     }
 
                     existingDonation.IsConfirm = true;
-                    existingDonation.UserId = userId; // Assign the user ID to the donation
+
+                    // Update the current amount in the associated campaign
+                    var campaign = await dbContext.Campaigns.FindAsync(existingDonation.CampaignId);
+                    if (campaign != null)
+                    {
+                        campaign.CurrentAmount += existingDonation.Amount;
+                        dbContext.Campaigns.Update(campaign);
+                    }
+
                     dbContext.Donations.Update(existingDonation);
                     await dbContext.SaveChangesAsync();
                     await transaction.CommitAsync();
 
                     // Return the updated donation object as JSON
-                    return Ok(existingDonation);
+                    return Ok(mapper.Map<DonationDto>(existingDonation));
                 }
                 catch (Exception ex)
                 {
@@ -121,6 +119,5 @@ namespace CharityHub.WebAPI.Controllers.Donations
                 }
             }
         }
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CharityHub.Business.CampaignCodeGenerator;
 using CharityHub.Business.ViewModels;
 using CharityHub.Data.Data;
 using CharityHub.Data.Models;
@@ -29,6 +30,9 @@ namespace CharityHub.WebAPI.Controllers
         {
             var campaign = mapper.Map<Campaign>(addCampaignRequestDto);
 
+            campaign.CampaignCode = CampaignCodeGenerator.GenerateUniqueCampaignCode(dbContext);
+            campaign.DateCreated = DateTime.Now;
+
             await dbContext.Campaigns.AddAsync(campaign);
             await dbContext.SaveChangesAsync();
 
@@ -36,7 +40,7 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // GET: api/Campaign/search?status=Active
-        [HttpGet("search")]
+        [HttpGet("searchByStatus")]
         public async Task<IActionResult> SearchCapaigns(string status)
         {
             var campaigns = await dbContext.Campaigns
@@ -66,12 +70,30 @@ namespace CharityHub.WebAPI.Controllers
             return Ok(mapper.Map<List<CampaignDto>>(campaigns));
         }
 
-        // DELETE: api/Campaign/{id}
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCampaign(Guid id)
+        // DELETE: api/Campaign/{id}/DeleteNewCampaign
+        [HttpDelete("{id}/DeleteNewCampaign")]
+        public async Task<IActionResult> DeleteNewCampaign(Guid id)
         {
             var campaign = await dbContext.Campaigns
                 .FirstOrDefaultAsync(c => c.CampaignId == id && c.CampaignStatus == "New");
+            if (campaign == null)
+            {
+                return NotFound("Campaign not found!");
+            }
+
+            dbContext.Campaigns.Remove(campaign);
+            await dbContext.SaveChangesAsync();
+
+            return Ok("Campaign deleted successfully!");
+        }
+
+
+        // DELETE: api/Campaign/{id}/DeleteCampaign
+        [HttpDelete("{id}/DeleteCampaign")]
+        public async Task<IActionResult> DeleteCampaign(Guid id)
+        {
+            var campaign = await dbContext.Campaigns
+                .FirstOrDefaultAsync(c => c.CampaignId == id);
             if (campaign == null)
             {
                 return NotFound("Campaign not found!");
@@ -154,5 +176,29 @@ namespace CharityHub.WebAPI.Controllers
             return Ok("Campaign end date extended successfully.");
         }
 
+        // cập nhật thời gian bắt đầu vào thời gian kết thúc chiến dịch cho chiến dịch chưa bắt đầu
+        [HttpPut("{id}/UpdateStartAndDate")]
+        public async Task<IActionResult> UpdateStartAndDate(Guid id, [FromBody] StartAndEndDateCampaign startAndEndDateCampaign)
+        {
+            var campaign = await dbContext.Campaigns.FindAsync(id);
+
+            if (campaign == null)
+            {
+                return NotFound();
+            }
+
+            if (campaign.StartDate != default(DateTime) || campaign.EndDate != default(DateTime))
+            {
+                return BadRequest("Campaign start or end date already set.");
+            }
+
+            campaign.StartDate = startAndEndDateCampaign.StartDate;
+            campaign.EndDate = startAndEndDateCampaign.EndDate;
+
+            dbContext.Campaigns.Update(campaign);
+            await dbContext.SaveChangesAsync();
+
+            return Ok(mapper.Map<CampaignDto>(campaign));
+        }
     }
 }

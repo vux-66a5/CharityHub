@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace CharityHub.WebAPI.Controllers
+namespace CharityHub.WebAPI.Controllers.Login
 {
     [Route("api/[controller]")]
     [ApiController]

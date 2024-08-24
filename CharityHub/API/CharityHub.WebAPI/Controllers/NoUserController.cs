@@ -44,7 +44,7 @@ namespace CharityHub.WebAPI.Controllers
 
                 if (identityResult.Succeeded)
                 {
-                   return Ok("User was regitered! Please Login.");
+                   return Ok();
                 }
                 
             }
