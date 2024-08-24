@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.webapi\\controllers\\login\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|solutionrelative:charityhub.webapi\\controllers\\login\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|solutionrelative:charityhub.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.business\\charityhub.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|solutionrelative:charityhub.business\\charityhub.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.webapi\\controllers\\loginandprofileuser\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|solutionrelative:charityhub.webapi\\controllers\\loginandprofileuser\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.webapi\\controllers\\donate\\userdonationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|solutionrelative:charityhub.webapi\\controllers\\donate\\userdonationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.webapi\\controllers\\viewdonationandcampaignlist\\viewdonationandcampaigncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,14 +51,6 @@
       "RelativeMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|solutionrelative:charityhub.business\\viewmodels\\updateprofilerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|solutionrelative:charityhub.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.business\\charityhub.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|solutionrelative:charityhub.business\\charityhub.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.business\\viewmodels\\profileuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|solutionrelative:charityhub.business\\viewmodels\\profileuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -57,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.business\\viewmodels\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|solutionrelative:charityhub.business\\viewmodels\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.webapi\\controllers\\donate\\userdonationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|solutionrelative:charityhub.webapi\\controllers\\donate\\userdonationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.business\\services\\tokenrepository\\tokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -238,7 +238,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Document",
@@ -251,8 +251,7 @@
               "ViewState": "AgIAAIIAAAAAAAAAAAAAwKEAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-22T15:25:39.508Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -275,64 +274,21 @@
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\Login\\UserController.cs",
-              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\Login\\UserController.cs",
-              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\Login\\UserController.cs",
-              "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\Login\\UserController.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAuwGwAAAByAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\LoginAndProfileUser\\UserController.cs",
+              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\LoginAndProfileUser\\UserController.cs",
+              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\LoginAndProfileUser\\UserController.cs",
+              "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\LoginAndProfileUser\\UserController.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAuwFcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-22T18:38:23.527Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AdminCampaignController.cs",
-              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\AdminCampaignController.cs",
-              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\AdminCampaignController.cs",
-              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\AdminCampaignController.cs",
-              "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\AdminCampaignController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T08:14:35.476Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIMAAABlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T03:27:04.95Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "NoUserController.cs",
-              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\NoUserController.cs",
-              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\NoUserController.cs",
-              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\NoUserController.cs",
-              "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\NoUserController.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAYwC4AAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T18:37:00.137Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "NoUserViewCampaignController.cs",
               "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\NoUserViewCampaignController.cs",
               "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\NoUserViewCampaignController.cs",
@@ -340,12 +296,11 @@
               "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\NoUserViewCampaignController.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAQwBoAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T08:26:31.767Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-23T08:26:31.767Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "UserCampaignController.cs",
               "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\UserCampaignController.cs",
               "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\UserCampaignController.cs",
@@ -353,12 +308,11 @@
               "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\UserCampaignController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T08:56:54.615Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-23T08:56:54.615Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ViewDonationAndCampaignController.cs",
               "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\ViewDonationAndCampaignList\\ViewDonationAndCampaignController.cs",
               "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\ViewDonationAndCampaignList\\ViewDonationAndCampaignController.cs",
@@ -366,12 +320,86 @@
               "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\ViewDonationAndCampaignList\\ViewDonationAndCampaignController.cs",
               "ViewState": "AgIAAB8AAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-24T11:08:38.102Z",
+              "WhenOpened": "2024-08-24T11:08:38.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserDonationController.cs",
+              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\Donate\\UserDonationController.cs",
+              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\Donate\\UserDonationController.cs",
+              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\Donate\\UserDonationController.cs",
+              "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\Donate\\UserDonationController.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAmwA8AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T16:31:09.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CharityHub.Business.csproj",
+              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.Business\\CharityHub.Business.csproj",
+              "RelativeDocumentMoniker": "CharityHub.Business\\CharityHub.Business.csproj",
+              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.Business\\CharityHub.Business.csproj",
+              "RelativeToolTip": "CharityHub.Business\\CharityHub.Business.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-22T07:01:14.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Program.cs",
+              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Program.cs",
+              "RelativeToolTip": "CharityHub.WebAPI\\Program.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAQwKMAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T03:05:04.959Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "NoUserController.cs",
+              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\NoUserController.cs",
+              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\NoUserController.cs",
+              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\NoUserController.cs",
+              "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\NoUserController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAYwC4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T18:37:00.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIMAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T03:27:04.95Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminCampaignController.cs",
+              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\AdminCampaignController.cs",
+              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\AdminCampaignController.cs",
+              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\AdminCampaignController.cs",
+              "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\AdminCampaignController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T08:14:35.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.Data\\Models\\User.cs",
               "RelativeDocumentMoniker": "CharityHub.Data\\Models\\User.cs",
@@ -379,38 +407,11 @@
               "RelativeToolTip": "CharityHub.Data\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T07:12:30.534Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Program.cs",
-              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Program.cs",
-              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Program.cs",
-              "RelativeToolTip": "CharityHub.WebAPI\\Program.cs",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAQwKEAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T03:05:04.959Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T07:12:30.534Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "UserDonationController.cs",
-              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\Donate\\UserDonationController.cs",
-              "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\Donate\\UserDonationController.cs",
-              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\Donate\\UserDonationController.cs",
-              "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\Donate\\UserDonationController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAAwC0AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T16:31:09.805Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "UserDto.cs",
               "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.Business\\ViewModels\\UserDto.cs",
               "RelativeDocumentMoniker": "CharityHub.Business\\ViewModels\\UserDto.cs",
@@ -418,12 +419,11 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\UserDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T06:56:57.852Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T06:56:57.852Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ProfileUserDto.cs",
               "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.Business\\ViewModels\\ProfileUserDto.cs",
               "RelativeDocumentMoniker": "CharityHub.Business\\ViewModels\\ProfileUserDto.cs",
@@ -431,12 +431,11 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\ProfileUserDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-24T18:55:16.514Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-24T18:55:16.514Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "UpdateProfileRequestDto.cs",
               "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.Business\\ViewModels\\UpdateProfileRequestDto.cs",
               "RelativeDocumentMoniker": "CharityHub.Business\\ViewModels\\UpdateProfileRequestDto.cs",
@@ -444,25 +443,11 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\UpdateProfileRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-24T19:07:30.232Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-24T19:07:30.232Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CharityHub.Business.csproj",
-              "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.Business\\CharityHub.Business.csproj",
-              "RelativeDocumentMoniker": "CharityHub.Business\\CharityHub.Business.csproj",
-              "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.Business\\CharityHub.Business.csproj",
-              "RelativeToolTip": "CharityHub.Business\\CharityHub.Business.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-22T07:01:14.776Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "UpdateCampaignRequestDto.cs",
               "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.Business\\ViewModels\\UpdateCampaignRequestDto.cs",
               "RelativeDocumentMoniker": "CharityHub.Business\\ViewModels\\UpdateCampaignRequestDto.cs",
@@ -470,8 +455,7 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\UpdateCampaignRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T16:41:32.326Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T16:41:32.326Z"
             },
             {
               "$type": "Document",
@@ -483,8 +467,7 @@
               "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\Donate\\NoUserDonationController.cs",
               "ViewState": "AgIAAE0AAAAAAAAAAAAgwGsAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T09:25:31.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-23T09:25:31.772Z"
             },
             {
               "$type": "Document",
@@ -496,8 +479,7 @@
               "RelativeToolTip": "CharityHub.Business\\Services\\TokenRepository\\TokenRepository.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAqwCAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T18:21:44.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T18:21:44.293Z"
             },
             {
               "$type": "Document",
@@ -509,8 +491,7 @@
               "RelativeToolTip": "CharityHub.Business\\Mappings\\AutoMapperProfiles.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T07:02:19.421Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T07:02:19.421Z"
             },
             {
               "$type": "Document",
@@ -522,8 +503,7 @@
               "RelativeToolTip": "CharityHub.Data\\Models\\Donation.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAxwA0AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T07:14:22.483Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T07:14:22.483Z"
             },
             {
               "$type": "Document",
@@ -535,8 +515,7 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\DonationDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-24T15:08:05.309Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-24T15:08:05.309Z"
             },
             {
               "$type": "Document",
@@ -548,8 +527,7 @@
               "RelativeToolTip": "CharityHub.Data\\Models\\Campaign.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAA7wCcAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T07:17:50.585Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T07:17:50.585Z"
             },
             {
               "$type": "Document",
@@ -561,8 +539,7 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\AddDonationRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T10:01:50.652Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-23T10:01:50.652Z"
             },
             {
               "$type": "Document",
@@ -574,8 +551,7 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\AddCampaignRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T08:08:29.031Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T08:08:29.031Z"
             },
             {
               "$type": "Document",
@@ -587,8 +563,7 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\CampaignDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAIBJwAwAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T08:07:15.177Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T08:07:15.177Z"
             },
             {
               "$type": "Document",
@@ -600,8 +575,7 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\StartAndEndDateCampaign.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-24T10:44:08.729Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-24T10:44:08.729Z"
             },
             {
               "$type": "Document",
@@ -613,8 +587,7 @@
               "RelativeToolTip": "CharityHub.Data\\Migrations\\20240824102741_InitialDb.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-24T10:27:41.761Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-24T10:27:41.761Z"
             },
             {
               "$type": "Document",
@@ -626,8 +599,7 @@
               "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\WeatherForecastController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-24T07:24:15.603Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-24T07:24:15.603Z"
             },
             {
               "$type": "Document",
@@ -639,8 +611,7 @@
               "RelativeToolTip": "CharityHub.Business\\CampaignCodeGenerator\\CampaignCodeGenerator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-24T09:37:09.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-24T09:37:09.378Z"
             },
             {
               "$type": "Document",
@@ -665,8 +636,7 @@
               "RelativeToolTip": "CharityHub.Data\\Data\\CharityHubDbContext.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAqwDAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T07:42:40.736Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T07:42:40.736Z"
             },
             {
               "$type": "Document",
@@ -678,8 +648,7 @@
               "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAA8wB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T15:27:53.954Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T15:27:53.954Z"
             },
             {
               "$type": "Document",
@@ -691,8 +660,7 @@
               "RelativeToolTip": "CharityHub.WebAPI\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-24T07:21:11.555Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-24T07:21:11.555Z"
             },
             {
               "$type": "Document",
@@ -717,8 +685,7 @@
               "RelativeToolTip": "CharityHub.Data\\Models\\ChangePasswordViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T06:47:33.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-23T06:47:33.31Z"
             },
             {
               "$type": "Document",
@@ -730,8 +697,7 @@
               "RelativeToolTip": "CharityHub.Data\\Models\\PaymentInformation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T08:33:47.069Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T08:33:47.069Z"
             },
             {
               "$type": "Document",
@@ -743,8 +709,7 @@
               "RelativeToolTip": "CharityHub.WebAPI\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-21T08:47:25.252Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T08:47:25.252Z"
             },
             {
               "$type": "Document",
@@ -756,8 +721,7 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\RegisterRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T18:23:21.574Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T18:23:21.574Z"
             },
             {
               "$type": "Document",
@@ -769,8 +733,7 @@
               "RelativeToolTip": "CharityHub.Business\\Services\\IPayPalService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T15:24:57.73Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T15:24:57.73Z"
             },
             {
               "$type": "Document",
@@ -782,8 +745,7 @@
               "RelativeToolTip": "CharityHub.Data\\Models\\ErrorViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T08:33:12.768Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T08:33:12.768Z"
             },
             {
               "$type": "Document",
@@ -795,8 +757,7 @@
               "RelativeToolTip": "CharityHub.Data\\Validation\\CampaignStatusValidation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T17:20:11.663Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T17:20:11.663Z"
             },
             {
               "$type": "Document",
@@ -808,8 +769,7 @@
               "RelativeToolTip": "CharityHub.Data\\Models\\UserFollows.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T07:30:08.561Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T07:30:08.561Z"
             },
             {
               "$type": "Document",
@@ -843,8 +803,7 @@
               "RelativeToolTip": "CharityHub.Data\\Models\\AdminAction.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T08:49:03.733Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T08:49:03.733Z"
             },
             {
               "$type": "Document",
@@ -889,8 +848,7 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\LoginRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T18:23:55.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T18:23:55.83Z"
             },
             {
               "$type": "Document",
@@ -902,8 +860,7 @@
               "RelativeToolTip": "CharityHub.Business\\ViewModels\\LoginResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T18:24:34.635Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T18:24:34.635Z"
             },
             {
               "$type": "Document",
@@ -915,8 +872,7 @@
               "RelativeToolTip": "CharityHub.Business\\Services\\TokenRepository\\ITokenRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T18:21:00.963Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T18:21:00.963Z"
             },
             {
               "$type": "Document",
@@ -928,8 +884,7 @@
               "RelativeToolTip": "CharityHub.Data\\Models\\Role.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T07:50:02.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T07:50:02.934Z"
             },
             {
               "$type": "Document",
@@ -963,8 +918,7 @@
               "RelativeToolTip": "CharityHub.Data\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T08:17:47.556Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T08:17:47.556Z"
             },
             {
               "$type": "Document",
@@ -987,8 +941,11 @@
               "RelativeToolTip": "CharityHub.Business\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T07:06:50.335Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T07:06:50.335Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

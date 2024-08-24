@@ -87,6 +87,7 @@ namespace CharityHub.WebAPI.Controllers.Login
         }
 
         // Profile
+        [Authorize(Roles = "User")]
         [HttpGet("Profile")]
         public async Task<IActionResult> GetProfile()
         {
@@ -105,6 +106,7 @@ namespace CharityHub.WebAPI.Controllers.Login
         }
 
         // Update Profile: DisplayName and PhoneNumber
+        [Authorize(Roles = "User")]
         [HttpPut("UpdateProfile")]
         public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileRequestDto updateProfileRequestDto)
         {
