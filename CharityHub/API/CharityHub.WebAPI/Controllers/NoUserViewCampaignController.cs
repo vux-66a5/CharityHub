@@ -25,7 +25,7 @@ namespace CharityHub.WebAPI.Controllers
         public async Task<IActionResult> GetCampaignsByStatus(string status)
         {
             var campaigns = await dbContext.Campaigns
-                .Where( c => c.CampaignStatus == status)
+                .Where( c => c.CampaignStatus.ToLower() == status.ToLower())
                 .ToListAsync();
 
             return Ok(mapper.Map<List<CampaignDto>>(campaigns));

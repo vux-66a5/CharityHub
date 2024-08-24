@@ -59,12 +59,12 @@ namespace CharityHub.WebAPI.Controllers.Login
             return BadRequest("Username or password incorrect!");
         }
 
+        // Đổi mật khẩu
         [HttpPut("change-password")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordViewModel passwordViewModel)
         {
             if (ModelState.IsValid)
             {
-
                 var user = await _userManager.GetUserAsync(_httpContext.HttpContext.User);
 
                 if (user == null) return Unauthorized();
@@ -84,6 +84,52 @@ namespace CharityHub.WebAPI.Controllers.Login
             }
 
             return BadRequest(ModelState);
+        }
+
+        // Profile
+        [HttpGet("Profile")]
+        public async Task<IActionResult> GetProfile()
+        {
+            var user = await _userManager.GetUserAsync(_httpContext.HttpContext.User);
+            
+            if (user == null) return NotFound();
+
+            var userProfile = new ProfileUserDto
+            {
+                Email = user.Email,
+                DisplayName = user.DisplayName,
+                PhoneNumber = user.PhoneNumber
+            };
+
+            return Ok(userProfile);
+        }
+
+        // Update Profile: DisplayName and PhoneNumber
+        [HttpPut("UpdateProfile")]
+        public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileRequestDto updateProfileRequestDto)
+        {
+            var user = await _userManager.GetUserAsync(_httpContext.HttpContext.User);
+
+            if (user == null) return NotFound();
+
+            if (!string.IsNullOrEmpty(updateProfileRequestDto.DisplayName) && updateProfileRequestDto.DisplayName != "string")
+            {
+                user.DisplayName = updateProfileRequestDto.DisplayName;
+            }
+
+            if (!string.IsNullOrEmpty(updateProfileRequestDto.PhoneNumber) && updateProfileRequestDto.PhoneNumber != "string")
+            {
+                user.PhoneNumber = updateProfileRequestDto.PhoneNumber;
+            }
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error updating user profile.");
+            }
+
+            return Ok("Profile updated successfully.");
         }
     }
 }
