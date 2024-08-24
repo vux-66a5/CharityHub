@@ -60,6 +60,7 @@ namespace CharityHub.WebAPI.Controllers.Login
         }
 
         // Đổi mật khẩu
+        [Authorize(Roles = "User")]
         [HttpPut("change-password")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordViewModel passwordViewModel)
         {

@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.webapi\\controllers\\loginandprofileuser\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|solutionrelative:charityhub.webapi\\controllers\\loginandprofileuser\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|solutionrelative:charityhub.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.business\\charityhub.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{A1E36745-AF4B-4E9B-9615-6B373458B623}|CharityHub.Business\\CharityHub.Business.csproj|solutionrelative:charityhub.business\\charityhub.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.webapi\\controllers\\loginandprofileuser\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|solutionrelative:charityhub.webapi\\controllers\\loginandprofileuser\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F45E4094-C265-4EB6-AE03-C2F5BEA52F34}|CharityHub.WebAPI\\CharityHub.WebAPI.csproj|d:\\workspace\\fpt\\mockproject\\charityhub\\charityhub\\api\\charityhub.webapi\\controllers\\donate\\userdonationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -238,7 +238,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
@@ -275,13 +275,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\LoginAndProfileUser\\UserController.cs",
               "RelativeDocumentMoniker": "CharityHub.WebAPI\\Controllers\\LoginAndProfileUser\\UserController.cs",
               "ToolTip": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Controllers\\LoginAndProfileUser\\UserController.cs",
               "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\LoginAndProfileUser\\UserController.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAuwFcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-22T18:38:23.527Z",
               "EditorCaption": ""
@@ -332,12 +332,11 @@
               "RelativeToolTip": "CharityHub.WebAPI\\Controllers\\Donate\\UserDonationController.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAmwA8AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T16:31:09.805Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-23T16:31:09.805Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CharityHub.Business.csproj",
               "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.Business\\CharityHub.Business.csproj",
               "RelativeDocumentMoniker": "CharityHub.Business\\CharityHub.Business.csproj",
@@ -345,12 +344,11 @@
               "RelativeToolTip": "CharityHub.Business\\CharityHub.Business.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-22T07:01:14.776Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-22T07:01:14.776Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Workspace\\fpt\\MockProject\\CharityHub\\CharityHub\\API\\CharityHub.WebAPI\\Program.cs",
               "RelativeDocumentMoniker": "CharityHub.WebAPI\\Program.cs",
@@ -623,8 +621,7 @@
               "RelativeToolTip": "CharityHub.Data\\CharityHub.Data.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-20T08:06:26.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T08:06:26.926Z"
             },
             {
               "$type": "Document",
@@ -672,8 +669,7 @@
               "RelativeToolTip": "CharityHub.WebAPI\\CharityHub.WebAPI.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-20T08:32:17.181Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T08:32:17.181Z"
             },
             {
               "$type": "Document",
