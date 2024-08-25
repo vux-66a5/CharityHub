@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 declare var bootstrap: any;
@@ -12,4 +13,10 @@ declare var bootstrap: any;
 export class CardDetailComponent {
   @Input() card: any;
   @Input() modalId!: string;
+
+  constructor(private router: Router) {}
+
+  navigateToPayment() {
+    this.router.navigate(['/payment', this.card.campaignCode]);
+  }
 }

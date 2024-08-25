@@ -11,3 +11,7 @@
     padding-top: 60px; 
 }
  */
+
+ .custom-spacing li {
+    margin-right: 20px; /* Điều chỉnh khoảng cách theo ý muốn */
+  }
