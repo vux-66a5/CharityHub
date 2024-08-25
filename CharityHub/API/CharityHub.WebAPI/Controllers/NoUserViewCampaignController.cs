@@ -39,17 +39,26 @@ namespace CharityHub.WebAPI.Controllers
                 .Where(c => c.CampaignCode == code)
                 .FirstOrDefaultAsync();
 
+            if (campaign == null)
+            {
+                return NotFound("Campaign not found.");
+            }
+
             var donors = await (from d in dbContext.Donations
-                                join u in dbContext.Users on d.UserId equals u.Id
-                                where d.CampaignId == campaign.CampaignId
+                                join u in dbContext.Users on d.UserId equals u.Id into userGroup
+                                from u in userGroup.DefaultIfEmpty()
+                                where d.CampaignId == campaign.CampaignId && d.IsConfirm
+                                orderby d.Amount descending
                                 select new
                                 {
-                                    u.UserName,
+                                    DisplayName = u != null ? u.DisplayName : "Nha hao tam",
                                     d.Amount
                                 }).ToListAsync();
 
             return Ok(donors);
         }
+
+
 
         // Xem số tiền đã quyên góp và số tiền cần quyên góp 
         [HttpGet("campaigns/{code}/amounts")]
@@ -60,9 +69,7 @@ namespace CharityHub.WebAPI.Controllers
                 .Select(c => new
                 {
                     c.TargetAmount,
-                    CurrentAmount = dbContext.Donations
-                    .Where(d => d.CampaignId == c.CampaignId)
-                    .Sum(d => d.Amount)
+                    c.CurrentAmount
                 }).FirstOrDefaultAsync();
 
             if (campaign == null)

@@ -176,7 +176,7 @@ namespace CharityHub.WebAPI.Controllers
             return Ok("Campaign end date extended successfully.");
         }
 
-        // cập nhật thời gian bắt đầu vào thời gian kết thúc chiến dịch cho chiến dịch chưa bắt đầu
+        // cập nhật thời gian bắt đầu vào thời gian kết thúc chiến dịch cho chiến dịch chưa bắt đầu (StartDate và EndDate = null)
         [HttpPut("{id}/UpdateStartAndDate")]
         public async Task<IActionResult> UpdateStartAndDate(Guid id, [FromBody] StartAndEndDateCampaign startAndEndDateCampaign)
         {
@@ -187,7 +187,7 @@ namespace CharityHub.WebAPI.Controllers
                 return NotFound();
             }
 
-            if (campaign.StartDate != default(DateTime) || campaign.EndDate != default(DateTime))
+            if (campaign.StartDate != null || campaign.EndDate != null)
             {
                 return BadRequest("Campaign start or end date already set.");
             }
