@@ -1,11 +1,6 @@
-﻿using AutoMapper;
-using CharityHub.Business.ViewModels;
-using CharityHub.Data.Models;
+﻿using CharityHub.Business.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace CharityHub.WebAPI.Controllers
 {
@@ -14,116 +9,55 @@ namespace CharityHub.WebAPI.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : ControllerBase
     {
-        private readonly UserManager<User> userManager;
-        private readonly RoleManager<Role> roleManager;
-        private readonly IMapper mapper;
-
-        public AdminController(UserManager<User> userManager, RoleManager<Role> roleManager, IMapper mapper)
+        private readonly IAdminService adminService;
+        public AdminController(IAdminService adminService)
         {
-            this.userManager = userManager;
-            this.roleManager = roleManager;
-            this.mapper = mapper;
+            this.adminService = adminService;
         }
 
         // GET: api/User/search?emailOrPhone=xxx
         [HttpGet("search")]
         public async Task<IActionResult> SearchUser(string emailOrPhone)
         {
-            var user = await userManager.Users.FirstOrDefaultAsync(
-                u => u.Email == emailOrPhone || u.PhoneNumber == emailOrPhone);
-
-            if (user == null)
+            try
             {
-                return NotFound("User not found!");
+                var userDto = await adminService.SearchUserAsync(emailOrPhone);
+                return Ok(userDto);
             }
-
-            return Ok(mapper.Map<UserDto>(user));
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         // PUT: api/User/activate/{userId}
         [HttpPut("activate/{userId}")]
         public async Task<IActionResult> ActivateUser([FromRouteAttribute] string userId, [FromBody] bool isActive)
         {
-            var user = await userManager.FindByIdAsync(userId);
-            var roles = await userManager.GetRolesAsync(user);
-            
-            if (user == null)
+            try
             {
-                return NotFound("User not found!");
+                var message = await adminService.ActivateUserAsync(userId, isActive);
+                return Ok(message);
             }
-
-            // kiểm tra xem người dùng có role là User không
-            if (!roles.Contains("User"))
+            catch (Exception ex)
             {
-                return BadRequest("Chỉ có thể thay đổi trạng thái của người dùng có role 'User'.");
+                return BadRequest(ex.Message);
             }
-
-            if (string.IsNullOrEmpty(user.SecurityStamp))
-            {
-                user.SecurityStamp = Guid.NewGuid().ToString();
-            }
-
-            user.IsActive = isActive;
-            var result = await userManager.UpdateAsync(user);
-
-            if (result.Succeeded)
-            {
-                return Ok($"Tài khoản đã được {(isActive ? "mở khóa" : "khóa")}.");
-            }
-
-            return BadRequest(result.Errors);
         }
 
 
         [HttpPut("Change-status-active")]
         public async Task<IActionResult> ActivateUser([FromQuery] List<string> userIds, [FromBody] bool isActive)
         {
-            if (userIds == null || userIds.Count == 0)
+            try
             {
-                return NotFound("User not found!");
+                var message = await adminService.ActivateUsersAsync(userIds, isActive);
+                return Ok(message);
             }
-
-            var errors = new List<string>();
-
-            foreach (var userId in userIds)
+            catch (Exception ex)
             {
-                var user = await userManager.FindByIdAsync(userId);
-
-                if (user == null)
-                {
-                    errors.Add($"Người dùng với ID {userId} không tồn tại.");
-                    continue;
-                }
-
-                var roles = await userManager.GetRolesAsync(user);
-
-                // Kiểm tra xem người dùng có role là 'User' không
-                if (!roles.Contains("User"))
-                {
-                    errors.Add($"Người dùng với ID {userId} không có role 'User'.");
-                    continue;
-                }
-
-                if (string.IsNullOrEmpty(user.SecurityStamp))
-                {
-                    user.SecurityStamp = Guid.NewGuid().ToString();
-                }
-
-                user.IsActive = isActive;
-                var result = await userManager.UpdateAsync(user);
-
-                if (!result.Succeeded)
-                {
-                    errors.Add($"Cập nhật không thành công cho người dùng với ID {userId}. Lỗi: {string.Join(", ", result.Errors.Select(e => e.Description))}");
-                }
+                return BadRequest(ex.Message);
             }
-
-            if (errors.Count > 0)
-            {
-                return BadRequest(new { Message = "Có lỗi xảy ra khi cập nhật người dùng.", Errors = errors });
-            }
-
-            return Ok($"Tất cả tài khoản đã {(isActive ? "kích hoạt" : "vô hiệu hóa")}.");
         }
 
 
@@ -131,12 +65,7 @@ namespace CharityHub.WebAPI.Controllers
         [HttpGet("paginated")]
         public async Task<IActionResult> GetUsers([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 20)
         {
-            var userRole = await userManager.GetUsersInRoleAsync("User");
-
-            var users = userRole.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
-
-            var userDtos = mapper.Map<List<UserDto>>(users);
-
+            var userDtos = await adminService.GetUsersAsync(pageNumber, pageSize);
             return Ok(userDtos);
         }
     }

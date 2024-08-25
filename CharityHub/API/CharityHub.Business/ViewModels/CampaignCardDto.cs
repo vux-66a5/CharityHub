@@ -1,11 +1,9 @@
 ﻿
 
-
 namespace CharityHub.Business.ViewModels
 {
-    public class CampaignDto
+    public class CampaignCardDto
     {
-        public Guid CampaignId { get; set; }
         public int CampaignCode { get; set; }
         public string CampaignTitle { get; set; }
         public string CampaignThumbnail { get; set; }
@@ -16,8 +14,6 @@ namespace CharityHub.Business.ViewModels
         public DateTime? EndDate { get; set; }
         public string PartnerName { get; set; }
         public string PartnerLogo { get; set; }
-        public string CampaignStatus { get; set; }
-        public string PartnerNumber { get; set; }
-        public DateTime DateCreated { get; set; }
+        public int ConfirmedDonationCount { get; set; }
     }
 }

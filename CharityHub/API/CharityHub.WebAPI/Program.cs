@@ -138,7 +138,6 @@ app.MapControllerRoute(
 app.Run();
 */
 
-using CharityHub.Business.Services;
 using Microsoft.EntityFrameworkCore;
 using CharityHub.Data;
 using CharityHub.Data.Data;
@@ -150,6 +149,11 @@ using Microsoft.OpenApi.Models;
 using CharityHub.Business.Services.TokenRepository;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using CharityHub.Business.Services;
+using CharityHub.Business.Services.PayPalDonate;
+using CharityHub.Business.Services.ViewCampaignService;
+using CharityHub.Business.Services.ViewDonationAndCampaignService;
+using CharityHub.Business.Services.AdminCampaignService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -205,6 +209,16 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<IPayPalService, PayPalService>();
+builder.Services.AddScoped<INoUserDonationService, NoUserDonationService>();
+builder.Services.AddScoped<IUserDonationService, UserDonationService>();
+builder.Services.AddScoped<INoUserViewCampaignService, NoUserViewCampaignService>();
+builder.Services.AddScoped<IUserViewCampaignService, UserViewCampaignService>();
+builder.Services.AddScoped<IDonationService, DonationService>();
+builder.Services.AddScoped<ICampaignService, CampaignService>();
+builder.Services.AddScoped<IAdminCampaignService, AdminCampaignService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
+
+
 
 // Mapper
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));

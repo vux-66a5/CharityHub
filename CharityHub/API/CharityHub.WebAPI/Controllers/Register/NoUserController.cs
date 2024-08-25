@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CharityHub.WebAPI.Controllers
+namespace CharityHub.WebAPI.Controllers.Register
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -39,14 +39,14 @@ namespace CharityHub.WebAPI.Controllers
             if (identityResult.Succeeded)
             {
                 //Add roles to this User
-                
+
                 identityResult = await userManager.AddToRoleAsync(identityUser, "User");
 
                 if (identityResult.Succeeded)
                 {
-                   return Ok();
+                    return Ok();
                 }
-                
+
             }
 
             return BadRequest("Something went wrong!");

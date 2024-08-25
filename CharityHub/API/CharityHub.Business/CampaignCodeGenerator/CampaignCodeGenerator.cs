@@ -1,11 +1,6 @@
 ﻿using CharityHub.Data.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CharityHub.Business.CampaignCodeGenerator
+namespace CharityHub.Business
 {
     public static class CampaignCodeGenerator
     {

@@ -1,23 +1,24 @@
-﻿using CharityHub.Data.Data;
+﻿using CharityHub.Business.Services.ViewCampaignService;
+using CharityHub.Data.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
-namespace CharityHub.WebAPI.Controllers
+namespace CharityHub.WebAPI.Controllers.ViewCampaignForUsers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Roles = "User")]
-    public class UserCampaignController : ControllerBase
+    public class UserViewCampaignController : ControllerBase
     {
-        private readonly CharityHubDbContext _context;
+        private readonly IUserViewCampaignService userViewCampaignService;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserCampaignController(CharityHubDbContext context, IHttpContextAccessor httpContextAccessor)
+        public UserViewCampaignController(IUserViewCampaignService userViewCampaignService, IHttpContextAccessor httpContextAccessor)
         {
-            _context = context;
+            this.userViewCampaignService = userViewCampaignService;
             _httpContextAccessor = httpContextAccessor;
         }
 
@@ -32,16 +33,7 @@ namespace CharityHub.WebAPI.Controllers
                 return Unauthorized();
             }
 
-            var donations = await (from d in _context.Donations
-                                   join c in _context.Campaigns on d.CampaignId equals c.CampaignId
-                                   where d.UserId == userId
-                                   select new
-                                   {
-                                       CampaignTitle = c.CampaignTitle,
-                                       d.Amount,
-                                       d.DateDonated
-                                   }).ToListAsync();
-
+            var donations = await userViewCampaignService.GetUserDonationsAsync(userId);
             return Ok(donations);
         }
 

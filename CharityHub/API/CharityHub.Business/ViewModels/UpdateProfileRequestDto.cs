@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-
+﻿
 namespace CharityHub.Business.ViewModels
 {
     public class UpdateProfileRequestDto

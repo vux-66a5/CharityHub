@@ -56,7 +56,7 @@ namespace CharityHub.WebAPI.Controllers.Login
                 }
             }
 
-            return BadRequest("Username or password incorrect!");
+            return BadRequest("Username hoac password khong dung!");
         }
 
         // Đổi mật khẩu
@@ -75,7 +75,7 @@ namespace CharityHub.WebAPI.Controllers.Login
                 if (result.Succeeded)
                 {
                     ModelState.Clear();
-                    return Ok("Password changed successfully!");
+                    return Ok("Password thay doi thanh cong!");
                 }
 
                 foreach (var error in result.Errors)
@@ -132,7 +132,7 @@ namespace CharityHub.WebAPI.Controllers.Login
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error updating user profile.");
             }
 
-            return Ok("Profile updated successfully.");
+            return Ok("Profile da duoc cap nhat thanh cong.");
         }
     }
 }

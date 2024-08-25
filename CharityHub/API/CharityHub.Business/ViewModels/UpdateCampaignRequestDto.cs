@@ -3,7 +3,6 @@ namespace CharityHub.Business.ViewModels
 {
     public class UpdateCampaignRequestDto
     {
-        public int CampaignCode { get; set; }
         public string CampaignTitle { get; set; }
         public string CampaignThumbnail { get; set; }
         public string CampaignDescription { get; set; }

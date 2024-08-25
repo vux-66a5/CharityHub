@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
-using CharityHub.Business.CampaignCodeGenerator;
+using CharityHub.Business;
+using CharityHub.Business.Services.AdminCampaignService;
+using CharityHub.Business.Services.ViewDonationAndCampaignService;
 using CharityHub.Business.ViewModels;
 using CharityHub.Data.Data;
 using CharityHub.Data.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,190 +16,92 @@ namespace CharityHub.WebAPI.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminCampaignController : ControllerBase
     {
-        private readonly CharityHubDbContext dbContext;
-        private readonly IMapper mapper;
+        private readonly IAdminCampaignService adminCampaignService;
 
-        public AdminCampaignController(CharityHubDbContext dbContext, IMapper mapper)
+        public AdminCampaignController(IAdminCampaignService adminCampaignService)
         {
-            this.dbContext = dbContext;
-            this.mapper = mapper;
+            this.adminCampaignService = adminCampaignService;
         }
 
         // POST: api/Campaign
         [HttpPost]
         public async Task<IActionResult> CreateCampaign([FromBody] AddCampaignRequestDto addCampaignRequestDto)
         {
-            var campaign = mapper.Map<Campaign>(addCampaignRequestDto);
-
-            campaign.CampaignCode = CampaignCodeGenerator.GenerateUniqueCampaignCode(dbContext);
-            campaign.DateCreated = DateTime.Now;
-
-            await dbContext.Campaigns.AddAsync(campaign);
-            await dbContext.SaveChangesAsync();
-
-            return Ok(mapper.Map<CampaignDto>(campaign));
+            var result = await adminCampaignService.CreateCampaignAsync(addCampaignRequestDto);
+            return Ok(result);
         }
 
         // GET: api/Campaign/search?status=Active
         [HttpGet("searchByStatus")]
         public async Task<IActionResult> SearchCapaigns(string status)
         {
-            var campaigns = await dbContext.Campaigns
-                .Where(c => c.CampaignStatus == status)
-                .ToListAsync();
-
-            return Ok(mapper.Map<List<CampaignDto>>(campaigns));
+            var result = await adminCampaignService.SearchCampaignsByStatusAsync(status);
+            return Ok(result);
         }
 
         // GET: api/Campaign/searchByPhone?phoneNumber=123456789
         [HttpGet("searchByPhone")]
         public async Task<IActionResult> SearchCampaignByPhone(string phoneNumber)
         {
-            var campaigns = await dbContext.Campaigns
-                .Where(c => c.PartnerNumber == phoneNumber)
-                .ToListAsync();
-            return Ok(mapper.Map<List<CampaignDto>>(campaigns));
+            var result = await adminCampaignService.SearchCampaignsByPhoneAsync(phoneNumber);
+            return Ok(result);
         }
 
         // GET: api/Campaign/searchByCode
         [HttpGet("searchByCode")]
         public async Task<IActionResult> SearchCampaignByCode(int campaignCode)
         {
-            var campaigns = await dbContext.Campaigns
-                .Where(c => c.CampaignCode == campaignCode)
-                .ToListAsync();
-            return Ok(mapper.Map<List<CampaignDto>>(campaigns));
+            var result = await adminCampaignService.SearchCampaignsByCodeAsync(campaignCode);
+            return Ok(result);
         }
 
-        // DELETE: api/Campaign/{id}/DeleteNewCampaign
-        [HttpDelete("{id}/DeleteNewCampaign")]
-        public async Task<IActionResult> DeleteNewCampaign(Guid id)
+        // DELETE: api/Campaign/{campaignCode}/DeleteNewCampaign
+        [HttpDelete("{campaignCode}/DeleteNewCampaign")]
+        public async Task<IActionResult> DeleteNewCampaign(int campaignCode)
         {
-            var campaign = await dbContext.Campaigns
-                .FirstOrDefaultAsync(c => c.CampaignId == id && c.CampaignStatus == "New");
-            if (campaign == null)
-            {
-                return NotFound("Campaign not found!");
-            }
-
-            dbContext.Campaigns.Remove(campaign);
-            await dbContext.SaveChangesAsync();
-
-            return Ok("Campaign deleted successfully!");
+            var result = await adminCampaignService.DeleteNewCampaignAsync(campaignCode);
+            return result == "Campaign khong ton tai!" ? NotFound(result) : Ok(result);
         }
 
 
-        // DELETE: api/Campaign/{id}/DeleteCampaign
-        [HttpDelete("{id}/DeleteCampaign")]
-        public async Task<IActionResult> DeleteCampaign(Guid id)
+        // DELETE: api/Campaign/{campaignCode}/DeleteCampaign
+        [HttpDelete("{campaignCode}/DeleteCampaign")]
+        public async Task<IActionResult> DeleteCampaign(int campaignCode)
         {
-            var campaign = await dbContext.Campaigns
-                .FirstOrDefaultAsync(c => c.CampaignId == id);
-            if (campaign == null)
-            {
-                return NotFound("Campaign not found!");
-            }
-
-            dbContext.Campaigns.Remove(campaign);
-            await dbContext.SaveChangesAsync();
-
-            return Ok("Campaign deleted successfully!");
+            var result = await adminCampaignService.DeleteCampaignAsync(campaignCode);
+            return result == "Campaign khong ton tai!" ? NotFound(result) : Ok(result);
         }
 
-        // PUT: api/Campaign/{id}
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCampaign(Guid id, UpdateCampaignRequestDto updatedCampaign)
+        // PUT: api/Campaign/{campaignCode}
+        [HttpPut("{campaignCode}")]
+        public async Task<IActionResult> UpdateCampaign(int campaignCode, UpdateCampaignRequestDto updatedCampaign)
         {
-            var campaignModel = mapper.Map<Campaign>(updatedCampaign);
-
-            var existingCampaign = await dbContext.Campaigns.FindAsync(id);
-            if (existingCampaign == null) return NotFound("Campaign not found.");
-
-            if (existingCampaign.CurrentAmount > 0)
-                return BadRequest("Cannot update campaign with active donations.");
-
-            existingCampaign.CampaignTitle = campaignModel.CampaignTitle;
-            existingCampaign.CampaignDescription = campaignModel.CampaignDescription;
-            existingCampaign.CampaignThumbnail = campaignModel.CampaignThumbnail;
-            existingCampaign.CampaignCode = campaignModel.CampaignCode;
-            existingCampaign.TargetAmount = campaignModel.TargetAmount;
-            existingCampaign.CurrentAmount = campaignModel.CurrentAmount;
-            existingCampaign.StartDate = campaignModel.StartDate;
-            existingCampaign.EndDate = campaignModel.EndDate;
-            existingCampaign.PartnerName = campaignModel.PartnerName;
-            existingCampaign.PartnerNumber = campaignModel.PartnerNumber;
-            existingCampaign.PartnerLogo = campaignModel.PartnerLogo;
-            existingCampaign.CampaignStatus = campaignModel.CampaignStatus;
-
-            await dbContext.SaveChangesAsync();
-            return Ok(mapper.Map<CampaignDto>(existingCampaign));
+            var result = await adminCampaignService.UpdateCampaignAsync(campaignCode, updatedCampaign);
+            return result == null ? NotFound("Campaign not found.") : Ok(result);
         }
 
-        // GET: api/Campaign/{id}/progress
-        [HttpGet("{id}/progress")]
-        public async Task<IActionResult> GetDonationProgress(Guid id)
+        // GET: api/Campaign/{campaignCode}/progress
+        [HttpGet("{campaignCode}/progress")]
+        public async Task<IActionResult> GetDonationProgress(int campaignCode)
         {
-            var campaign = await dbContext.Campaigns
-                .Where(c => c.CampaignId == id)
-                .Select(c => new
-                {
-                    c.TargetAmount,
-                    c.CurrentAmount
-                })
-                .FirstOrDefaultAsync();
-
-            if (campaign == null)
-            {
-                return NotFound("Campaign not found.");
-            }
-
-            return Ok(campaign);
+            var result = await adminCampaignService.GetDonationProgressAsync(campaignCode);
+            return result == null ? NotFound("Campaign khong ton tai.") : Ok(result);
         }
 
-        // PUT: api/Campaign/{id}/extend
-        [HttpPut("{id}/extend")]
-        public async Task<IActionResult> ExtendCampaignEndDate(Guid id, [FromBody] DateTime newEndDate)
+        // PUT: api/Campaign/{campaignCode}/extend
+        [HttpPut("{campaignCode}/extend")]
+        public async Task<IActionResult> ExtendCampaignEndDate(int campaignCode, [FromBody] DateTime newEndDate)
         {
-            var campaign = await dbContext.Campaigns.FindAsync(id);
-            if (campaign == null)
-            {
-                return NotFound("Campaign not found.");
-            }
-
-            if (newEndDate <= campaign.EndDate)
-            {
-                return BadRequest("New end date must be later than the current end date.");
-            }
-
-            campaign.EndDate = newEndDate;
-            await dbContext.SaveChangesAsync();
-
-            return Ok("Campaign end date extended successfully.");
+            var result = await adminCampaignService.ExtendCampaignEndDateAsync(campaignCode, newEndDate);
+            return result.StartsWith("Campaign") ? Ok(result) : BadRequest(result);
         }
 
         // cập nhật thời gian bắt đầu vào thời gian kết thúc chiến dịch cho chiến dịch chưa bắt đầu (StartDate và EndDate = null)
-        [HttpPut("{id}/UpdateStartAndDate")]
-        public async Task<IActionResult> UpdateStartAndDate(Guid id, [FromBody] StartAndEndDateCampaign startAndEndDateCampaign)
+        [HttpPut("{campaignCode}/UpdateStartAndDate")]
+        public async Task<IActionResult> UpdateStartAndDate(int campaignCode, [FromBody] StartAndEndDateCampaign startAndEndDateCampaign)
         {
-            var campaign = await dbContext.Campaigns.FindAsync(id);
-
-            if (campaign == null)
-            {
-                return NotFound();
-            }
-
-            if (campaign.StartDate != null || campaign.EndDate != null)
-            {
-                return BadRequest("Campaign start or end date already set.");
-            }
-
-            campaign.StartDate = startAndEndDateCampaign.StartDate;
-            campaign.EndDate = startAndEndDateCampaign.EndDate;
-
-            dbContext.Campaigns.Update(campaign);
-            await dbContext.SaveChangesAsync();
-
-            return Ok(mapper.Map<CampaignDto>(campaign));
+            var result = await adminCampaignService.UpdateStartAndEndDateAsync(campaignCode, startAndEndDateCampaign);
+            return result == null ? NotFound() : Ok(result);
         }
     }
 }

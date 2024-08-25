@@ -1,4 +1,5 @@
-﻿using CharityHub.Data.Data;
+﻿using CharityHub.Business.Services.ViewDonationAndCampaignService;
+using CharityHub.Data.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,54 +10,26 @@ namespace CharityHub.WebAPI.Controllers.ViewDonationList
     [ApiController]
     public class ViewDonationAndCampaignController : ControllerBase
     {
-        private readonly CharityHubDbContext dbContext;
+        private readonly IDonationService donationService;
+        private readonly ICampaignService campaignService;
 
-        public ViewDonationAndCampaignController(CharityHubDbContext dbContext)
+        public ViewDonationAndCampaignController(IDonationService donationService, ICampaignService campaignService)
         {
-            this.dbContext = dbContext;
+            this.donationService = donationService;
+            this.campaignService = campaignService;
         }
 
         [HttpGet("GetAllDonations/details")]
         public async Task<IActionResult> GetDonationDetails()
         {
-            var donationDetails = await (from d in dbContext.Donations
-                                         join u in dbContext.Users on d.UserId equals u.Id into userGroup
-                                         from u in userGroup.DefaultIfEmpty()
-                                         join c in dbContext.Campaigns on d.CampaignId equals c.CampaignId
-                                         orderby d.Amount descending
-                                         select new
-                                         {
-                                             DisplayName = u != null ? u.DisplayName : "Nha hao tam",
-                                             d.Amount,
-                                             c.CampaignCode,
-                                             c.CampaignTitle,
-                                             d.DateDonated
-                                         }).ToListAsync();
-
+            var donationDetails = await donationService.GetDonationDetailsAsync();
             return Ok(donationDetails);
         }
 
         [HttpGet("SearchAllDonations/details")]
         public async Task<IActionResult> GetDonationDetailsByDisplayNameAndCampaignCode([FromQuery] string search = null)
         {
-            var donationDetails = await (from d in dbContext.Donations
-                                         join u in dbContext.Users on d.UserId equals u.Id into userGroup
-                                         from u in userGroup.DefaultIfEmpty()
-                                         join c in dbContext.Campaigns on d.CampaignId equals c.CampaignId
-                                         where string.IsNullOrEmpty(search) ||
-                                               c.CampaignCode.ToString().Contains(search) ||
-                                               (u != null && u.DisplayName.Contains(search)) ||
-                                               ("Nha hao tam".Contains(search) && u == null)
-                                         orderby d.Amount descending
-                                         select new
-                                         {
-                                             DisplayName = u != null ? u.DisplayName : "Nha hao tam",
-                                             d.Amount,
-                                             c.CampaignCode,
-                                             c.CampaignTitle,
-                                             d.DateDonated
-                                         }).ToListAsync();
-
+            var donationDetails = await donationService.GetDonationDetailsByDisplayNameAndCampaignCodeAsync(search);
             return Ok(donationDetails);
         }
 
@@ -65,23 +38,7 @@ namespace CharityHub.WebAPI.Controllers.ViewDonationList
         [HttpGet("GetAllCampaigns")]
         public async Task<IActionResult> GetAllCampaigns()
         {
-            var campaigns = await dbContext.Campaigns
-                .Select(c => new
-                {
-                    c.CampaignTitle,
-                    c.CampaignCode,
-                    c.CampaignThumbnail,
-                    c.CampaignDescription,
-                    c.TargetAmount,
-                    c.CurrentAmount,
-                    c.PartnerLogo,
-                    c.PartnerName,
-                    c.EndDate,
-                    c.StartDate,
-                    ConfirmedDonationCount = c.Donations.Count(d => d.IsConfirm)
-                })
-                .ToListAsync();
-
+            var campaigns = await campaignService.GetAllCampaignsAsync();
             return Ok(campaigns);
         }
     }
