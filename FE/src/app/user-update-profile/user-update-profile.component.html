@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="form-wrapper">
+    <h2>Cập nhật thông tin</h2>
+    <form (ngSubmit)="onSubmit()" #updateProfileForm="ngForm">
+      <div class="mb-3">
+        <label for="displayName" class="form-label">Tên hiển thị</label>
+        <input type="text" class="form-control" id="displayName" required [(ngModel)]="profile.displayName" name="displayName">
+      </div>
+      <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Số điện thoại</label>
+        <input type="text" class="form-control" id="phoneNumber" required [(ngModel)]="profile.phoneNumber" name="phoneNumber">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Mật khẩu</label>
+        <input type="password" class="form-control" id="password" required [(ngModel)]="profile.password" name="password">
+      </div>
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Nhập lại mật khẩu</label>
+        <input type="password" class="form-control" id="confirmPassword" required [(ngModel)]="confirmPassword" name="confirmPassword">
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+</div>

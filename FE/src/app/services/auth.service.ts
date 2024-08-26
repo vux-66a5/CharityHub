@@ -6,12 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(false);
-  private user = new BehaviorSubject<any>(null);
-  private role = new BehaviorSubject<string>('user'); // Thêm dòng này
+  public user = new BehaviorSubject<any>(null);
+  private role = new BehaviorSubject<string>('user');
 
   isLoggedIn$ = this.loggedIn.asObservable();
   user$ = this.user.asObservable();
-  role$ = this.role.asObservable(); // Thêm dòng này
+  role$ = this.role.asObservable(); 
 
   login(user: any, role: string) { // Thêm tham số role
     this.loggedIn.next(true);

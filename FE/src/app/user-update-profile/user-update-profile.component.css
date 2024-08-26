@@ -1,0 +1,33 @@
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    padding: 20px; /* Optional: Add some padding */
+  }
+  
+  .form-wrapper {
+    max-width: 500px; /* Limit the form width */
+    width: 100%; /* Ensure the form takes full width up to max-width */
+    background-color: #fff; /* Optional: Add background color */
+    padding: 20px; /* Optional: Add padding inside the form */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for better appearance */
+    border-radius: 8px; /* Optional: Add border radius for rounded corners */
+    text-align: center; /* Center align text inside the form-wrapper */
+  }
+  
+  h2 {
+    margin-bottom: 50px; /* Add some space below the heading */
+    color: #4189c8;
+    font-weight: 550;
+  }
+  
+  .form-label {
+    text-align: left; /* Align labels to the left */
+    display: block; /* Ensure the label takes the full width */
+  }
+  
+  .form-control {
+    text-align: left; /* Align input text to the left */
+  }

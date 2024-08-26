@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
