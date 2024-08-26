@@ -20,13 +20,30 @@ export class LoginComponent {
   ) {}
 
   login() {
-    // Xác thực đăng nhập ở đây...
-    const fakeUser = { name: 'John Doe', avatarUrl: 'path/to/avatar.jpg' };
-    
-    // Cập nhật trạng thái đăng nhập
-    this.authService.login(fakeUser);
+    const username = (document.querySelector('.auth-form__input[type="text"]') as HTMLInputElement).value;
+    const password = (document.querySelector('.auth-form__input[type="password"]') as HTMLInputElement).value;
+  
+    let fakeUser;
+    let role;
+  
+    // Kiểm tra username và password
+    if (username === 'admin' && password === 'admin123') {
+      fakeUser = { name: 'Admin User', avatarUrl: 'path/to/admin-avatar.jpg' };
+      role = 'admin';
+    } else if (username === 'user' && password === 'user123') {
+      fakeUser = { name: 'Regular User', avatarUrl: 'path/to/user-avatar.jpg' };
+      role = 'user';
+    } else {
+      alert('Invalid username or password!');
+      return;
+    }
+  
+    // Cập nhật trạng thái đăng nhập với role
+    this.authService.login(fakeUser, role);
     this.dialogRef.close();
   }
+  
+  
 
   openRegisterDialog(): void {
     // Mở dialog modal của Register

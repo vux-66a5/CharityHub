@@ -17,10 +17,12 @@
             {{ user?.name }}
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item" href="#">Update profile</a></li>
+            <li *ngIf="role === 'user'"><a class="dropdown-item" href="#">Update Profile</a></li>
+            <li *ngIf="role === 'admin'"><a class="dropdown-item" href="#">Manage Users</a></li>
             <li><a class="dropdown-item" href="#" (click)="logout()">Log out</a></li>
           </ul>
         </div>
+        
       </ng-container>
       <ng-template #guest>
         <button type="button" class="btn btn-outline-primary me-2" (click)="openLoginDialog()">Quyên góp ngay</button>

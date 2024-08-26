@@ -15,12 +15,13 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
   isLoggedIn = false;
   user: any = null;
-  avatar: string = 'favicon.ico';
+  role: string = 'user';
 
 
   constructor(public dialog: MatDialog, private authService: AuthService) {
     this.authService.isLoggedIn$.subscribe(status => this.isLoggedIn = status);
     this.authService.user$.subscribe(user => this.user = user);
+    this.authService.role$.subscribe(role => this.role = role); // Lấy role từ AuthService
   }
 
   openLoginDialog(): void {
