@@ -18,17 +18,17 @@ namespace CharityHub.Data.Models
         [Column(TypeName = "nvarchar(MAX)")]
         public string CampaignThumbnail { get; set; }
         [Required]
-        [Column(TypeName = "text")]
+        [Column(TypeName = "ntext")]
         public string CampaignDescription { get; set; }
         [Required]
         [MaxLength(11)]
         [CampaignStatusValidation]
         public string CampaignStatus { get; set; }
         [Required]
-        [Column(TypeName = "decimal(10,2)")]
+        [Column(TypeName = "decimal(12,2)")]
         public decimal TargetAmount { get; set; }
         [Required]
-        [Column(TypeName = "decimal(10,2)")]
+        [Column(TypeName = "decimal(12,2)")]
         public decimal CurrentAmount { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }

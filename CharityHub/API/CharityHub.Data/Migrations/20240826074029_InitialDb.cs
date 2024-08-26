@@ -64,10 +64,10 @@ namespace CharityHub.Data.Migrations
                     CampaignCode = table.Column<int>(type: "int", nullable: false),
                     CampaignTitle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CampaignThumbnail = table.Column<string>(type: "nvarchar(MAX)", nullable: false),
-                    CampaignDescription = table.Column<string>(type: "text", nullable: false),
+                    CampaignDescription = table.Column<string>(type: "ntext", nullable: false),
                     CampaignStatus = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
-                    TargetAmount = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    CurrentAmount = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    TargetAmount = table.Column<decimal>(type: "decimal(12,2)", nullable: false),
+                    CurrentAmount = table.Column<decimal>(type: "decimal(12,2)", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     PartnerName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
@@ -225,7 +225,7 @@ namespace CharityHub.Data.Migrations
                 columns: table => new
                 {
                     DonationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(12,2)", nullable: false),
                     PaymentMethod = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
                     IsConfirm = table.Column<bool>(type: "bit", nullable: false),
                     DateDonated = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -279,19 +279,19 @@ namespace CharityHub.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("14b625f5-c719-40bc-81de-af77ff06ccc7"), "14b625f5-c719-40bc-81de-af77ff06ccc7", "User", "USER" },
-                    { new Guid("c38add3b-9baf-43d7-b9ab-03d63e8d3c6b"), "c38add3b-9baf-43d7-b9ab-03d63e8d3c6b", "Admin", "ADMIN" }
+                    { new Guid("4a405cd6-bf78-4546-9d10-aa01638d34d9"), "4a405cd6-bf78-4546-9d10-aa01638d34d9", "User", "USER" },
+                    { new Guid("f33d42ef-84ea-448f-87e7-40f4501af2e8"), "f33d42ef-84ea-448f-87e7-40f4501af2e8", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateCreated", "DisplayName", "Email", "EmailConfirmed", "IsActive", "LastLoginDate", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("0ad04b0a-c8ed-4e8a-a45d-675a051bb5a2"), 0, "7e2c1d0c-6a1d-4f2c-b44c-ae1afce11a62", new DateTime(2024, 8, 24, 17, 27, 39, 845, DateTimeKind.Local).AddTicks(9135), "Dao Quoc Dat", "datdq@gmail.com", false, true, new DateTime(2024, 8, 24, 17, 27, 39, 845, DateTimeKind.Local).AddTicks(9146), false, null, "DATDQ@GMAIL.COM", "DATDQ@GMAIL.COM", "AQAAAAIAAYagAAAAECPcWMwpKDeGKpFw95qlzLAY4TAEJkD0RFUNHQ3cszAPJ7cr5C1jtjFpvhJBiCOHNA==", "0987654321", false, "0ad04b0a-c8ed-4e8a-a45d-675a051bb5a2", false, "datdq@gmail.com" });
+                values: new object[] { new Guid("6f3e2789-d648-48ef-8ecf-91b0310cf8fa"), 0, "a8e646fd-c200-4dd2-a3af-146c63f906dc", new DateTime(2024, 8, 26, 14, 40, 27, 853, DateTimeKind.Local).AddTicks(4986), "Dao Quoc Dat", "datdq@gmail.com", false, true, new DateTime(2024, 8, 26, 14, 40, 27, 853, DateTimeKind.Local).AddTicks(4998), false, null, "DATDQ@GMAIL.COM", "DATDQ@GMAIL.COM", "AQAAAAIAAYagAAAAEI0/z/Ze9O1whsUGQ7+t4n2dTauit8LEs8XrRjKcmfKOwdcZs8Hpa0DdhlmZm34BdQ==", "0987654321", false, "6f3e2789-d648-48ef-8ecf-91b0310cf8fa", false, "datdq@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { new Guid("c38add3b-9baf-43d7-b9ab-03d63e8d3c6b"), new Guid("0ad04b0a-c8ed-4e8a-a45d-675a051bb5a2") });
+                values: new object[] { new Guid("f33d42ef-84ea-448f-87e7-40f4501af2e8"), new Guid("6f3e2789-d648-48ef-8ecf-91b0310cf8fa") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AdminActions_AdminId",

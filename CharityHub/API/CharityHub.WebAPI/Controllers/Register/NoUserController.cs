@@ -1,7 +1,6 @@
 ﻿using CharityHub.Business.Services.TokenRepository;
 using CharityHub.Business.ViewModels;
 using CharityHub.Data.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 

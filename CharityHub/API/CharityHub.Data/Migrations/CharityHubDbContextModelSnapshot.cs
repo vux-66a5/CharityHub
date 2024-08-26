@@ -67,7 +67,7 @@ namespace CharityHub.Data.Migrations
 
                     b.Property<string>("CampaignDescription")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("ntext");
 
                     b.Property<string>("CampaignStatus")
                         .IsRequired()
@@ -84,7 +84,7 @@ namespace CharityHub.Data.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<decimal>("CurrentAmount")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(12,2)");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -109,7 +109,7 @@ namespace CharityHub.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("TargetAmount")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(12,2)");
 
                     b.HasKey("CampaignId");
 
@@ -126,7 +126,7 @@ namespace CharityHub.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(12,2)");
 
                     b.Property<Guid>("CampaignId")
                         .HasColumnType("uniqueidentifier");
@@ -184,15 +184,15 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("14b625f5-c719-40bc-81de-af77ff06ccc7"),
-                            ConcurrencyStamp = "14b625f5-c719-40bc-81de-af77ff06ccc7",
+                            Id = new Guid("4a405cd6-bf78-4546-9d10-aa01638d34d9"),
+                            ConcurrencyStamp = "4a405cd6-bf78-4546-9d10-aa01638d34d9",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = new Guid("c38add3b-9baf-43d7-b9ab-03d63e8d3c6b"),
-                            ConcurrencyStamp = "c38add3b-9baf-43d7-b9ab-03d63e8d3c6b",
+                            Id = new Guid("f33d42ef-84ea-448f-87e7-40f4501af2e8"),
+                            ConcurrencyStamp = "f33d42ef-84ea-448f-87e7-40f4501af2e8",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -283,22 +283,22 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0ad04b0a-c8ed-4e8a-a45d-675a051bb5a2"),
+                            Id = new Guid("6f3e2789-d648-48ef-8ecf-91b0310cf8fa"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7e2c1d0c-6a1d-4f2c-b44c-ae1afce11a62",
-                            DateCreated = new DateTime(2024, 8, 24, 17, 27, 39, 845, DateTimeKind.Local).AddTicks(9135),
+                            ConcurrencyStamp = "a8e646fd-c200-4dd2-a3af-146c63f906dc",
+                            DateCreated = new DateTime(2024, 8, 26, 14, 40, 27, 853, DateTimeKind.Local).AddTicks(4986),
                             DisplayName = "Dao Quoc Dat",
                             Email = "datdq@gmail.com",
                             EmailConfirmed = false,
                             IsActive = true,
-                            LastLoginDate = new DateTime(2024, 8, 24, 17, 27, 39, 845, DateTimeKind.Local).AddTicks(9146),
+                            LastLoginDate = new DateTime(2024, 8, 26, 14, 40, 27, 853, DateTimeKind.Local).AddTicks(4998),
                             LockoutEnabled = false,
                             NormalizedEmail = "DATDQ@GMAIL.COM",
                             NormalizedUserName = "DATDQ@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECPcWMwpKDeGKpFw95qlzLAY4TAEJkD0RFUNHQ3cszAPJ7cr5C1jtjFpvhJBiCOHNA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEI0/z/Ze9O1whsUGQ7+t4n2dTauit8LEs8XrRjKcmfKOwdcZs8Hpa0DdhlmZm34BdQ==",
                             PhoneNumber = "0987654321",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0ad04b0a-c8ed-4e8a-a45d-675a051bb5a2",
+                            SecurityStamp = "6f3e2789-d648-48ef-8ecf-91b0310cf8fa",
                             TwoFactorEnabled = false,
                             UserName = "datdq@gmail.com"
                         });
@@ -411,8 +411,8 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("0ad04b0a-c8ed-4e8a-a45d-675a051bb5a2"),
-                            RoleId = new Guid("c38add3b-9baf-43d7-b9ab-03d63e8d3c6b")
+                            UserId = new Guid("6f3e2789-d648-48ef-8ecf-91b0310cf8fa"),
+                            RoleId = new Guid("f33d42ef-84ea-448f-87e7-40f4501af2e8")
                         });
                 });
 
