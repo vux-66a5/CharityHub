@@ -28,7 +28,7 @@ export class DonationListComponent implements OnInit {
     {
       cardId: 1,
       cardImage: 'card-img-0.jpg',
-      cardTitle: 'Gây quỹ giúp người dân thôn Dền Thàng, xã Tả Van, huyện Sa Pa, tỉnh Lào Cai có cầu dân sinh kiên cố và ...',
+      cardTitle: 'Gây quỹ giúp người dân thôn Dền Thàng, xã Tả Van, huyện Sa Pa, tỉnh Lào Cai có cầu dân sinh kiên cố',
       cardPartner: 'Sức mạnh 2000',
       cardDayLeft: 64,
       currentAmount: 190000042,

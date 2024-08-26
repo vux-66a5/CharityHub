@@ -6,21 +6,21 @@ import { UsersComponent } from './admin-management/users/users.component';
 import { CampaignsComponent } from './admin-management/campaigns/campaigns.component';
 import { StatisticComponent } from './admin-management/statistic/statistic.component';
 import { PaymentComponent } from './payment/payment.component';
+import { PartnersComponent } from './partners/partners.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 export const routes: Routes = [
     {
-        path: '', component: DonationListComponent
+        path: '', component: HomepageComponent
     },
     {
         path: 'donation-list', component: DonationListComponent
     },
-    {
-        path: 'admin', component: SideBarComponent, children: [
-            { path: 'users', component: UsersComponent },
-            { path: 'campaigns', component: CampaignsComponent },
-            { path: 'statistic', component: StatisticComponent },
-        ]
+    { 
+        path: 'payment/:campaignCode', component: PaymentComponent 
     },
-    { path: 'payment/:campaignCode', component: PaymentComponent }
+    {
+        path: 'partners', component:PartnersComponent
+    }
 
 ]

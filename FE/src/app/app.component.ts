@@ -8,11 +8,12 @@ import { DonationCardComponent } from "./donation-card/donation-card.component";
 import { CardDetailComponent } from "./card-detail/card-detail.component";
 import { SideBarComponent } from "./admin-management/side-bar/side-bar.component";
 import { FooterComponent } from "./footer/footer.component";
+import { TestComponent } from "./test/test.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, LoginComponent, DonationListComponent, DonationCardComponent, CardDetailComponent, SideBarComponent, FooterComponent],
+  imports: [RouterOutlet, HeaderComponent, LoginComponent, DonationListComponent, DonationCardComponent, CardDetailComponent, SideBarComponent, FooterComponent, TestComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
