@@ -29,12 +29,12 @@ namespace CharityHub.WebAPI.Controllers.Login
         {
             var user = await _userManager.FindByEmailAsync(loginRequestDto.UserName);
 
-            if (user != null)
+            if (user != null && user.IsActive == true)
             {
                 var checkPasswordResult = await _userManager.CheckPasswordAsync(user, loginRequestDto.Password);
                 if (checkPasswordResult)
                 {
-                    user.LastLoginDate = DateTime.UtcNow;
+                    user.LastLoginDate = DateTime.Now;
                     await _userManager.UpdateAsync(user);
 
                     //Get Roles for this user
@@ -57,7 +57,7 @@ namespace CharityHub.WebAPI.Controllers.Login
                 }
             }
 
-            return BadRequest("Username hoac password khong dung!");
+            return BadRequest("Username hoac password khong dung hoac tai khoan da bi khoa!");
         }
 
         // Đổi mật khẩu
