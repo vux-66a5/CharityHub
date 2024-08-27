@@ -16,7 +16,7 @@ namespace CharityHub.WebAPI.Controllers.Donations
         }
 
         // POST: api/NoUserDonation/paypal/create
-        [HttpPost("paypal/create")]
+        [HttpPost("Create-PayPal-Donation")]
         public async Task<IActionResult> CreatePayPalDonation([FromBody] AddDonationRequestDto donationRequest)
         {
             try
@@ -32,7 +32,7 @@ namespace CharityHub.WebAPI.Controllers.Donations
 
 
         // GET: api/NoUserDonation/ExecutePayment
-        [HttpGet("ExecutePayment")]
+        [HttpGet("Execute-Payment")]
         public async Task<IActionResult> ExecutePayment()
         {
             return await noUserDonationService.ExecutePaymentAsync(Request.Query);

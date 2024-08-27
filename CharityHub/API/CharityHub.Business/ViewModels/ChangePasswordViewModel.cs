@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace CharityHub.Data.Models
+namespace CharityHub.Business.ViewModels
 {
     public class ChangePasswordViewModel
     {

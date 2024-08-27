@@ -2,7 +2,6 @@
 using CharityHub.Business.ViewModels;
 using CharityHub.Data.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,7 +27,7 @@ namespace CharityHub.WebAPI.Controllers.Login
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequestDto)
         {
-            var user = await _userManager.FindByEmailAsync(loginRequestDto.Username);
+            var user = await _userManager.FindByEmailAsync(loginRequestDto.UserName);
 
             if (user != null)
             {
@@ -40,6 +39,7 @@ namespace CharityHub.WebAPI.Controllers.Login
 
                     //Get Roles for this user
                     var roles = await _userManager.GetRolesAsync(user);
+                    var role = roles.FirstOrDefault();
                     if (roles != null)
                     {
                         //Create Token
@@ -47,6 +47,8 @@ namespace CharityHub.WebAPI.Controllers.Login
 
                         var response = new LoginResponseDto
                         {
+                            UserName = loginRequestDto.UserName,
+                            Role = role,
                             JwtToken = jwtToken
                         };
 
@@ -60,7 +62,7 @@ namespace CharityHub.WebAPI.Controllers.Login
 
         // Đổi mật khẩu
         [Authorize(Roles = "User")]
-        [HttpPut("change-password")]
+        [HttpPut("Change-Password")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordViewModel passwordViewModel)
         {
             if (ModelState.IsValid)
@@ -88,7 +90,7 @@ namespace CharityHub.WebAPI.Controllers.Login
 
         // Profile
         [Authorize(Roles = "User")]
-        [HttpGet("Profile")]
+        [HttpGet("Get-Profile")]
         public async Task<IActionResult> GetProfile()
         {
             var user = await _userManager.GetUserAsync(_httpContext.HttpContext.User);
@@ -107,7 +109,7 @@ namespace CharityHub.WebAPI.Controllers.Login
 
         // Update Profile: DisplayName and PhoneNumber
         [Authorize(Roles = "User")]
-        [HttpPut("UpdateProfile")]
+        [HttpPut("Update-Profile")]
         public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileRequestDto updateProfileRequestDto)
         {
             var user = await _userManager.GetUserAsync(_httpContext.HttpContext.User);

@@ -19,7 +19,10 @@ export class LoginComponent {
     username: '',
     password: ''
   };
-  constructor(public dialog: MatDialog, private dialogRef: MatDialogRef<LoginComponent>, private http: HttpClient) {}
+  constructor(public dialog: MatDialog, 
+    private dialogRef: MatDialogRef<LoginComponent>, 
+    private http: HttpClient,
+    ) {}
 
   openRegisterDialog(): void {
     // Mở dialog modal của Register
@@ -35,6 +38,7 @@ export class LoginComponent {
       console.log('The dialog was closed');
     });
   }
+  
   login(): void {
     this.http.post('https://localhost:7244/api/User/Login', this.loginData)
       .subscribe(response => {

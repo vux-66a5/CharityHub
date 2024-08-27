@@ -62,7 +62,7 @@ namespace CharityHub.Data.Migrations
                 {
                     CampaignId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CampaignCode = table.Column<int>(type: "int", nullable: false),
-                    CampaignTitle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    CampaignTitle = table.Column<string>(type: "ntext", nullable: false),
                     CampaignThumbnail = table.Column<string>(type: "nvarchar(MAX)", nullable: false),
                     CampaignDescription = table.Column<string>(type: "ntext", nullable: false),
                     CampaignStatus = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
@@ -279,19 +279,19 @@ namespace CharityHub.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("4a405cd6-bf78-4546-9d10-aa01638d34d9"), "4a405cd6-bf78-4546-9d10-aa01638d34d9", "User", "USER" },
-                    { new Guid("f33d42ef-84ea-448f-87e7-40f4501af2e8"), "f33d42ef-84ea-448f-87e7-40f4501af2e8", "Admin", "ADMIN" }
+                    { new Guid("cf239e4d-faf4-4090-9191-2dd96742eca3"), "cf239e4d-faf4-4090-9191-2dd96742eca3", "User", "USER" },
+                    { new Guid("f3637e09-0168-4047-9c9b-1e7311fd8789"), "f3637e09-0168-4047-9c9b-1e7311fd8789", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateCreated", "DisplayName", "Email", "EmailConfirmed", "IsActive", "LastLoginDate", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("6f3e2789-d648-48ef-8ecf-91b0310cf8fa"), 0, "a8e646fd-c200-4dd2-a3af-146c63f906dc", new DateTime(2024, 8, 26, 14, 40, 27, 853, DateTimeKind.Local).AddTicks(4986), "Dao Quoc Dat", "datdq@gmail.com", false, true, new DateTime(2024, 8, 26, 14, 40, 27, 853, DateTimeKind.Local).AddTicks(4998), false, null, "DATDQ@GMAIL.COM", "DATDQ@GMAIL.COM", "AQAAAAIAAYagAAAAEI0/z/Ze9O1whsUGQ7+t4n2dTauit8LEs8XrRjKcmfKOwdcZs8Hpa0DdhlmZm34BdQ==", "0987654321", false, "6f3e2789-d648-48ef-8ecf-91b0310cf8fa", false, "datdq@gmail.com" });
+                values: new object[] { new Guid("057a0698-91a7-464f-93de-3b31ac1ccc91"), 0, "3db0edb7-b706-4f32-b805-797f912044ed", new DateTime(2024, 8, 27, 20, 25, 2, 216, DateTimeKind.Local).AddTicks(4721), "Dao Quoc Dat", "datdq@gmail.com", false, true, new DateTime(2024, 8, 27, 20, 25, 2, 216, DateTimeKind.Local).AddTicks(4731), false, null, "DATDQ@GMAIL.COM", "DATDQ@GMAIL.COM", "AQAAAAIAAYagAAAAEBjGiYhZ6Icmiud+J8fqtdyAQgzbHtwIEdFccyFUBUBHBlyQae4Io2+Ze648TUAQkA==", "0987654321", false, "057a0698-91a7-464f-93de-3b31ac1ccc91", false, "datdq@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { new Guid("f33d42ef-84ea-448f-87e7-40f4501af2e8"), new Guid("6f3e2789-d648-48ef-8ecf-91b0310cf8fa") });
+                values: new object[] { new Guid("f3637e09-0168-4047-9c9b-1e7311fd8789"), new Guid("057a0698-91a7-464f-93de-3b31ac1ccc91") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AdminActions_AdminId",

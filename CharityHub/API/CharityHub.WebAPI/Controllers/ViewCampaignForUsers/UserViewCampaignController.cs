@@ -23,7 +23,7 @@ namespace CharityHub.WebAPI.Controllers.ViewCampaignForUsers
         }
 
         // Xem danh sách các lần đã quyên góp
-        [HttpGet("donations")]
+        [HttpGet("Get-User-Donations")]
         public async Task<IActionResult> GetUserDonations()
         {
             var userIdString = _httpContextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);

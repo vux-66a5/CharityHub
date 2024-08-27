@@ -80,8 +80,7 @@ namespace CharityHub.Data.Migrations
 
                     b.Property<string>("CampaignTitle")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("ntext");
 
                     b.Property<decimal>("CurrentAmount")
                         .HasColumnType("decimal(12,2)");
@@ -184,15 +183,15 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4a405cd6-bf78-4546-9d10-aa01638d34d9"),
-                            ConcurrencyStamp = "4a405cd6-bf78-4546-9d10-aa01638d34d9",
+                            Id = new Guid("cf239e4d-faf4-4090-9191-2dd96742eca3"),
+                            ConcurrencyStamp = "cf239e4d-faf4-4090-9191-2dd96742eca3",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = new Guid("f33d42ef-84ea-448f-87e7-40f4501af2e8"),
-                            ConcurrencyStamp = "f33d42ef-84ea-448f-87e7-40f4501af2e8",
+                            Id = new Guid("f3637e09-0168-4047-9c9b-1e7311fd8789"),
+                            ConcurrencyStamp = "f3637e09-0168-4047-9c9b-1e7311fd8789",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -283,22 +282,22 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6f3e2789-d648-48ef-8ecf-91b0310cf8fa"),
+                            Id = new Guid("057a0698-91a7-464f-93de-3b31ac1ccc91"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a8e646fd-c200-4dd2-a3af-146c63f906dc",
-                            DateCreated = new DateTime(2024, 8, 26, 14, 40, 27, 853, DateTimeKind.Local).AddTicks(4986),
+                            ConcurrencyStamp = "3db0edb7-b706-4f32-b805-797f912044ed",
+                            DateCreated = new DateTime(2024, 8, 27, 20, 25, 2, 216, DateTimeKind.Local).AddTicks(4721),
                             DisplayName = "Dao Quoc Dat",
                             Email = "datdq@gmail.com",
                             EmailConfirmed = false,
                             IsActive = true,
-                            LastLoginDate = new DateTime(2024, 8, 26, 14, 40, 27, 853, DateTimeKind.Local).AddTicks(4998),
+                            LastLoginDate = new DateTime(2024, 8, 27, 20, 25, 2, 216, DateTimeKind.Local).AddTicks(4731),
                             LockoutEnabled = false,
                             NormalizedEmail = "DATDQ@GMAIL.COM",
                             NormalizedUserName = "DATDQ@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEI0/z/Ze9O1whsUGQ7+t4n2dTauit8LEs8XrRjKcmfKOwdcZs8Hpa0DdhlmZm34BdQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBjGiYhZ6Icmiud+J8fqtdyAQgzbHtwIEdFccyFUBUBHBlyQae4Io2+Ze648TUAQkA==",
                             PhoneNumber = "0987654321",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6f3e2789-d648-48ef-8ecf-91b0310cf8fa",
+                            SecurityStamp = "057a0698-91a7-464f-93de-3b31ac1ccc91",
                             TwoFactorEnabled = false,
                             UserName = "datdq@gmail.com"
                         });
@@ -411,8 +410,8 @@ namespace CharityHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("6f3e2789-d648-48ef-8ecf-91b0310cf8fa"),
-                            RoleId = new Guid("f33d42ef-84ea-448f-87e7-40f4501af2e8")
+                            UserId = new Guid("057a0698-91a7-464f-93de-3b31ac1ccc91"),
+                            RoleId = new Guid("f3637e09-0168-4047-9c9b-1e7311fd8789")
                         });
                 });
 

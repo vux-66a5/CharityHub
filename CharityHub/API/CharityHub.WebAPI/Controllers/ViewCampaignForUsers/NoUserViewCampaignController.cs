@@ -15,7 +15,7 @@ namespace CharityHub.WebAPI.Controllers.ViewCampaignForUsers
         }
 
         // Danh sách đợt quyên góp dựa và trạng thái (status)
-        [HttpGet("Campaign")]
+        [HttpGet("Get-Campaigns-By-Status")]
         public async Task<IActionResult> GetCampaignsByStatus(string status)
         {
             var campaigns = await noUserViewCampaignService.GetCampaignsByStatusAsync(status);
@@ -23,7 +23,7 @@ namespace CharityHub.WebAPI.Controllers.ViewCampaignForUsers
         }
 
         // xem được danh sách những người đã quyên góp trên một đợt quyên góp
-        [HttpGet("campaigns/{code}/donors")]
+        [HttpGet("Get-Donors-By-CampaignCode/{code}")]
         public async Task<IActionResult> GetDonorsByCampaignCode(int code)
         {
             var donors = await noUserViewCampaignService.GetDonorsByCampaignCodeAsync(code);
@@ -39,7 +39,7 @@ namespace CharityHub.WebAPI.Controllers.ViewCampaignForUsers
 
 
         // Xem số tiền đã quyên góp và số tiền cần quyên góp 
-        [HttpGet("campaigns/{code}/amounts")]
+        [HttpGet("Get-Campaign-Amounts-By-CampaignCode/{code}")]
         public async Task<IActionResult> GetCampaignAmountsByCampaignCode(int code)
         {
             var campaignAmounts = await noUserViewCampaignService.GetCampaignAmountsByCampaignCodeAsync(code);

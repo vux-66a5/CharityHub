@@ -33,6 +33,8 @@ namespace CharityHub.WebAPI.Controllers.Register
                 LastLoginDate = DateTime.Now
             };
 
+            identityUser.IsActive = true;
+
             var identityResult = await userManager.CreateAsync(identityUser, registerRequestDto.Password);
 
             if (identityResult.Succeeded)

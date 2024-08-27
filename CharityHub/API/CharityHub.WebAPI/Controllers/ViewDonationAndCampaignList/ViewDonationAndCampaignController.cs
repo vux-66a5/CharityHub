@@ -19,14 +19,14 @@ namespace CharityHub.WebAPI.Controllers.ViewDonationList
             this.campaignService = campaignService;
         }
 
-        [HttpGet("GetAllDonations/details")]
+        [HttpGet("Get-Donation-Details")]
         public async Task<IActionResult> GetDonationDetails()
         {
             var donationDetails = await donationService.GetDonationDetailsAsync();
             return Ok(donationDetails);
         }
 
-        [HttpGet("SearchAllDonations/details")]
+        [HttpGet("Get-Donation-Details-By-DisplayName-And-CampaignCode")]
         public async Task<IActionResult> GetDonationDetailsByDisplayNameAndCampaignCode([FromQuery] string search = null)
         {
             var donationDetails = await donationService.GetDonationDetailsByDisplayNameAndCampaignCodeAsync(search);
@@ -35,7 +35,7 @@ namespace CharityHub.WebAPI.Controllers.ViewDonationList
 
 
 
-        [HttpGet("GetAllCampaigns")]
+        [HttpGet("Get-All-Campaigns")]
         public async Task<IActionResult> GetAllCampaigns()
         {
             var campaigns = await campaignService.GetAllCampaignsAsync();

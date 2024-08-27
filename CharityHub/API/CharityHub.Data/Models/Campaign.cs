@@ -12,7 +12,7 @@ namespace CharityHub.Data.Models
         [Required]
         public int CampaignCode { get; set; }
         [Required]
-        [MaxLength(100)]
+        [Column(TypeName = "ntext")]
         public string CampaignTitle { get; set; }
         [Required]
         [Column(TypeName = "nvarchar(MAX)")]

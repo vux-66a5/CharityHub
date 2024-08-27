@@ -16,7 +16,7 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // GET: api/User/search?emailOrPhone=xxx
-        [HttpGet("search")]
+        [HttpGet("Search-User")]
         public async Task<IActionResult> SearchUser(string emailOrPhone)
         {
             try
@@ -31,7 +31,7 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // PUT: api/User/activate/{userId}
-        [HttpPut("activate/{userId}")]
+        [HttpPut("Activate-User/{userId}")]
         public async Task<IActionResult> ActivateUser([FromRouteAttribute] string userId, [FromBody] bool isActive)
         {
             try
@@ -46,8 +46,8 @@ namespace CharityHub.WebAPI.Controllers
         }
 
 
-        [HttpPut("Change-status-active")]
-        public async Task<IActionResult> ActivateUser([FromQuery] List<string> userIds, [FromBody] bool isActive)
+        [HttpPut("Activate-Users")]
+        public async Task<IActionResult> ActivateUsers([FromQuery] List<string> userIds, [FromBody] bool isActive)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace CharityHub.WebAPI.Controllers
 
 
         //GET: api/User/paginated?pageNumber=1&pageSize=20
-        [HttpGet("paginated")]
+        [HttpGet("Get-Users")]
         public async Task<IActionResult> GetUsers([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 20)
         {
             var userDtos = await adminService.GetUsersAsync(pageNumber, pageSize);

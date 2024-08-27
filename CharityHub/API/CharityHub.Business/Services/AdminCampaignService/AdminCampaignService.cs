@@ -23,6 +23,7 @@ namespace CharityHub.Business.Services.AdminCampaignService
 
             campaign.CampaignCode = CampaignCodeGenerator.GenerateUniqueCampaignCode(dbContext);
             campaign.DateCreated = DateTime.Now;
+            campaign.CurrentAmount = 0;
 
             await dbContext.Campaigns.AddAsync(campaign);
             await dbContext.SaveChangesAsync();

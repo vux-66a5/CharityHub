@@ -24,7 +24,7 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // POST: api/Campaign
-        [HttpPost]
+        [HttpPost("Create-Campaign")]
         public async Task<IActionResult> CreateCampaign([FromBody] AddCampaignRequestDto addCampaignRequestDto)
         {
             var result = await adminCampaignService.CreateCampaignAsync(addCampaignRequestDto);
@@ -32,7 +32,7 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // GET: api/Campaign/search?status=Active
-        [HttpGet("searchByStatus")]
+        [HttpGet("search-By-Status")]
         public async Task<IActionResult> SearchCapaigns(string status)
         {
             var result = await adminCampaignService.SearchCampaignsByStatusAsync(status);
@@ -40,7 +40,7 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // GET: api/Campaign/searchByPhone?phoneNumber=123456789
-        [HttpGet("searchByPhone")]
+        [HttpGet("Search-Campaign-ByPhone")]
         public async Task<IActionResult> SearchCampaignByPhone(string phoneNumber)
         {
             var result = await adminCampaignService.SearchCampaignsByPhoneAsync(phoneNumber);
@@ -48,7 +48,7 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // GET: api/Campaign/searchByCode
-        [HttpGet("searchByCode")]
+        [HttpGet("Search-Campaign-By-Code")]
         public async Task<IActionResult> SearchCampaignByCode(int campaignCode)
         {
             var result = await adminCampaignService.SearchCampaignsByCodeAsync(campaignCode);
@@ -56,7 +56,7 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // DELETE: api/Campaign/{campaignCode}/DeleteNewCampaign
-        [HttpDelete("{campaignCode}/DeleteNewCampaign")]
+        [HttpDelete("Delete-New-Campaign/{campaignCode}")]
         public async Task<IActionResult> DeleteNewCampaign(int campaignCode)
         {
             var result = await adminCampaignService.DeleteNewCampaignAsync(campaignCode);
@@ -65,7 +65,7 @@ namespace CharityHub.WebAPI.Controllers
 
 
         // DELETE: api/Campaign/{campaignCode}/DeleteCampaign
-        [HttpDelete("{campaignCode}/DeleteCampaign")]
+        [HttpDelete("Delete-Campaign/{campaignCode}")]
         public async Task<IActionResult> DeleteCampaign(int campaignCode)
         {
             var result = await adminCampaignService.DeleteCampaignAsync(campaignCode);
@@ -73,7 +73,7 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // PUT: api/Campaign/{campaignCode}
-        [HttpPut("{campaignCode}")]
+        [HttpPut("Update-Campaign/{campaignCode}")]
         public async Task<IActionResult> UpdateCampaign(int campaignCode, UpdateCampaignRequestDto updatedCampaign)
         {
             var result = await adminCampaignService.UpdateCampaignAsync(campaignCode, updatedCampaign);
@@ -81,7 +81,7 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // GET: api/Campaign/{campaignCode}/progress
-        [HttpGet("{campaignCode}/progress")]
+        [HttpGet("Get-Donation-Progress/{campaignCode}")]
         public async Task<IActionResult> GetDonationProgress(int campaignCode)
         {
             var result = await adminCampaignService.GetDonationProgressAsync(campaignCode);
@@ -89,7 +89,7 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // PUT: api/Campaign/{campaignCode}/extend
-        [HttpPut("{campaignCode}/extend")]
+        [HttpPut("Extend-Campaign-EndDate/{campaignCode}")]
         public async Task<IActionResult> ExtendCampaignEndDate(int campaignCode, [FromBody] DateTime newEndDate)
         {
             var result = await adminCampaignService.ExtendCampaignEndDateAsync(campaignCode, newEndDate);
@@ -97,8 +97,8 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // cập nhật thời gian bắt đầu vào thời gian kết thúc chiến dịch cho chiến dịch chưa bắt đầu (StartDate và EndDate = null)
-        [HttpPut("{campaignCode}/UpdateStartAndDate")]
-        public async Task<IActionResult> UpdateStartAndDate(int campaignCode, [FromBody] StartAndEndDateCampaign startAndEndDateCampaign)
+        [HttpPut("Update-Start-And-End-Date/{campaignCode}")]
+        public async Task<IActionResult> UpdateStartAndEndDate(int campaignCode, [FromBody] StartAndEndDateCampaign startAndEndDateCampaign)
         {
             var result = await adminCampaignService.UpdateStartAndEndDateAsync(campaignCode, startAndEndDateCampaign);
             return result == null ? NotFound() : Ok(result);
