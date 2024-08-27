@@ -1,5 +1,7 @@
 ﻿
 
+using CharityHub.Data.Validation;
+
 namespace CharityHub.Business.ViewModels
 {
     public class AddCampaignRequestDto
@@ -10,7 +12,6 @@ namespace CharityHub.Business.ViewModels
         public decimal TargetAmount { get; set; }
         public string PartnerName { get; set; }
         public string PartnerLogo { get; set; }
-        public string CampaignStatus { get; set; }
         public string PartnerNumber { get; set; }
     }
 }

@@ -154,6 +154,7 @@ using CharityHub.Business.Services.PayPalDonate;
 using CharityHub.Business.Services.ViewCampaignService;
 using CharityHub.Business.Services.ViewDonationAndCampaignService;
 using CharityHub.Business.Services.AdminCampaignService;
+using CharityHub.WebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -261,6 +262,8 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddHostedService<CampaignStatusService>();
 
 var app = builder.Build();
 

@@ -77,7 +77,7 @@ namespace CharityHub.WebAPI.Controllers
         public async Task<IActionResult> UpdateCampaign(int campaignCode, UpdateCampaignRequestDto updatedCampaign)
         {
             var result = await adminCampaignService.UpdateCampaignAsync(campaignCode, updatedCampaign);
-            return result == null ? NotFound("Campaign not found.") : Ok(result);
+            return result == null ? NotFound("Campaign khong ton tai.") : Ok(result);
         }
 
         // GET: api/Campaign/{campaignCode}/progress

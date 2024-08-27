@@ -24,6 +24,7 @@ namespace CharityHub.Business.Services.AdminCampaignService
             campaign.CampaignCode = CampaignCodeGenerator.GenerateUniqueCampaignCode(dbContext);
             campaign.DateCreated = DateTime.Now;
             campaign.CurrentAmount = 0;
+            campaign.CampaignStatus = "New";
 
             await dbContext.Campaigns.AddAsync(campaign);
             await dbContext.SaveChangesAsync();
@@ -138,14 +139,9 @@ namespace CharityHub.Business.Services.AdminCampaignService
             existingCampaign.CampaignTitle = campaignModel.CampaignTitle;
             existingCampaign.CampaignDescription = campaignModel.CampaignDescription;
             existingCampaign.CampaignThumbnail = campaignModel.CampaignThumbnail;
-            existingCampaign.TargetAmount = campaignModel.TargetAmount;
-            existingCampaign.CurrentAmount = campaignModel.CurrentAmount;
-            existingCampaign.StartDate = campaignModel.StartDate;
-            existingCampaign.EndDate = campaignModel.EndDate;
             existingCampaign.PartnerName = campaignModel.PartnerName;
             existingCampaign.PartnerNumber = campaignModel.PartnerNumber;
             existingCampaign.PartnerLogo = campaignModel.PartnerLogo;
-            existingCampaign.CampaignStatus = campaignModel.CampaignStatus;
 
             await dbContext.SaveChangesAsync();
             return mapper.Map<CampaignDto>(existingCampaign);
@@ -161,7 +157,7 @@ namespace CharityHub.Business.Services.AdminCampaignService
                 return null;
             }
 
-            if (campaign.StartDate != null || campaign.EndDate != null)
+            if (campaign.StartDate != null || campaign.EndDate != null || campaign.CampaignStatus != "New")
             {
                 return null;
             }

@@ -9,7 +9,6 @@ namespace CharityHub.Data.Validation
         {
             "New",
             "Inprogress",
-            "Completed",
             "Closed"
         };
 
