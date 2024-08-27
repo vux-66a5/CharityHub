@@ -17,6 +17,10 @@ export class CardDetailComponent {
   constructor(private router: Router) {}
 
   navigateToPayment() {
-    this.router.navigate(['/payment', this.card.campaignCode]);
+    // this.router.navigate(['/payment', this.card.campaignCode]);
+    this.router.navigate(['/payment', this.card.campaignCode]).then(() => {
+      // Làm mới trang sau khi điều hướng
+      location.reload();
+    });
   }
 }

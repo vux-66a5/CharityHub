@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatisticComponent } from './statistic.component';
+import { CampaignAddComponent } from './campaign-add.component';
 
-describe('StatisticComponent', () => {
-  let component: StatisticComponent;
-  let fixture: ComponentFixture<StatisticComponent>;
+describe('CampaignAddComponent', () => {
+  let component: CampaignAddComponent;
+  let fixture: ComponentFixture<CampaignAddComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StatisticComponent]
+      imports: [CampaignAddComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StatisticComponent);
+    fixture = TestBed.createComponent(CampaignAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

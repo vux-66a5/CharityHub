@@ -17,9 +17,10 @@
             {{ user?.name }}
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li *ngIf="role === 'user'"><a class="dropdown-item" [routerLink]="['/update-profile']">Update Profile</a></li>
-            <li *ngIf="role === 'admin'"><a class="dropdown-item" href="#">Manage Users</a></li>
-            <li><a class="dropdown-item" href="#" (click)="logout()">Log out</a></li>
+            <li *ngIf="role === 'user'" class="cursor-pointer"><a class="dropdown-item" [routerLink]="['/update-profile']">Update Profile</a></li>
+            <li *ngIf="role === 'admin'" class="cursor-pointer"><a class="dropdown-item" [routerLink]="['/users-management']">Users Management</a></li>
+            <li *ngIf="role === 'admin'" class="cursor-pointer"><a class="dropdown-item" [routerLink]="['/campaigns-management']">Campaigns Management</a></li>
+            <li class="cursor-pointer"><a class="dropdown-item" href="#" (click)="logout()">Log out</a></li>
           </ul>
         </div>
         

@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>List of Campaigns</h2>
+    <div class="search-bar">
+      <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="filterCampaigns()" />
+      <button class="btn btn-primary" (click)="addNewCampaign()">Add New Campaign</button>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Campaign Code</th>
+          <th>Campaign Title</th>
+          <th>Partner Name</th>
+          <th>Campaign Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let campaign of filteredCampaigns">
+          <td>{{ campaign.campaignCode }}</td>
+          <td class="campaign-title">{{ campaign.campaignTitle }}</td>
+          <td>{{ campaign.partnerName }}</td>
+          <td>{{ campaign.campaignStatus }}</td>
+          <td>
+            <button type="button" class="btn btn-info me-2" (click)="viewCampaign(campaign)">View</button>
+            <button *ngIf="campaign.campaignStatus === 'New'" type="button" class="btn btn-success me-2" (click)="editCampaign(campaign)">Edit</button>
+            <button *ngIf="campaign.campaignStatus === 'New'" type="button" class="btn btn-danger" (click)="deleteCampaign(campaign.campaignId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+  </div>

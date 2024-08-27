@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router'; // Thêm import này
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
@@ -17,11 +17,11 @@ export class HeaderComponent {
   user: any = null;
   role: string = 'user';
 
-
-  constructor(public dialog: MatDialog, private authService: AuthService) {
+  // Thêm Router vào constructor
+  constructor(public dialog: MatDialog, private authService: AuthService, private router: Router) {
     this.authService.isLoggedIn$.subscribe(status => this.isLoggedIn = status);
     this.authService.user$.subscribe(user => this.user = user);
-    this.authService.role$.subscribe(role => this.role = role); // Lấy role từ AuthService
+    this.authService.role$.subscribe(role => this.role = role);
   }
 
   openLoginDialog(): void {

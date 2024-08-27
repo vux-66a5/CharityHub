@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <h5 class="modal-title">Add Campaign</h5>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="onSave()">
+      <div class="mb-3">
+        <label for="campaignCode" class="form-label">Campaign Code</label>
+        <input type="text" id="campaignCode" class="form-control" [(ngModel)]="campaign.campaignCode" name="campaignCode" required>
+      </div>
+      <div class="mb-3">
+        <label for="campaignTitle" class="form-label">Campaign Title</label>
+        <input type="text" id="campaignTitle" class="form-control" [(ngModel)]="campaign.campaignTitle" name="campaignTitle" required>
+      </div>
+      <div class="mb-3">
+        <label for="partnerName" class="form-label">Partner Name</label>
+        <input type="text" id="partnerName" class="form-control" [(ngModel)]="campaign.partnerName" name="partnerName" required>
+      </div>
+      <div class="mb-3">
+        <label for="targetAmount" class="form-label">Target Amount</label>
+        <input type="number" id="targetAmount" class="form-control" [(ngModel)]="campaign.targetAmount" name="targetAmount" required>
+      </div>
+      <div class="mb-3">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input type="date" id="startDate" class="form-control" [(ngModel)]="campaign.startDate" name="startDate" required>
+      </div>
+      <div class="mb-3">
+        <label for="campaignDescription" class="form-label">Description</label>
+        <textarea id="campaignDescription" class="form-control" [(ngModel)]="campaign.campaignDescription" name="campaignDescription" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="partnerLogo" class="form-label">Partner Logo</label>
+        <input type="text" id="partnerLogo" class="form-control" [(ngModel)]="campaign.partnerLogo" name="partnerLogo">
+      </div>
+      <div class="mb-3">
+        <label for="campaignThumbnail" class="form-label">Campaign Thumbnail</label>
+        <input type="text" id="campaignThumbnail" class="form-control" [(ngModel)]="campaign.campaignThumbnail" name="campaignThumbnail">
+      </div>
+      <div class="mb-3">
+        <label for="partnerNumber" class="form-label">Partner Number</label>
+        <input type="text" id="partnerNumber" class="form-control" [(ngModel)]="campaign.partnerNumber" name="partnerNumber">
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Add Campaign</button>
+        <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
+      </div>
+    </form>
+  </div>
+  
