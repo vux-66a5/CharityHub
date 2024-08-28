@@ -22,7 +22,7 @@ export const routes: Routes = [
         path: 'partners', component:PartnersComponent
     },
     { 
-        path: 'update-profile', component: UserUpdateProfileComponent
+        path: 'profile', component: UserUpdateProfileComponent
     },
     {
         path: 'users-management', component: UsersComponent // Thêm route này cho trang quản lý người dùng
