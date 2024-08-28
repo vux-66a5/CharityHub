@@ -4,6 +4,7 @@ namespace CharityHub.Business.ViewModels
 {
     public class CampaignCardDto
     {
+        public Guid CampaignId { get; set; }
         public int CampaignCode { get; set; }
         public string CampaignTitle { get; set; }
         public string CampaignThumbnail { get; set; }

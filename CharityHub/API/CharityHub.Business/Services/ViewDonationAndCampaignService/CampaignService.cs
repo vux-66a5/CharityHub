@@ -2,6 +2,7 @@
 
 using CharityHub.Business.ViewModels;
 using CharityHub.Data.Data;
+using CharityHub.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CharityHub.Business.Services.ViewDonationAndCampaignService
@@ -19,6 +20,7 @@ namespace CharityHub.Business.Services.ViewDonationAndCampaignService
             var campaigns = await dbContext.Campaigns
                 .Select(c => new CampaignCardDto
                 {
+                    CampaignId = c.CampaignId,
                     CampaignTitle = c.CampaignTitle,
                     CampaignCode = c.CampaignCode,
                     CampaignThumbnail = c.CampaignThumbnail,

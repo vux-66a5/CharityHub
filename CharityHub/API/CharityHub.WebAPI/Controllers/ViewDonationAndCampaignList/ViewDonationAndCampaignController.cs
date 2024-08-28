@@ -1,4 +1,5 @@
 ﻿using CharityHub.Business.Services.ViewDonationAndCampaignService;
+using CharityHub.Business.ViewModels;
 using CharityHub.Data.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,13 @@ namespace CharityHub.WebAPI.Controllers.ViewDonationList
     {
         private readonly IDonationService donationService;
         private readonly ICampaignService campaignService;
+        private readonly CharityHubDbContext dbContext;
 
-        public ViewDonationAndCampaignController(IDonationService donationService, ICampaignService campaignService)
+        public ViewDonationAndCampaignController(IDonationService donationService, ICampaignService campaignService, CharityHubDbContext dbContext)
         {
             this.donationService = donationService;
             this.campaignService = campaignService;
+            this.dbContext = dbContext;
         }
 
         [HttpGet("Get-Donation-Details")]
@@ -34,12 +37,26 @@ namespace CharityHub.WebAPI.Controllers.ViewDonationList
         }
 
 
-
         [HttpGet("Get-All-Campaigns")]
         public async Task<IActionResult> GetAllCampaigns()
         {
             var campaigns = await campaignService.GetAllCampaignsAsync();
             return Ok(campaigns);
+        }
+
+        [HttpGet("Get-Donations-By-CampaignId{campaignId}")]
+        public List<DonationInfo> GetConfirmedDonationsByCampaignId(Guid campaignId)
+        {
+            var donations = dbContext.Donations
+                .Where(d => d.CampaignId == campaignId && d.IsConfirm)
+                .Select(d => new DonationInfo
+                {
+                    DisplayName = d.UserId == null ? "Nha hao tam" : d.User.DisplayName,
+                    Amount = d.Amount
+                })
+                .ToList();
+
+            return donations;
         }
     }
 }
