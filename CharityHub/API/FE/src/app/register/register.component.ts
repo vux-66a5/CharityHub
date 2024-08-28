@@ -1,29 +1,25 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from '../auth/login/login.component';
 import { HttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+
   registerData = {
     displayName: '',
     username: '',
     password: ''
   };
 
-  constructor(
-    public dialog: MatDialog,
-    public dialogRef: MatDialogRef<RegisterComponent>,
-    private http: HttpClient
-  ) {}
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<RegisterComponent>, private http: HttpClient) {}
 
   openLoginDialog(): void {
     const loginDialogRef = this.dialog.open(LoginComponent, {

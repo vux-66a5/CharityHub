@@ -1,16 +1,69 @@
-<div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+<!-- <div class="container">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-0 border-bottom fixed-header">
       <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <img src="favicon.ico" alt="Your Logo" width="40" height="32">
+        <img src="Logo.jpg" alt="Your Logo" width="125" height="40">
       </a>
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-dark"> <b>Hoàn cảnh quyên góp</b></a></li>
-        <li><a href="#" class="nav-link px-2 link-dark"> <b>Đối tác đồng hành</b></a></li>
-      </ul>
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 custom-spacing">
+      <li><a href="/donation-list" class="nav-link px-2 link-dark"><b>Hoàn cảnh quyên góp</b></a></li>
+      <li><a href="/partners" class="nav-link px-2 link-dark"><b>Đối tác đồng hành</b></a></li>
+      <li><a href="#" class="nav-link px-2 link-dark"><b>Nhà hảo tâm đắc lực</b></a></li>
+    </ul> 
 
-      <div class="col-md-3 text-end">
+    <div class="col-md-3 text-end" style="margin-right: -15px;">
+      <ng-container *ngIf="isLoggedIn; else guest">
+        <div class="dropdown">
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ user?.name }}
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="#">Update profile</a></li>
+            <li><a class="dropdown-item" href="#" (click)="logout()">Log out</a></li>
+          </ul>
+        </div>
+      </ng-container>
+      <ng-template #guest>
         <button type="button" class="btn btn-outline-primary me-2" (click)="openLoginDialog()">Quyên góp ngay</button>
-      </div>
-    </header>
+      </ng-template>
+    </div>
+  </header>
+</div> -->
+
+<div class="container">
+  <header
+    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-0 border-bottom fixed-header">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <img src="Logo.jpg" alt="Your Logo" width="125" height="40">
+    </a>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 custom-spacing">
+        <li><a [routerLink]="['/donation-list']" class="nav-link px-2 link-dark"><b>Hoàn cảnh quyên góp</b></a></li>
+        <li><a href="#" class="nav-link px-2 link-dark"><b>Đối tác đồng hành</b></a></li>
+        <li><a href="#" class="nav-link px-2 link-dark"><b>Nhà hảo tâm đắc lực</b></a></li>
+    </ul>
+
+    <div class="col-md-3 text-end" style="margin-right: -15px;">
+      <ng-container *ngIf="user === undefined;else showLogout">
+        <button type="button" class="btn btn-outline-primary me-2" (click)="openLoginDialog()">Quyên góp ngay</button>
+      </ng-container>
+      <ng-template #showLogout>
+          <div class="dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ user?.userName }}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <ng-container *ngIf="user !== undefined && user?.role?.includes('User')">
+                <li class="cursor-pointer"><a class="dropdown-item" [routerLink]="['/update-profile']">Update Profile</a></li>
+              </ng-container>
+              <ng-container *ngIf="user !== undefined && user?.role?.includes('Admin')">
+                <li class="cursor-pointer"><a class="dropdown-item" [routerLink]="['/users-management']">Users Management</a></li>
+                <li class="cursor-pointer"><a class="dropdown-item" [routerLink]="['/campaigns-management']">Campaigns Management</a></li>
+              </ng-container>
+              <li class="cursor-pointer"><a class="dropdown-item" href="#" (click)="onLogout()">Đăng xuất</a></li>
+            </ul>
+          </div> 
+          <!-- <button class="btn btn-primary ms-3" (click)="onLogout()">Đăng xuất</button> -->
+      </ng-template>
+    </div>
+  </header>
 </div>

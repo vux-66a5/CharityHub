@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h5 class="modal-title">Campaign Details</h5>
+  </div>
+  <div class="modal-body">
+    <div class="campaign-detail">
+      <p><strong>Campaign Id:</strong> {{ data.campaignId }}</p>
+      <p><strong>Campaign Code:</strong> {{ data.campaignCode }}</p>
+      <p><strong>Title:</strong> {{ data.campaignTitle }}</p>
+      <p><strong>Description:</strong> {{ data.campaignDescription }}</p>
+      <p><strong>Target Amount:</strong> {{ data.targetAmount | currency: 'VND': 'symbol' }}</p>
+      <p><strong>Current Amount:</strong> {{ data.currentAmount | currency: 'VND': 'symbol' }}</p>
+      <p><strong>Start Date:</strong> {{ data.startDate }}</p>
+      <p><strong>End Date:</strong> {{ data.endDate }}</p>
+      <p><strong>Partner Name:</strong> {{ data.partnerName }}</p>
+      <p><strong>Partner Number:</strong> {{ data.partnerNumber }}</p>
+      <p><strong>Campaign Status:</strong> {{ data.campaignStatus }}</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+  </div>
+  

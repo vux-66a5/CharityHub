@@ -1,0 +1,113 @@
+.card {
+    width: 345px;
+    height: 470px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 185px;
+}
+
+.card-title {
+    font-weight: bold; /* Đặt font-weight là bold */
+    font-size: 1.4rem; /* Đặt font-size là 16px */
+    line-height: 1.2; /* Đặt line-height để điều chỉnh khoảng cách giữa các dòng */
+    max-height: 3.6em; /* Giới hạn chiều cao tối đa của thẻ để chứa 3 dòng (1.2em * 3) */
+    overflow: hidden; /* Ẩn phần nội dung vượt quá */
+    text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung quá dài */
+    display: -webkit-box; /* Sử dụng -webkit-box để hỗ trợ multiline ellipsis */
+    -webkit-line-clamp: 3; /* Hiển thị tối đa 3 dòng */
+    -webkit-box-orient: vertical; /* Đặt hướng của box là vertical */
+}
+
+.card-partner-and-dayleft {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .card-partner {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-partner small.text-muted {
+    font-size: 14px;
+    color: #6c757d; /* Màu xám nhạt */
+  }
+  
+  .card-dayleft {
+    background-color: #ffebcc; /* Màu nền nhạt */
+    padding: 5px 10px;
+    border-radius: 15px;
+  }
+  
+  .card-dayleft-text {
+    font-size: 14px;
+    color: #ff6600; /* Màu cam */
+  }
+
+  .card-progressive-money {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .card-progressive-bar {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .progress-bar {
+    background-color: #28a745; /* Màu xanh lá cây */
+    height: 100%;
+  }
+  
+  .card-current-target {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .card-current-target-info {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .card-current-target-label {
+    font-size: 14px;
+    color: #6c757d; /* Màu xám nhạt */
+  }
+  
+  .card-current-target-value {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap; /* Ngăn nút xuống dòng */
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
