@@ -150,7 +150,6 @@ using CharityHub.Business.Services.TokenRepository;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using CharityHub.Business.Services;
-using CharityHub.Business.Services.PayPalDonate;
 using CharityHub.Business.Services.ViewCampaignService;
 using CharityHub.Business.Services.ViewDonationAndCampaignService;
 using CharityHub.Business.Services.AdminCampaignService;
@@ -210,8 +209,8 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<IPayPalService, PayPalService>();
-builder.Services.AddScoped<INoUserDonationService, NoUserDonationService>();
-builder.Services.AddScoped<IUserDonationService, UserDonationService>();
+//builder.Services.AddScoped<INoUserDonationService, NoUserDonationService>();
+//builder.Services.AddScoped<IUserDonationService, UserDonationService>();
 builder.Services.AddScoped<INoUserViewCampaignService, NoUserViewCampaignService>();
 builder.Services.AddScoped<IUserViewCampaignService, UserViewCampaignService>();
 builder.Services.AddScoped<IDonationService, DonationService>();

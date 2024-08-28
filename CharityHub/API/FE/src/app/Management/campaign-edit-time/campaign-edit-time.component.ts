@@ -45,6 +45,7 @@ export class CampaignEditTimeComponent implements OnDestroy{
       }
     })
     }
+    window.location.reload();
     this.dialogRef.close(this.campaign);
   }
 

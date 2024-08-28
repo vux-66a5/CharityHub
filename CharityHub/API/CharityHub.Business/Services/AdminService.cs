@@ -17,18 +17,40 @@ namespace CharityHub.Business.Services
             this.mapper = mapper;
         }
 
-        public async Task<UserDto> SearchUserAsync(string emailOrPhone)
+        public async Task<List<UserDto>> SearchUserAsync(string query)
         {
-            var user = await userManager.Users.FirstOrDefaultAsync(
-                u => u.Email == emailOrPhone || u.PhoneNumber == emailOrPhone);
+            // Xây dựng truy vấn cơ sở dữ liệu
+            var queryable = userManager.Users.AsQueryable();
 
-            if (user == null)
+            // Nếu chuỗi tìm kiếm không có giá trị, trả về toàn bộ danh sách
+            if (string.IsNullOrEmpty(query))
             {
-                throw new Exception("User not found!");
+                return mapper.Map<List<UserDto>>(await userManager.Users.ToListAsync());
             }
 
-            return mapper.Map<UserDto>(user);
+            // Tách chuỗi tìm kiếm thành các từ khóa
+            var keywords = query.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            // Áp dụng bộ lọc cho từng từ khóa
+            foreach (var keyword in keywords)
+            {
+                // Lưu ý: Cần kiểm tra keyword không phải là null
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    queryable = queryable
+                        .Where(u => u.Email.Contains(keyword) ||
+                                    u.PhoneNumber.Contains(keyword));
+                }
+            }
+
+            // Lấy danh sách người dùng theo truy vấn đã lọc
+            var users = await queryable.ToListAsync();
+
+            // Chuyển đổi các đối tượng User thành UserDto
+            return mapper.Map<List<UserDto>>(users);
         }
+
+
 
         public async Task<string> ActivateUserAsync(string userId, bool isActive)
         {

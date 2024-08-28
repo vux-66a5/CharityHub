@@ -9,6 +9,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { UserUpdateProfileComponent } from './user-update-profile/user-update-profile.component';
 import { authGuard } from './auth/guards/auth.guard';
 import { CampaignEditComponent } from './Management/campaign-edit/campaign-edit.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 export const routes: Routes = [
     {
@@ -35,7 +36,11 @@ export const routes: Routes = [
         canActivate: [authGuard]
     },
     {
-        path: 'admin/edit-campaigns/:campaignId', component: CampaignEditComponent
+        path: 'admin/edit-campaigns/:campaignId', component: CampaignEditComponent,
+        canActivate: [authGuard]
+    },
+    {
+        path: 'transaction', component: TransactionComponent
     },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ]

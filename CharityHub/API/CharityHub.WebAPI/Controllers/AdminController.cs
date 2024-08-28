@@ -1,6 +1,13 @@
-﻿using CharityHub.Business.Services;
+﻿using AutoMapper;
+using CharityHub.Business.Services;
+using CharityHub.Business.Services.AdminCampaignService;
+using CharityHub.Business.ViewModels;
+using CharityHub.Data.Data;
+using CharityHub.Data.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CharityHub.WebAPI.Controllers
 {
@@ -10,24 +17,31 @@ namespace CharityHub.WebAPI.Controllers
     public class AdminController : ControllerBase
     {
         private readonly IAdminService adminService;
-        public AdminController(IAdminService adminService)
+        private readonly CharityHubDbContext dbContext;
+        private readonly UserManager<User> userManager;
+        private readonly IMapper mapper;
+
+        public AdminController(IAdminService adminService, CharityHubDbContext dbContext, UserManager<User> userManager, IMapper mapper)
         {
             this.adminService = adminService;
+            this.dbContext = dbContext;
+            this.userManager = userManager;
+            this.mapper = mapper;
+        }
+
+        [HttpGet("Get-All-Users")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await userManager.Users.ToListAsync();
+            return Ok(mapper.Map<List<UserDto>>(users));
         }
 
         // GET: api/User/search?emailOrPhone=xxx
         [HttpGet("Search-User")]
-        public async Task<IActionResult> SearchUser(string emailOrPhone)
+        public async Task<IActionResult> SearchUser([FromQuery] string? query)
         {
-            try
-            {
-                var userDto = await adminService.SearchUserAsync(emailOrPhone);
-                return Ok(userDto);
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
+            var result = await adminService.SearchUserAsync(query);
+            return Ok(result);
         }
 
         // PUT: api/User/activate/{userId}

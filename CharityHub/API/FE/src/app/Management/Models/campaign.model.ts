@@ -35,4 +35,14 @@ export interface CampaignTime {
   endDate: string;
   startDate: string;
 }
-  
+ 
+export interface User {
+  id: string;
+  userName: string;
+  email: string;
+  displayName: string;
+  phoneNumber: string;
+  dateCreated: string;
+  isActive: boolean;
+  lastLoginDate: string
+}
