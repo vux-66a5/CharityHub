@@ -17,10 +17,34 @@ namespace CharityHub.WebAPI.Controllers
     public class AdminCampaignController : ControllerBase
     {
         private readonly IAdminCampaignService adminCampaignService;
+        private readonly CharityHubDbContext dbContext;
 
-        public AdminCampaignController(IAdminCampaignService adminCampaignService)
+        public AdminCampaignController(IAdminCampaignService adminCampaignService, CharityHubDbContext dbContext)
         {
             this.adminCampaignService = adminCampaignService;
+            this.dbContext = dbContext;
+        }
+
+        [HttpGet("Get-Campaigns-View-Card")]
+        public async Task<IActionResult> GetCampaignsViewCard()
+        {
+            var campaigns = await dbContext.Campaigns
+                .Select(c => new CampaignViewCardDto
+                {
+                    CampaignId = c.CampaignId,
+                    CampaignCode = c.CampaignCode,
+                    CampaignTitle = c.CampaignTitle,
+                    PartnerName = c.PartnerName,
+                    CampaignStatus = c.CampaignStatus,
+                    CampaignDescription = c.CampaignDescription,
+                    TargetAmount = c.TargetAmount,
+                    CurrentAmount = c.CurrentAmount,
+                    StartDate = c.StartDate,
+                    EndDate = c.EndDate,
+                    PartnerNumber = c.PartnerNumber
+                })
+                .ToListAsync();
+            return Ok(campaigns);
         }
 
         // POST: api/Campaign
@@ -65,18 +89,18 @@ namespace CharityHub.WebAPI.Controllers
 
 
         // DELETE: api/Campaign/{campaignCode}/DeleteCampaign
-        [HttpDelete("Delete-Campaign/{campaignCode}")]
-        public async Task<IActionResult> DeleteCampaign(int campaignCode)
+        [HttpDelete("Delete-Campaign/{campaignId}")]
+        public async Task<IActionResult> DeleteCampaign(Guid campaignId)
         {
-            var result = await adminCampaignService.DeleteCampaignAsync(campaignCode);
+            var result = await adminCampaignService.DeleteCampaignAsync(campaignId);
             return result == "Campaign khong ton tai!" ? NotFound(result) : Ok(result);
         }
 
         // PUT: api/Campaign/{campaignCode}
-        [HttpPut("Update-Campaign/{campaignCode}")]
-        public async Task<IActionResult> UpdateCampaign(int campaignCode, UpdateCampaignRequestDto updatedCampaign)
+        [HttpPut("Update-Campaign/{campaignId}")]
+        public async Task<IActionResult> UpdateCampaign(Guid campaignId, UpdateCampaignRequestDto updatedCampaign)
         {
-            var result = await adminCampaignService.UpdateCampaignAsync(campaignCode, updatedCampaign);
+            var result = await adminCampaignService.UpdateCampaignAsync(campaignId, updatedCampaign);
             return result == null ? NotFound("Campaign khong ton tai.") : Ok(result);
         }
 
@@ -97,11 +121,20 @@ namespace CharityHub.WebAPI.Controllers
         }
 
         // cập nhật thời gian bắt đầu vào thời gian kết thúc chiến dịch cho chiến dịch chưa bắt đầu (StartDate và EndDate = null)
-        [HttpPut("Update-Start-And-End-Date/{campaignCode}")]
-        public async Task<IActionResult> UpdateStartAndEndDate(int campaignCode, [FromBody] StartAndEndDateCampaign startAndEndDateCampaign)
+        [HttpPut("Update-Start-And-End-Date/{campaignId}")]
+        public async Task<IActionResult> UpdateStartAndEndDate(Guid campaignId, [FromBody] StartAndEndDateCampaign startAndEndDateCampaign)
         {
-            var result = await adminCampaignService.UpdateStartAndEndDateAsync(campaignCode, startAndEndDateCampaign);
+            var result = await adminCampaignService.UpdateStartAndEndDateAsync(campaignId, startAndEndDateCampaign);
             return result == null ? NotFound() : Ok(result);
         }
+
+        [HttpGet("Search-Campaigns-By-Code-Status-Name-Phone")]
+        public async Task<IActionResult> SearchCampaignsByCodeStatusNamePhone(
+            [FromQuery] string? query)
+        {
+            var result = await adminCampaignService.SearchCampaignsAsync(query);
+            return Ok(result);
+        }
+
     }
 }
