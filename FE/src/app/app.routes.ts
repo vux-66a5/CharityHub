@@ -6,6 +6,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { UserUpdateProfileComponent } from './user-update-profile/user-update-profile.component';
 import { CampaignsComponent } from './Management/campaigns/campaigns.component';
 import { UsersComponent } from './Management/users/users.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 export const routes: Routes = [
     {
@@ -28,6 +29,9 @@ export const routes: Routes = [
     },
     {
         path: 'campaigns-management', component: CampaignsComponent // Thêm route này cho trang quản lý chiến dịch
+    },
+    {
+        path: 'transaction', component: TransactionComponent
     }
 
 ]

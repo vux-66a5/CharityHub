@@ -1,0 +1,36 @@
+<div class="transaction-container">
+    <h2>Lịch sử quyên góp</h2>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Donate ID</th>
+            <th>User ID</th>
+            <th>Tên người dùng</th>
+            <th>Mã chiến dịch</th>
+            <th>Ngày quyên góp</th>
+            <th>Phương thức thanh toán</th>
+            <th>Số tiền</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of pagedTransactions">
+            <td>{{ transaction.DonateId }}</td>
+            <td>{{ transaction.userId }}</td>
+            <td>{{ transaction.DisplayName }}</td>
+            <td>{{ transaction.CampaignCode }}</td>
+            <td>{{ transaction.DateDonated }}</td>
+            <td>{{ transaction.PaymentMethod }}</td>
+            <td>{{ transaction.MoneyDonated }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="pagination-controls">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Trước</button>
+      <span>Trang {{ currentPage }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= transactions.length">Tiếp</button>
+    </div>
+  </div>
+  

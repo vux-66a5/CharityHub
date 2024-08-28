@@ -1,7 +1,7 @@
 import { Component, Inject, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { Campaign } from '../Models/campaign.model';
+import { Campaign } from '../../Models/campaign.model';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 
 @Component({

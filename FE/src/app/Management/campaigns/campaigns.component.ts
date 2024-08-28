@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CampaignViewComponent } from '../campaign-view/campaign-view.component';
-import { Campaign } from '../Models/campaign.model';
+import { Campaign } from '../../Models/campaign.model';
 import { CampaignEditComponent } from '../campaign-edit/campaign-edit.component';
 import { CampaignAddComponent } from '../campaign-add/campaign-add.component';
 

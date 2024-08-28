@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Campaign } from '../Models/campaign.model';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { Campaign } from '../../Models/campaign.model';
 
 @Component({
   selector: 'app-campaign-add',
@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './campaign-add.component.css'
 })
 export class CampaignAddComponent {
-  campaign: Campaign = {
+  campaign: Campaign  = {
     campaignId: '',
     campaignCode: '',
     campaignTitle: '',

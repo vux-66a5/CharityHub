@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../Models/user.model';
+import { User } from '../../Models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { UserViewComponent } from '../user-view/user-view.component';
 import { FormsModule } from '@angular/forms';
