@@ -20,7 +20,7 @@ namespace CharityHub.Data.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=LAPTOP-GEIJRR8I;database=CharityAppDbContext;Trusted_Connection=True;TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-NDJ53P8\\SQLSERVER2022;Database=CharityAppFinal;Trusted_Connection=True;TrustServerCertificate=True");
             }
         }
 

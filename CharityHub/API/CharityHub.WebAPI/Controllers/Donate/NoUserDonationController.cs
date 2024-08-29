@@ -35,7 +35,17 @@ namespace CharityHub.WebAPI.Controllers.Donations
         [HttpGet("Execute-Payment")]
         public async Task<IActionResult> ExecutePayment()
         {
-            return await noUserDonationService.ExecutePaymentAsync(Request.Query);
+            try
+            {
+                var redirectUrl = await noUserDonationService.ExecutePaymentAsync(Request.Query);
+
+                // Perform redirect to the success URL
+                return Redirect(redirectUrl);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

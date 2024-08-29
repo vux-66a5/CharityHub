@@ -52,5 +52,26 @@ namespace CharityHub.WebAPI.Controllers.Register
 
             return BadRequest("Something went wrong!");
         }
+
+        [HttpGet]
+        [Route("CheckEmail")]
+        public async Task<IActionResult> CheckEmail([FromQuery] string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return BadRequest("Email is required");
+            }
+
+            var user = await userManager.FindByEmailAsync(email);
+
+            if (user != null)
+            {
+                return Ok(new { exists = true });
+            }
+            else
+            {
+                return Ok(new { exists = false });
+            }
+        }
     }
 }

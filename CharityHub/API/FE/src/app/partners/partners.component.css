@@ -1,0 +1,29 @@
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.2s;
+  padding: 15px; /* Thêm khoảng đệm để làm card rộng hơn */
+}
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+.card-img-top {
+  max-height: 150px; /* Tăng chiều cao tối đa của hình ảnh để logo lớn hơn */
+  object-fit: contain;
+  padding: 10px; /* Thêm khoảng đệm xung quanh hình ảnh */
+}
+
+.card-title {
+  font-size: 18px; /* Tăng kích thước font của tên đối tác */
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 48px;
+  color: #4189c8;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}

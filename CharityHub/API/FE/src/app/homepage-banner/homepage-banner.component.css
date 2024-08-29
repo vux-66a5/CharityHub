@@ -1,0 +1,79 @@
+.homepage-banner-container {
+  padding: 20px;
+  background-color: #d0dee8; /* Màu nền cho component */
+  display: grid;
+  grid-template-columns: 1fr; /* Mặc định là 1 cột */
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .homepage-banner-container {
+    grid-template-columns: 1fr 1fr; /* Chuyển thành 2 cột trên các thiết bị lớn hơn */
+    gap: 20px; /* Thêm khoảng cách giữa các cột */
+  }
+}
+
+.text-content h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4189c8; /* Màu tiêu đề */
+  margin-bottom: 20px;
+}
+
+.text-content p {
+  font-size: 1.25rem;
+  margin: 10px 0 20px;
+  color: #313030;
+}
+
+.statistics {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+  .stat-item span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+    color: #4189c8;
+  }
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc nếu cần */
+  margin-top: 20px; /* Khoảng cách phía trên (tuỳ chọn) */
+}
+
+.donate-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: #4189c8;
+  color: white;
+}
+
+.info-button {
+  background-color: #fff;
+  color: #4189c8;
+  border: 2px solid #4189c8;
+}
+
+.image-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}

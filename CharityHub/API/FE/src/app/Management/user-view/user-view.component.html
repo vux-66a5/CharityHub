@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h5 class="modal-title">User Details</h5>
+</div>
+<div class="modal-body">
+  <div class="user-detail">
+    <p><strong>User ID:</strong> {{ data.userId }}</p>
+    <p><strong>Display Name:</strong> {{ data.displayName }}</p>
+    <p><strong>Email:</strong> {{ data.userEmail }}</p>
+    <p><strong>Phone Number:</strong> {{ data.phoneNumber }}</p>
+    <p><strong>Date Created:</strong> {{ data.dateCreated }}</p>
+    <p><strong>Last Login Date:</strong> {{ data.lastLoginDate }}</p>
+    <p><strong>Status:</strong> {{ data.isActive ? 'Active' : 'Inactive' }}</p>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+</div>

@@ -1,0 +1,19 @@
+<!-- Modal -->
+<div class="modal fade" id="paymentSuccessModal" tabindex="-1" aria-labelledby="paymentSuccessModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="paymentSuccessModalLabel">Quyên góp thành công!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p>Cảm ơn bạn đã quyên góp. Sự đóng góp của bạn sẽ giúp ích rất nhiều cho chúng tôi.</p>
+        <p>Mã chiến dịch <strong>{{campaignCode}}</strong></p>
+        <p>Số tiền: <strong>{{amount}}</strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="goBack()">Quay lại trang chủ</button>
+      </div>
+    </div>
+  </div>
+</div>

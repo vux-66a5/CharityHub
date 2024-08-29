@@ -1,0 +1,26 @@
+/* .fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white; 
+}
+
+.container {
+    padding-top: 60px; 
+}
+ */
+
+.custom-spacing li {
+  margin-right: 20px; /* Điều chỉnh khoảng cách theo ý muốn */
+}
+
+.fixed-header .logo-container {
+  max-width: 100px; /* Hoặc giá trị bạn muốn */
+}
+
+.fixed-header .logo-container img {
+    max-width: 125%; /* Đảm bảo logo không vượt quá kích thước container */
+    height: auto; /* Giữ tỷ lệ khung hình */
+}

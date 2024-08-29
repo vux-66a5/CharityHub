@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h5 class="modal-title">Edit Time Campaign</h5>
+</div>
+<div class="modal-body">
+  <form #form="ngForm" (ngSubmit)="onSave()">
+    <div class="mb-3">
+      <label for="startDate" class="form-label">Start Date</label>
+      <input type="text" id="startDate" class="form-control" [(ngModel)]="campaign.startDate" name="startDate" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="endDate" class="form-label">End Date</label>
+      <input type="text" id="endDate" class="form-control" [(ngModel)]="campaign.endDate" name="endDate" required>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn btn-primary">Update Date</button>
+      <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
+    </div>
+  </form>
+</div>

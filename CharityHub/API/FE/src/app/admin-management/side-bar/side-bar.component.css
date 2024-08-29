@@ -1,0 +1,8 @@
+.nav-link {
+  cursor: pointer; /* Hiển thị con trỏ chuột là pointer */
+}
+
+  .nav-link:hover {
+    background-color: #007bff; /* Màu xanh dương khi hover */
+    color: white; /* Màu chữ chuyển thành trắng khi hover */
+  }

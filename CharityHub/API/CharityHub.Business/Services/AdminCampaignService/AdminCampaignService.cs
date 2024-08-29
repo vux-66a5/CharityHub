@@ -32,10 +32,10 @@ namespace CharityHub.Business.Services.AdminCampaignService
             return mapper.Map<CampaignDto>(campaign);
         }
 
-        public async Task<string> DeleteCampaignAsync(int campaignCode)
+        public async Task<string> DeleteCampaignAsync(Guid campaignId)
         {
             var campaign = await dbContext.Campaigns
-            .FirstOrDefaultAsync(c => c.CampaignCode == campaignCode);
+            .FirstOrDefaultAsync(c => c.CampaignId == campaignId);
             if (campaign == null)
             {
                 return "Campaign khong ton tai!";
@@ -83,6 +83,12 @@ namespace CharityHub.Business.Services.AdminCampaignService
             return "Campaign end date da duoc mo rong thanh cong.";
         }
 
+        public async Task<List<Campaign>> GetAllCampaignAsync()
+        {
+            var campaigns = await dbContext.Campaigns.ToListAsync();
+            return campaigns;
+        }
+
         public async Task<object> GetDonationProgressAsync(int campaignCode)
         {
             var campaign = await dbContext.Campaigns
@@ -124,12 +130,12 @@ namespace CharityHub.Business.Services.AdminCampaignService
             return mapper.Map<IEnumerable<CampaignDto>>(campaigns);
         }
 
-        public async Task<CampaignDto> UpdateCampaignAsync(int campaignCode, UpdateCampaignRequestDto updatedCampaign)
+        public async Task<CampaignDto> UpdateCampaignAsync(Guid campaignId, UpdateCampaignRequestDto updatedCampaign)
         {
             var campaignModel = mapper.Map<Campaign>(updatedCampaign);
 
             var existingCampaign = await dbContext.Campaigns
-                .FirstOrDefaultAsync(c => c.CampaignCode == campaignCode);
+                .FirstOrDefaultAsync(c => c.CampaignId == campaignId);
 
             if (existingCampaign == null) return null;
 
@@ -147,10 +153,10 @@ namespace CharityHub.Business.Services.AdminCampaignService
             return mapper.Map<CampaignDto>(existingCampaign);
         }
 
-        public async Task<CampaignDto> UpdateStartAndEndDateAsync(int campaignCode, StartAndEndDateCampaign startAndEndDateCampaign)
+        public async Task<CampaignDto> UpdateStartAndEndDateAsync(Guid campaignId, StartAndEndDateCampaign startAndEndDateCampaign)
         {
             var campaign = await dbContext.Campaigns
-                .FirstOrDefaultAsync(c => c.CampaignCode == campaignCode);
+                .FirstOrDefaultAsync(c => c.CampaignId == campaignId);
 
             if (campaign == null)
             {
@@ -170,5 +176,43 @@ namespace CharityHub.Business.Services.AdminCampaignService
 
             return mapper.Map<CampaignDto>(campaign);
         }
+
+        public async Task<List<CampaignDto>> SearchCampaignsAsync(string query)
+        {
+            // Xây dựng truy vấn cơ sở dữ liệu
+            var queryable = dbContext.Campaigns.AsQueryable();
+
+            // Nếu chuỗi tìm kiếm không có giá trị, trả về toàn bộ danh sách
+            if (string.IsNullOrEmpty(query))
+            {
+                return mapper.Map<List<CampaignDto>>(await dbContext.Campaigns.ToListAsync());
+            }
+
+            // Tách chuỗi tìm kiếm thành các từ khóa
+            var keywords = query.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            // Áp dụng bộ lọc cho từng từ khóa
+            foreach (var keyword in keywords)
+            {
+                // Lưu ý: Cần kiểm tra keyword không phải là null
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    queryable = queryable
+                        .Where(c => c.CampaignCode.ToString().Contains(keyword) ||
+                                    c.CampaignTitle.Contains(keyword) ||
+                                    c.PartnerName.Contains(keyword) ||
+                                    c.PartnerNumber.Contains(keyword) ||
+                                    c.CampaignStatus.Contains(keyword));
+                }
+            }
+
+            // Lấy danh sách chiến dịch theo truy vấn đã lọc
+            var campaigns = await queryable.ToListAsync();
+
+            // Chuyển đổi các đối tượng Campaign thành CampaignDto
+            return mapper.Map<List<CampaignDto>>(campaigns);
+        }
+
     }
+
 }

@@ -1,0 +1,5 @@
+.formatted-text {
+  white-space: pre-wrap; /* Preserve newlines but wrap text */
+  word-wrap: break-word; /* Break long words */
+  overflow-wrap: break-word; /* Break words at boundaries */
+}

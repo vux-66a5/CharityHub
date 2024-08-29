@@ -7,6 +7,6 @@ namespace CharityHub.Business.Services.PayPalDonate
     public interface INoUserDonationService
     {
         Task<string> CreatePayPalDonationAsync(AddDonationRequestDto donationRequest);
-        Task<IActionResult> ExecutePaymentAsync(IQueryCollection query);
+        Task<string> ExecutePaymentAsync(IQueryCollection query);
     }
 }

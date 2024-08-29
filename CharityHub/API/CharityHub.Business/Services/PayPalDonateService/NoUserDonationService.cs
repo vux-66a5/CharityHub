@@ -61,24 +61,24 @@ namespace CharityHub.Business.Services.PayPalDonate
             return paymentUrl;
         }
 
-        public async Task<IActionResult> ExecutePaymentAsync(IQueryCollection query)
+        public async Task<string> ExecutePaymentAsync(IQueryCollection query)
         {
             var donationId = query["donation_id"].FirstOrDefault();
 
             if (string.IsNullOrEmpty(donationId) || !Guid.TryParse(donationId, out Guid parsedDonationId))
             {
-                return new BadRequestObjectResult("Invalid or missing donation ID.");
+                throw new InvalidOperationException("Invalid or missing donation ID.");
             }
 
             var donation = payPalService.PaymentExecute(query);
             if (donation.DonationId != parsedDonationId)
             {
-                return new BadRequestObjectResult("Donation ID mismatch.");
+                throw new InvalidOperationException("Donation ID mismatch.");
             }
 
             if (!donation.IsConfirm)
             {
-                return new BadRequestObjectResult("Payment failed or was not confirmed.");
+                throw new InvalidOperationException("Payment failed or was not confirmed.");
             }
 
             using (var transaction = await dbContext.Database.BeginTransactionAsync())
@@ -88,7 +88,7 @@ namespace CharityHub.Business.Services.PayPalDonate
                     var existingDonation = await dbContext.Donations.FindAsync(parsedDonationId);
                     if (existingDonation == null)
                     {
-                        return new NotFoundObjectResult("Donation khong ton tai.");
+                        throw new InvalidOperationException("Donation not found.");
                     }
 
                     existingDonation.IsConfirm = true;
@@ -105,13 +105,13 @@ namespace CharityHub.Business.Services.PayPalDonate
                     await dbContext.SaveChangesAsync();
                     await transaction.CommitAsync();
 
-                    // Return the updated donation object as JSON
-                    return new OkObjectResult(mapper.Map<DonationDto>(existingDonation));
+                    // Return the success URL
+                    return $"http://localhost:4200/paymentsuccess?payment_method={existingDonation.PaymentMethod}&success=1&donation_id={existingDonation.DonationId}&amount={existingDonation.Amount}";
                 }
                 catch (Exception ex)
                 {
                     await transaction.RollbackAsync();
-                    return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+                    throw new InvalidOperationException($"An error occurred: {ex.Message}");
                 }
             }
         }

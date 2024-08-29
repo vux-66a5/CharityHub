@@ -1,0 +1,55 @@
+<div class="container">
+  <h2>List of Users</h2>
+  <div class="search-bar">
+    <input type="text" placeholder="Search by phone or email" [(ngModel)]="searchTerm" (input)="filterUsers()" />
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Display Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Is Active</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filteredUsers">
+        <td>{{ user.userId }}</td>
+        <td>{{ user.displayName }}</td>
+        <td>{{ user.userEmail }}</td>
+        <td>{{ user.phoneNumber }}</td>
+        <td>{{ user.isActive ? 'Active' : 'Inactive' }}</td>
+        <td>
+          <button type="button" class="btn btn-info me-2" (click)="viewUser(user)">View</button>
+
+          <!-- Dropdown menu for active/inactive actions -->
+          <div class="btn-group">
+            <button type="button"
+                    [ngClass]="user.isActive ? 'btn btn-success' : 'btn btn-danger'"
+                    class="btn btn-secondary dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+              {{ user.isActive ? 'Unban' : 'Ban' }}
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" (click)="toggleUserStatus(user, true)">Unban</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="toggleUserStatus(user, false)">Ban</a>
+              </li>
+            </ul>
+          </div>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>
