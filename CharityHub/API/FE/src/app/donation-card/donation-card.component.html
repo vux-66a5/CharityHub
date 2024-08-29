@@ -4,15 +4,15 @@
     <h5 class="card-title">{{ card.cardTitle }}</h5>
     <div class="card-partner-and-dayleft">
       <p class="card-partner">
-          <small class="text-muted">{{ card.cardPartner }}</small>
+        <small class="text-muted">{{ card.cardPartner }}</small>
       </p>
       <div class="card-dayleft">
-          <span class="card-dayleft-text">Còn {{ card.cardDayLeft }} ngày</span>
+        <span class="card-dayleft-text">Còn {{ card.cardDayLeft }} ngày</span>
       </div>
     </div>
     <div class="card-progressive-money">
       <p class="card-text">
-          <strong>{{ formattedCurrentAmount }}</strong> / {{ formattedTargetAmount }}
+        <strong>{{ formattedCurrentAmount }}</strong> / {{ formattedTargetAmount }}
       </p>
     </div>
     <div class="card-progressive-bar">
@@ -21,11 +21,18 @@
     <div class="card-current-target">
       <small class="card-current-target-text">Lượt quyên góp: <strong>{{ card.contributionCount }}</strong></small>
       <small class="card-current-target-percent">Đạt được: <strong>{{ card.achievedPercentage }}%</strong></small>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + card.cardId">
-        Quyên góp
+      <button type="button"
+              class="btn btn-primary"
+              [attr.data-bs-toggle]="card.cardStatus === 'close' ? null : 'modal'"
+              [attr.data-bs-target]="card.cardStatus === 'close' ? null : '#exampleModal' + card.cardId"
+              [attr.disabled]="card.cardStatus === 'close' ? true : null"
+              [ngClass]="{
+        'btn-secondary': card.cardStatus === 'close',
+        'btn-primary': card.cardStatus !== 'close'
+      }">
+        {{ formattedStatus }}
       </button>
       <app-card-detail [card]="card" [modalId]="'exampleModal' + card.cardId"></app-card-detail>
     </div>
   </div>
 </div>
-

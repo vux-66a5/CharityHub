@@ -110,7 +110,7 @@ namespace CharityHub.WebAPI.Controllers.Donations
                     await transaction.CommitAsync();
 
                     // Return the updated donation object as JSON
-                    return Ok(mapper.Map<DonationDto>(existingDonation));
+                    return Redirect($"http://localhost:4200/paymentsuccess?payment_method={existingDonation.PaymentMethod}&success=1&donation_id={existingDonation.DonationId}&amount={existingDonation.Amount}");
                 }
                 catch (Exception ex)
                 {

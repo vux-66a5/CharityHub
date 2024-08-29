@@ -46,3 +46,21 @@ export interface User {
   isActive: boolean;
   lastLoginDate: string
 }
+
+export interface MyDonated {
+  campaignTitle: string;
+  amount: number;
+  dateDonated: Date;
+}
+
+export interface EditProfile {
+  displayName: string;
+  phoneNumber: string;
+}
+
+export interface Profile {
+  userName: string;
+  displayName: string;
+  phoneNumber: string;
+
+}

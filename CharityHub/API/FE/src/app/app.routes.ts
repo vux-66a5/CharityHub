@@ -6,10 +6,15 @@ import { CampaignsComponent } from './Management/campaigns/campaigns.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PartnersComponent } from './partners/partners.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { UserUpdateProfileComponent } from './user-update-profile/user-update-profile.component';
 import { authGuard } from './auth/guards/auth.guard';
 import { CampaignEditComponent } from './Management/campaign-edit/campaign-edit.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { authUserGuard } from './authUser/guards/auth.guard';
+import { CardDetailComponent } from './card-detail/card-detail.component';
+import { PaymentUserComponent } from './payment-user/payment-user.component';
+import { PaymentsuccessComponent } from './paymentsuccess/paymentsuccess.component';
+import { UserUpdateProfileComponent } from './user-update-profile/user-update-profile.component';
+
 
 export const routes: Routes = [
     {
@@ -18,11 +23,14 @@ export const routes: Routes = [
     {
         path: 'donation-list', component: DonationListComponent
     },
-    { 
-        path: 'payment/:campaignCode', component: PaymentComponent 
+    {
+        path: 'payment/:campaignCode', component: PaymentComponent
     },
     {
-        path: 'partners', component:PartnersComponent
+        path: 'payment-user/:campaignCode/:userId', component: PaymentUserComponent
+    },
+    {
+        path: 'partners', component: PartnersComponent
     },
     {
         path: 'update-profile', component: UserUpdateProfileComponent
@@ -40,7 +48,11 @@ export const routes: Routes = [
         canActivate: [authGuard]
     },
     {
-        path: 'transaction', component: TransactionComponent
+        path: 'transaction/:id', component: TransactionComponent,
+        canActivate: [authUserGuard]
+
     },
+    { path: 'paymentsuccess', component: PaymentsuccessComponent },
+
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ]

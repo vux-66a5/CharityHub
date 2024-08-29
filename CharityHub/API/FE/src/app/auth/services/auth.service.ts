@@ -12,16 +12,11 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class AuthService {
-
   $user = new BehaviorSubject<User | undefined>(undefined);
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
 
-  // login(user: any) {
-  //   this.loggedIn.next(true);
-  //   this.user.next(user);
-  // }
 
   login(request: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${environment.apiBaseUrl}/api/User/Login`, {
@@ -32,6 +27,7 @@ export class AuthService {
 
   setUser(user: User): void {
     this.$user.next(user);
+    localStorage.setItem('user-id', user.id);
     localStorage.setItem('user-name', user.userName);
     localStorage.setItem('user-role', user.role);
   }
@@ -43,9 +39,11 @@ export class AuthService {
   getUser(): User | undefined {
     const username = localStorage.getItem('user-name');
     const role = localStorage.getItem('user-role');
+    const iduser = localStorage.getItem('user-id');
 
-    if (username && role) {
+    if (username && role && iduser) {
       const user: User = {
+        id: iduser,
         userName: username,
         role: role
       }

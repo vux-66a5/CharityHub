@@ -14,28 +14,22 @@ namespace CharityHub.WebAPI.Controllers.ViewCampaignForUsers
     public class UserViewCampaignController : ControllerBase
     {
         private readonly IUserViewCampaignService userViewCampaignService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserViewCampaignController(IUserViewCampaignService userViewCampaignService, IHttpContextAccessor httpContextAccessor)
+        public UserViewCampaignController(IUserViewCampaignService userViewCampaignService)
         {
             this.userViewCampaignService = userViewCampaignService;
-            _httpContextAccessor = httpContextAccessor;
         }
 
         // Xem danh sách các lần đã quyên góp
-        [HttpGet("Get-User-Donations")]
-        public async Task<IActionResult> GetUserDonations()
+        [HttpGet("Get-User-Donations/{id}")]
+        public async Task<IActionResult> GetUserDonations(Guid id)
         {
-            var userIdString = _httpContextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (userIdString == null || !Guid.TryParse(userIdString, out var userId))
-            {
-                return Unauthorized();
-            }
-
-            var donations = await userViewCampaignService.GetUserDonationsAsync(userId);
+           
+            var donations = await userViewCampaignService.GetUserDonationsAsync(id);
             return Ok(donations);
         }
+
+
 
         // các chức năng khác có thể dùng chung với NoUserViewCampaign
     }

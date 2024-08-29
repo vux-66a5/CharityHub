@@ -2,7 +2,7 @@
 
 using CharityHub.Business.ViewModels;
 using CharityHub.Data.Data;
-using CharityHub.Data.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CharityHub.Business.Services.ViewDonationAndCampaignService
@@ -15,12 +15,36 @@ namespace CharityHub.Business.Services.ViewDonationAndCampaignService
         {
             this.dbContext = dbContext;
         }
+
+        public async Task<List<dynamic>> GetAllCampaignsExceptNewAsync()
+        {
+            var campaigns = await dbContext.Campaigns
+                .Where(c => c.CampaignStatus != "New") // Filter out campaigns with status "New"
+                .Select(c => new
+                {
+                    c.CampaignTitle,
+                    c.CampaignCode,
+                    c.CampaignThumbnail,
+                    c.CampaignDescription,
+                    c.TargetAmount,
+                    c.CurrentAmount,
+                    c.PartnerLogo,
+                    c.CampaignStatus,
+                    c.PartnerName,
+                    c.EndDate,
+                    c.StartDate,
+                    ConfirmedDonationCount = c.Donations.Count(d => d.IsConfirm)
+                })
+                .ToListAsync();
+
+            return campaigns.Cast<dynamic>().ToList();
+        }
+
         public async Task<List<CampaignCardDto>> GetAllCampaignsAsync()
         {
             var campaigns = await dbContext.Campaigns
                 .Select(c => new CampaignCardDto
                 {
-                    CampaignId = c.CampaignId,
                     CampaignTitle = c.CampaignTitle,
                     CampaignCode = c.CampaignCode,
                     CampaignThumbnail = c.CampaignThumbnail,
@@ -37,5 +61,44 @@ namespace CharityHub.Business.Services.ViewDonationAndCampaignService
 
             return campaigns;
         }
+
+        public async Task<int> GetCampaignCodeByDonationIdAsync(Guid donationId)
+        {
+            // Find the donation with the specified donationId
+            var campaignId = await dbContext.Donations
+                .Where(d => d.DonationId == donationId)
+                .Select(d => d.CampaignId)
+                .FirstOrDefaultAsync();
+
+            if (campaignId == Guid.Empty)
+            {
+                // Return a meaningful message or handle the "not found" case as needed
+                return -1; // Or throw an exception, or return a specific message
+            }
+
+            // Find the campaign with the specified CampaignId
+            var campaignCode = await dbContext.Campaigns
+                .Where(c => c.CampaignId == campaignId)
+                .Select(c => c.CampaignCode)
+                .FirstOrDefaultAsync();
+
+            return campaignCode;
+        }
+
+        public async Task<string> GetCampaignStatusAsync(Guid campaignId)
+        {
+            var campaign = await dbContext.Campaigns
+                .Where(c => c.CampaignId == campaignId)
+                .Select(c => c.CampaignStatus)
+                .FirstOrDefaultAsync();
+
+            if (campaign == null)
+            {
+                return "Campaign not found.";
+            }
+
+            return campaign;
+        }
+
     }
 }

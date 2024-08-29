@@ -33,7 +33,12 @@ namespace CharityHub.WebAPI.Controllers
         public async Task<IActionResult> GetAllUsers()
         {
             var users = await userManager.Users.ToListAsync();
-            return Ok(mapper.Map<List<UserDto>>(users));
+
+            // Lọc người dùng có vai trò là "User"
+            var filteredUsers = users.Where(user => userManager.GetRolesAsync(user).Result.Contains("User")).ToList();
+
+            // Ánh xạ và trả về danh sách người dùng
+            return Ok(mapper.Map<List<UserDto>>(filteredUsers));
         }
 
         // GET: api/User/search?emailOrPhone=xxx

@@ -30,8 +30,8 @@ namespace CharityHub.WebAPI.Controllers.Donations
         }
 
         // POST: api/NoUserDonation/paypal/create
-        [HttpPost("Create-PayPal-Donation")]
-        public async Task<IActionResult> CreatePayPalDonation([FromBody] AddDonationRequestDto donationRequest)
+        [HttpPost("Create-PayPal-Donation/{id}")]
+        public async Task<IActionResult> CreatePayPalDonation(Guid id, [FromBody] AddDonationRequestDto donationRequest)
         {
             var donationId = Guid.NewGuid();
 
@@ -39,11 +39,11 @@ namespace CharityHub.WebAPI.Controllers.Donations
                 .Where(c => c.CampaignCode == donationRequest.CampaignCode)
                 .FirstOrDefaultAsync();
 
-            var userIdString = httpContextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (string.IsNullOrEmpty(userIdString) || !Guid.TryParse(userIdString, out Guid userId))
-            {
-                return BadRequest("Invalid or missing user ID.");
-            }
+            //var userIdString = httpContextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+            //if (string.IsNullOrEmpty(userIdString) || !Guid.TryParse(userIdString, out Guid userId))
+            //{
+            //    return BadRequest("Invalid or missing user ID.");
+            //}
 
             var donation = new Donation
             {
@@ -53,7 +53,7 @@ namespace CharityHub.WebAPI.Controllers.Donations
                 IsConfirm = false,
                 Amount = donationRequest.Amount,
                 PaymentMethod = donationRequest.PaymentMethod,
-                UserId = userId
+                UserId = id
             };
 
             var paymentUrl = await payPalService.CreatePaymentUrl(new PaymentInformation
@@ -127,7 +127,7 @@ namespace CharityHub.WebAPI.Controllers.Donations
                     await transaction.CommitAsync();
 
                     // Return the updated donation object as JSON
-                    return Ok(mapper.Map<DonationDto>(existingDonation));
+                    return Redirect($"http://localhost:4200/paymentsuccess?payment_method={existingDonation.PaymentMethod}&success=1&donation_id={existingDonation.DonationId}&amount={existingDonation.Amount}");
                 }
                 catch (Exception ex)
                 {

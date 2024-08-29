@@ -49,7 +49,8 @@ namespace CharityHub.WebAPI.Controllers.Login
                         {
                             UserName = loginRequestDto.UserName,
                             Role = role,
-                            JwtToken = jwtToken
+                            JwtToken = jwtToken,
+                            Id = user.Id
                         };
 
                         return Ok(response);
@@ -90,16 +91,16 @@ namespace CharityHub.WebAPI.Controllers.Login
 
         // Profile
         [Authorize(Roles = "User")]
-        [HttpGet("Get-Profile")]
-        public async Task<IActionResult> GetProfile()
+        [HttpGet("Get-Profile/{id}")]
+        public async Task<IActionResult> GetProfile(Guid id)
         {
-            var user = await _userManager.GetUserAsync(_httpContext.HttpContext.User);
-            
+            var user = await _userManager.FindByIdAsync(id.ToString());
+
             if (user == null) return NotFound();
 
             var userProfile = new ProfileUserDto
             {
-                Email = user.Email,
+                UserName = user.UserName,
                 DisplayName = user.DisplayName,
                 PhoneNumber = user.PhoneNumber
             };
@@ -107,12 +108,13 @@ namespace CharityHub.WebAPI.Controllers.Login
             return Ok(userProfile);
         }
 
+
         // Update Profile: DisplayName and PhoneNumber
         [Authorize(Roles = "User")]
-        [HttpPut("Update-Profile")]
-        public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileRequestDto updateProfileRequestDto)
+        [HttpPut("Update-Profile/{id}")]
+        public async Task<IActionResult> UpdateProfile(Guid id, [FromBody] UpdateProfileRequestDto updateProfileRequestDto)
         {
-            var user = await _userManager.GetUserAsync(_httpContext.HttpContext.User);
+            var user = await _userManager.FindByIdAsync(id.ToString());
 
             if (user == null) return NotFound();
 

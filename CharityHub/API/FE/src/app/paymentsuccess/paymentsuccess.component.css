@@ -1,0 +1,33 @@
+
+.modal-content {
+    background-color: #f8f9fa; /* Màu nền sáng */
+    border-radius: 0.5rem; /* Bo góc modal */
+  }
+  
+  /* Tinh chỉnh kiểu chữ và màu cho tiêu đề modal */
+  .modal-header {
+    background-color: #4b8d5a; /* Màu nền tiêu đề */
+    color: white; /* Màu chữ tiêu đề */
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Tinh chỉnh màu nền và kiểu chữ cho nội dung modal */
+  .modal-body {
+    color: #333; /* Màu chữ nội dung */
+  }
+  
+  /* Tinh chỉnh màu và kiểu cho nút đóng modal */
+  .btn-close {
+    filter: invert(1); /* Đổi màu nút đóng thành trắng */
+  }
+  
+  /* Tinh chỉnh màu nền và kiểu chữ cho nút */
+  .btn-primary {
+    background-color: #4b8d5a; /* Màu nền nút */
+    border-color: #28a745; /* Màu viền nút */
+  }
+  
+    .btn-primary:hover {
+      background-color: #218838; /* Màu nền khi hover */
+      border-color: #1e7e34; /* Màu viền khi hover */
+    }

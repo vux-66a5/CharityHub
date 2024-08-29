@@ -17,6 +17,20 @@ export class CardDetailComponent {
   constructor(private router: Router) {}
 
   navigateToPayment() {
-    this.router.navigate(['/payment', this.card.campaignCode]);
+    const userId = localStorage.getItem('user-id');
+
+    if (userId) {
+      // Nếu có userId, chuyển hướng tới /payment-user kèm với campaignCode và userId
+      this.router.navigate(['/payment-user', this.card.campaignCode, userId]).then(() => {
+        // Làm mới trang sau khi điều hướng
+        location.reload();
+      });
+    } else {
+      // Nếu không có userId, chuyển hướng tới /payment kèm với campaignCode
+      this.router.navigate(['/payment', this.card.campaignCode]).then(() => {
+        // Làm mới trang sau khi điều hướng
+        location.reload();
+      });
+    }
   }
 }

@@ -58,5 +58,26 @@ namespace CharityHub.WebAPI.Controllers.ViewDonationList
 
             return donations;
         }
+
+        [HttpGet("GetAllCampaignsExceptNew")]
+        public async Task<IActionResult> GetAllCampaignExceptNew()
+        {
+            var campaigns = await campaignService.GetAllCampaignsExceptNewAsync();
+            return Ok(campaigns);
+        }
+
+        [HttpGet("GetCampaignCodeByDonationId/{donationId}")]
+        public async Task<IActionResult> GetCampaignCodeByDonationId(Guid donationId)
+        {
+            int campaignCode = await campaignService.GetCampaignCodeByDonationIdAsync(donationId);
+            return Ok(new { campaignCode }); // Trả về đối tượng với thuộc tính campaignCode
+        }
+
+        [HttpGet("GetCampaignStatus/{campaignId}")]
+        public async Task<IActionResult> GetCampaignStatus(Guid campaignId)
+        {
+            string campaignStatus = await campaignService.GetCampaignStatusAsync(campaignId);
+            return Ok(new { campaignStatus });
+        }
     }
 }

@@ -94,6 +94,7 @@ export class LoginComponent {
         );
 
         const user: User = {
+          id: response.id,
           userName: response.userName,
           role: response.role
         };

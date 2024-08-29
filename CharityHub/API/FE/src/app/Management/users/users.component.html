@@ -1,7 +1,7 @@
 <div class="container">
     <h2>List of Users</h2>
-    <div class="search-bar">
-        <input type="text" placeholder="Search by phone or email" #queryText [(ngModel)]="searchTerm" (input)="filterUsers()" />
+    <div class="d-flex">
+        <input type="text" placeholder="Search by email" #queryText [(ngModel)]="searchTerm" (input)="filterUsers()" />
         <button type="button" class="btn btn-warning" (click)="onSearch(queryText.value)">Search</button>
     </div>
     <ng-container *ngIf="users">
@@ -11,7 +11,6 @@
                 <th>Id</th>
                 <th>Display Name</th>
                 <th>Email</th>
-                <th>Phone Number</th>
                 <th>Is Active</th>
                 <th>Actions</th>
               </tr>
@@ -21,7 +20,6 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.displayName }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.phoneNumber }}</td>
                 <td>{{ user.isActive ? 'Active' : 'Inactive' }}</td>
                 <td>
                   <button type="button" class="btn btn-info me-2" (click)="viewUser(user)">View</button>
