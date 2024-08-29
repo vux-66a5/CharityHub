@@ -13,13 +13,11 @@ namespace CharityHub.WebAPI.Controllers.ViewDonationList
     {
         private readonly IDonationService donationService;
         private readonly ICampaignService campaignService;
-        private readonly CharityHubDbContext dbContext;
 
-        public ViewDonationAndCampaignController(IDonationService donationService, ICampaignService campaignService, CharityHubDbContext dbContext)
+        public ViewDonationAndCampaignController(IDonationService donationService, ICampaignService campaignService)
         {
             this.donationService = donationService;
             this.campaignService = campaignService;
-            this.dbContext = dbContext;
         }
 
         [HttpGet("Get-Donation-Details")]
@@ -45,18 +43,10 @@ namespace CharityHub.WebAPI.Controllers.ViewDonationList
         }
 
         [HttpGet("Get-Donations-By-CampaignId{campaignId}")]
-        public List<DonationInfo> GetConfirmedDonationsByCampaignId(Guid campaignId)
+        public async Task<ActionResult<List<DonationInfo>>> GetConfirmedDonationsByCampaignId(Guid campaignId)
         {
-            var donations = dbContext.Donations
-                .Where(d => d.CampaignId == campaignId && d.IsConfirm)
-                .Select(d => new DonationInfo
-                {
-                    DisplayName = d.UserId == null ? "Nha hao tam" : d.User.DisplayName,
-                    Amount = d.Amount
-                })
-                .ToList();
-
-            return donations;
+            var donations = await campaignService.GetConfirmedDonationsByCampaignIdAsync(campaignId);
+            return Ok(donations);
         }
 
         [HttpGet("GetAllCampaignsExceptNew")]

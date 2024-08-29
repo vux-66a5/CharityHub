@@ -17,6 +17,28 @@ namespace CharityHub.Business.Services.AdminCampaignService
             this.mapper = mapper;
         }
 
+        public async Task<List<CampaignViewCardDto>> GetCampaignsViewCardAsync()
+        {
+            var campaigns = await dbContext.Campaigns
+                .Select(c => new CampaignViewCardDto
+                {
+                    CampaignId = c.CampaignId,
+                    CampaignCode = c.CampaignCode,
+                    CampaignTitle = c.CampaignTitle,
+                    PartnerName = c.PartnerName,
+                    CampaignStatus = c.CampaignStatus,
+                    CampaignDescription = c.CampaignDescription,
+                    TargetAmount = c.TargetAmount,
+                    CurrentAmount = c.CurrentAmount,
+                    StartDate = c.StartDate,
+                    EndDate = c.EndDate,
+                    PartnerNumber = c.PartnerNumber
+                })
+                .ToListAsync();
+
+            return campaigns;
+        }
+
         public async Task<CampaignDto> CreateCampaignAsync(AddCampaignRequestDto addCampaignRequestDto)
         {
             var campaign = mapper.Map<Campaign>(addCampaignRequestDto);

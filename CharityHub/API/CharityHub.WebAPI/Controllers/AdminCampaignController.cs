@@ -28,22 +28,7 @@ namespace CharityHub.WebAPI.Controllers
         [HttpGet("Get-Campaigns-View-Card")]
         public async Task<IActionResult> GetCampaignsViewCard()
         {
-            var campaigns = await dbContext.Campaigns
-                .Select(c => new CampaignViewCardDto
-                {
-                    CampaignId = c.CampaignId,
-                    CampaignCode = c.CampaignCode,
-                    CampaignTitle = c.CampaignTitle,
-                    PartnerName = c.PartnerName,
-                    CampaignStatus = c.CampaignStatus,
-                    CampaignDescription = c.CampaignDescription,
-                    TargetAmount = c.TargetAmount,
-                    CurrentAmount = c.CurrentAmount,
-                    StartDate = c.StartDate,
-                    EndDate = c.EndDate,
-                    PartnerNumber = c.PartnerNumber
-                })
-                .ToListAsync();
+            var campaigns = await adminCampaignService.GetCampaignsViewCardAsync();
             return Ok(campaigns);
         }
 

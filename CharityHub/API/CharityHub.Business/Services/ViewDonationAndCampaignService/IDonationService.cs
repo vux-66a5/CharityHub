@@ -8,5 +8,6 @@ namespace CharityHub.Business.Services.ViewDonationAndCampaignService
     {
         Task<List<DonationDetailsDto>> GetDonationDetailsAsync();
         Task<List<DonationDetailsDto>> GetDonationDetailsByDisplayNameAndCampaignCodeAsync(string search);
+
     }
 }

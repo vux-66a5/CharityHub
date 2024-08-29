@@ -33,7 +33,8 @@ export const routes: Routes = [
         path: 'partners', component: PartnersComponent
     },
     {
-        path: 'update-profile', component: UserUpdateProfileComponent
+        path: 'update-profile', component: UserUpdateProfileComponent,
+        canActivate: [authUserGuard]
     },
     {
         path: 'users-management', component: UsersComponent,

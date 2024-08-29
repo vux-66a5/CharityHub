@@ -68,7 +68,7 @@ namespace CharityHub.WebAPI.Controllers.Login
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.GetUserAsync(_httpContext.HttpContext.User);
+                var user = await _userManager.FindByIdAsync(passwordViewModel.id.ToString());
 
                 if (user == null) return Unauthorized();
 
@@ -76,18 +76,19 @@ namespace CharityHub.WebAPI.Controllers.Login
 
                 if (result.Succeeded)
                 {
-                    ModelState.Clear();
-                    return Ok("Password thay doi thanh cong!");
+                    
+                    return Ok(new { message = "Password changed successfully!" });
                 }
 
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
+                var errors = result.Errors.Select(e => e.Description).ToList();
+                return BadRequest(new { errors });
             }
 
             return BadRequest(ModelState);
         }
+
+
+
 
         // Profile
         [Authorize(Roles = "User")]

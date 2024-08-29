@@ -5,6 +5,7 @@ namespace CharityHub.Business.ViewModels
 {
     public class ChangePasswordViewModel
     {
+        public Guid id { get; set; }
         [Required, DataType(DataType.Password), Display(Name = "Current password")]
         public string CurrentPassword { get; set; }
         [Required, DataType(DataType.Password), Display(Name = "New password")]

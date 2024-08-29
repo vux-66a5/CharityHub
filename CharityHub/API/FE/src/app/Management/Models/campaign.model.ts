@@ -62,5 +62,11 @@ export interface Profile {
   userName: string;
   displayName: string;
   phoneNumber: string;
+}
 
+export interface EditPass {
+  id: string;
+  currentPassword: string;
+  newPassword: string;
+  confirmPasword: string;
 }

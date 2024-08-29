@@ -3,10 +3,9 @@
       <h2>Thông tin tài khoản</h2>
       <!-- Hiển thị thông tin profile -->
       <div class="profile-info">
-        <p><strong>Tên hiển thị:</strong> {{ profile.displayName }}</p>
-        <p><strong>Email:</strong> {{ profile.userEmail }}</p>
-        <p><strong>Tên đăng nhập:</strong> {{ profile.userName }}</p>
-        <p><strong>Số điện thoại:</strong> {{ profile.phoneNumber }}</p>
+        <p><strong>Tên hiển thị:</strong> {{ profile?.displayName }}</p>
+        <p><strong>userName:</strong> {{ profile?.userName }}</p>
+        <p><strong>Số điện thoại:</strong> {{ profile?.phoneNumber }}</p>
       </div>
       <!-- Nút chuyển đổi giữa cập nhật thông tin và đổi mật khẩu -->
       <div class="btn-group">
@@ -15,7 +14,7 @@
       </div>
   
       <!-- Form cập nhật thông tin -->
-      <form *ngIf="isUpdateInfo" (ngSubmit)="onSubmitUpdateInfo()" #updateInfoForm="ngForm">
+      <form *ngIf="isUpdateInfo && profile" (ngSubmit)="onSubmitUpdateInfo()" #updateInfoForm="ngForm">
         <div class="mb-3">
           <label for="displayName" class="form-label">Tên hiển thị</label>
           <input type="text" class="form-control" id="displayName" required [(ngModel)]="profile.displayName" name="displayName">
@@ -28,10 +27,10 @@
       </form>
   
       <!-- Form đổi mật khẩu -->
-      <form *ngIf="isChangePassword" (ngSubmit)="onSubmitChangePassword()" #changePasswordForm="ngForm">
+      <form *ngIf="isChangePassword" (ngSubmit)="onSubmitChangePassword()" #Form="ngForm">
         <div class="mb-3">
           <label for="oldPassword" class="form-label">Mật khẩu cũ</label>
-          <input type="password" class="form-control" id="oldPassword" required [(ngModel)]="oldPassword" name="oldPassword">
+          <input type="password" class="form-control" id="currentPassword" required [(ngModel)]="currentPassword" name="currentPassword">
         </div>
         <div class="mb-3">
           <label for="newPassword" class="form-label">Mật khẩu mới</label>
@@ -39,9 +38,25 @@
         </div>
         <div class="mb-3">
           <label for="confirmNewPassword" class="form-label">Nhập lại mật khẩu mới</label>
-          <input type="password" class="form-control" id="confirmNewPassword" required [(ngModel)]="confirmNewPassword" name="confirmNewPassword">
+          <input type="password" class="form-control" id="confirmPassword" required [(ngModel)]="confirmNewPassword" name="confirmNewPassword">
         </div>
         <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
       </form>
+      <!-- <form (ngSubmit)="onSubmitChangePassword()">
+        <div>
+          <label for="currentPassword">Current Password</label>
+          <input type="password" id="currentPassword" [(ngModel)]="currentPassword" name="currentPassword" required>
+        </div>
+        <div>
+          <label for="newPassword">New Password</label>
+          <input type="password" id="newPassword" [(ngModel)]="newPassword" name="newPassword" required>
+        </div>
+        <div>
+          <label for="confirmNewPassword">Confirm New Password</label>
+          <input type="password" id="confirmNewPassword" [(ngModel)]="confirmNewPassword" name="confirmNewPassword" required>
+        </div>
+        <button type="submit">Change Password</button>
+      </form> -->
+      
     </div>
   </div>

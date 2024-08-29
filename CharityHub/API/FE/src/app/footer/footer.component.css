@@ -13,6 +13,17 @@ html, body {
   margin: 0;
 }
 
+/* #root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+} */
+
+
 #root {
   min-height: 100%;
   display: flex;
@@ -21,11 +32,25 @@ html, body {
 
 main {
   flex: 1;
+  margin-bottom: 50px; /* Điều chỉnh giá trị để tạo khoảng cách với footer */
 }
+
+
+/* footer {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #dee2e6;
+} */
 
 footer {
   background-color: #f8f9fa;
   text-align: center;
   padding: 1rem;
+  padding-top: 2rem; /* Tạo khoảng cách từ phần tử bên trên */
   border-top: 1px solid #dee2e6;
+}
+
+.content {
+  margin-bottom: 50px; /* Điều chỉnh giá trị theo ý muốn */
 }

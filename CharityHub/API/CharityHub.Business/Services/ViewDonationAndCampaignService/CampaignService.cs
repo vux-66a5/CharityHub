@@ -16,6 +16,20 @@ namespace CharityHub.Business.Services.ViewDonationAndCampaignService
             this.dbContext = dbContext;
         }
 
+        public async Task<List<DonationInfo>> GetConfirmedDonationsByCampaignIdAsync(Guid campaignId)
+        {
+            var donations = await dbContext.Donations
+                .Where(d => d.CampaignId == campaignId && d.IsConfirm)
+                .Select(d => new DonationInfo
+                {
+                    DisplayName = d.UserId == null ? "Nha hao tam" : d.User.DisplayName,
+                    Amount = d.Amount
+                })
+                .ToListAsync();
+
+            return donations;
+        }
+
         public async Task<List<dynamic>> GetAllCampaignsExceptNewAsync()
         {
             var campaigns = await dbContext.Campaigns

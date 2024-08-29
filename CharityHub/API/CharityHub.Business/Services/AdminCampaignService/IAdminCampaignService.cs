@@ -17,5 +17,6 @@ namespace CharityHub.Business.Services.AdminCampaignService
         Task<object> GetDonationProgressAsync(int campaignCode);
         Task<string> ExtendCampaignEndDateAsync(int campaignCode, DateTime newEndDate);
         Task<CampaignDto> UpdateStartAndEndDateAsync(Guid campaignId, StartAndEndDateCampaign startAndEndDateCampaign);
+        Task<List<CampaignViewCardDto>> GetCampaignsViewCardAsync();
     }
 }
