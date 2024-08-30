@@ -8,7 +8,7 @@ Là một hệ thống có giao diện thân thiện với người dùng, với
 
 - **Xác thực người dùng**: Xác thực và phân quyền với các vai trò Admin/User
   
-- **Quản lý chiến dịch ( Dành cho admin ) **: Cho phép thêm chiến dịch, chỉnh sửa thời gian bắt đầu, kết thúc cũng như các thông tin về tên, nhà đồng hành và số tiền mục tiêu 
+- **Quản lý chiến dịch ( Dành cho admin )**: Cho phép thêm chiến dịch, chỉnh sửa thời gian bắt đầu, kết thúc cũng như các thông tin về tên, nhà đồng hành và số tiền mục tiêu 
 
 - **Quản lý người dùng ( Dành cho admin )**: Xem được thông tin của các người dùng trên hệ thống, cấm người dùng nếu như đặt tên hiển thị không phù hợp 
 
