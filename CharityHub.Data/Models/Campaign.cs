@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using CharityHub.Data.Validation;
 
 namespace CharityHub.Data.Models
 {
@@ -11,33 +12,32 @@ namespace CharityHub.Data.Models
         [Required]
         public int CampaignCode { get; set; }
         [Required]
-        [MaxLength(100)]
+        [Column(TypeName = "ntext")]
         public string CampaignTitle { get; set; }
         [Required]
         [Column(TypeName = "nvarchar(MAX)")]
         public string CampaignThumbnail { get; set; }
         [Required]
-        [Column(TypeName = "text")]
+        [Column(TypeName = "ntext")]
         public string CampaignDescription { get; set; }
         [Required]
-        [Column(TypeName = "decimal(10,2)")]
+        [MaxLength(11)]
+        [CampaignStatusValidation]
+        public string CampaignStatus { get; set; }
+        [Required]
+        [Column(TypeName = "decimal(12,2)")]
         public decimal TargetAmount { get; set; }
         [Required]
-        [Column(TypeName = "decimal(10,2)")]
+        [Column(TypeName = "decimal(12,2)")]
         public decimal CurrentAmount { get; set; }
-        [Required]
-        public DateTime StartDate { get; set; }
-        [Required]
-        public DateTime EndDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         [Required]
         [MaxLength(100)]
         public string PartnerName { get; set; }
         [Required]
         [Column(TypeName = "nvarchar(MAX)")]
         public string PartnerLogo { get; set; }
-        [Required]
-        [MaxLength (11)]
-        public string CampaignStatus { get; set; }
         [Required]
         [Column(TypeName = "nvarchar(10)")]
         public string PartnerNumber { get; set; }

@@ -1,4 +1,5 @@
 ﻿
+
 using AutoMapper;
 using CharityHub.Business.ViewModels;
 using CharityHub.Data.Models;
@@ -14,6 +15,7 @@ namespace CharityHub.Business.Mappings
             CreateMap<Campaign, CampaignDto>().ReverseMap();
             CreateMap<UpdateCampaignRequestDto, Campaign>().ReverseMap();
             CreateMap<AddDonationRequestDto, Donation>().ReverseMap();
+            CreateMap<Donation, DonationDto>().ReverseMap();
         }
     }
 }

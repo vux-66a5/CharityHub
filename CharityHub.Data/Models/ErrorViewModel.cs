@@ -1,3 +1,4 @@
+﻿
 namespace CharityHub.Data.Models
 {
     public class ErrorViewModel

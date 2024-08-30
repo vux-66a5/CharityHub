@@ -8,7 +8,6 @@ namespace CharityHub.Data.Models
         [Required]
         [Key]
         public Guid ActionId { get; set; }
-
         [Required]
         [MaxLength(15)]
         public string ActionType { get; set; }

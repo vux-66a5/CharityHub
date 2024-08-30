@@ -9,7 +9,6 @@ namespace CharityHub.Data.Models
         [Required]
         [MaxLength(50)]
         public string DisplayName { get; set; }
-
         [Required]
         public DateTime DateCreated { get; set; }
         [Required]

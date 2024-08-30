@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CharityHub.Data.Models
 {
     public class Donation
@@ -8,7 +9,7 @@ namespace CharityHub.Data.Models
         [Key]
         public Guid DonationId { get; set; }
         [Required]
-        [Column(TypeName = "decimal(10,2)")]
+        [Column(TypeName = "decimal(12,2)")]
         public decimal Amount { get; set; }
         [Required]
         [MaxLength(6)]

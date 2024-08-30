@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CharityHub.WebAPI.Controllers
 {
-
     public class HomeController : Controller
     {
         private readonly IPayPalService _payPalService;
@@ -13,6 +12,7 @@ namespace CharityHub.WebAPI.Controllers
         {
             _payPalService = payPalService;
         }
+
         public IActionResult Index()
         {
             return View();

@@ -1,6 +1,10 @@
-﻿namespace CharityHub.Data.Models;
-public class PaymentInformation
+﻿
+namespace CharityHub.Data.Models
 {
-    public decimal Amount { get; set; }
-    public Guid DonationId { get; set; }
+    public class PaymentInformation
+    {
+        public Decimal Amount { get; set; }
+        public Guid DonationId { get; set; }
+        public int CampaignCode { get; set; }
+    }
 }

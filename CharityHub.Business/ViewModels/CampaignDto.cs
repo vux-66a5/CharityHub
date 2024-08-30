@@ -1,6 +1,5 @@
 ﻿
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+
 
 namespace CharityHub.Business.ViewModels
 {
@@ -20,5 +19,7 @@ namespace CharityHub.Business.ViewModels
         public string CampaignStatus { get; set; }
         public string PartnerNumber { get; set; }
         public DateTime DateCreated { get; set; }
+
+       
     }
 }

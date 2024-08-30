@@ -9,6 +9,5 @@ namespace CharityHub.Business.Services
         //PaymentResponse PaymentExecute(IQueryCollection collections);
         Donation PaymentExecute(IQueryCollection collections);
         //Task<PaymentResponseModel> PaymentExecute(IQueryCollection collections);
-
     }
 }
