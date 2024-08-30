@@ -1,0 +1,29 @@
+<div class="auth-form__container">
+  <div class="auth-form__header">
+    <h3 class="auth-form__heading">Đăng ký</h3>
+  </div>
+
+  <div class="auth-form__form">
+    <div class="auth-form__group">
+      <p class="auth-form__group__title">Display Name</p>
+      <input type="text" class="auth-form__input" placeholder="Display Name" [(ngModel)]="registerData.displayName">
+    </div>
+    <div class="auth-form__group">
+      <p class="auth-form__group__title">Email</p>
+      <!-- <input type="text" class="auth-form__input" placeholder="Email" [(ngModel)]="registerData.username"> -->
+      <input type="email" class="auth-form__input" placeholder="Email" [(ngModel)]="registerData.username" (ngModelChange)="validateEmail()">
+
+
+      <small class="text-danger" *ngIf="errors.username">{{ errors.username }}</small>
+    </div>
+    <div class="auth-form__group">
+      <p class="auth-form__group__title">Password</p>
+      <input type="password" class="auth-form__input" placeholder="Password" [(ngModel)]="registerData.password">
+      <small class="text-danger" *ngIf="errors.password">{{ errors.password }}</small>
+    </div>
+  </div>
+
+  <div class="auth-form__controls">
+    <button type="button" class="btn btn-outline-primary me-2" (click)="register()">Đăng ký</button>
+  </div>
+</div>

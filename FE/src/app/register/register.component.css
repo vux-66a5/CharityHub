@@ -1,0 +1,71 @@
+.auth-form__container {
+    padding: 32px 32px 32px 32px;
+}
+
+.auth-form__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.auth-form__heading {
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--text-color);
+    padding-top: 12px;
+}
+
+.auth-form__switch-btn {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: rgb(68, 68, 165);
+    cursor: pointer;
+    transition: background-color 0.3s, font-weight 0.3s;
+}
+.auth-form__switch-btn:hover {
+    background-color: #f0f0f0; /* Màu nền khi di chuột */
+    font-weight: bold; /* Chữ đậm khi di chuột */
+    padding: 0 0 5px 0;
+}
+
+
+.auth-form__form {
+    margin-top: 50px;
+}
+
+.auth-form__group {
+    padding-bottom: 15px;
+}
+
+.auth-form__input {
+    width: 100%;
+    border-radius: 3px;
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Sử dụng màu đen với độ mờ 20% cho viền */
+}
+
+.auth-form__input:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5); /* Tăng độ mờ lên 50% khi ô input đang được chọn */
+    outline: none; /* Loại bỏ đường viền mặc định của trình duyệt */
+}
+
+.auth-form__controls {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-form__controls .btn {
+    width: 100%; /* Làm rộng nút button ra toàn bộ chiều ngang của phần tử chứa nó */
+    max-width: 300px; /* Giới hạn độ rộng tối đa của nút button */
+}
+
+.auth-form__notlogin {
+    text-align: center;
+}
+
+ 
+
+
+
+

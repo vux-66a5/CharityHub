@@ -1,0 +1,60 @@
+/* .fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white; 
+}
+
+.container {
+    padding-top: 60px; 
+}
+ */
+
+ .custom-spacing li {
+    margin-right: 55px; /* Điều chỉnh khoảng cách theo ý muốn */
+  }
+
+  .fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Hoặc màu nền khác tùy thuộc vào thiết kế của bạn */
+    z-index: 1000; /* Đảm bảo header luôn nằm trên các phần tử khác */
+    transition: top 0.3s; /* Thêm hiệu ứng mượt mà khi header xuất hiện hoặc ẩn */
+  }
+  
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Dãn cách đều giữa các phần tử */
+    padding: 0 10px; /* Giảm khoảng cách giữa các phần tử và cạnh của container */
+  }
+  
+  .nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .nav li {
+    margin: 0 10px; /* Giảm khoảng cách giữa các mục trong danh sách điều hướng */
+  }
+  
+  .nav-link {
+    padding: 0 8px; /* Giảm khoảng cách giữa các liên kết trong danh sách điều hướng */
+    text-decoration: none;
+  }
+
+
+  
+  
+  .dropdown-menu {
+    min-width: 200px; /* Hoặc giá trị phù hợp với thiết kế của bạn */
+  }
+  
+  
+  

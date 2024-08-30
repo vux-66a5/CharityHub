@@ -1,0 +1,18 @@
+.card-list-container {
+  padding: 0 217px;
+}
+
+.title {
+  font-size: 24px;
+  color: #4189c8;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Đảm bảo khoảng cách đều giữa các thẻ */
+  gap: 20px; /* Khoảng cách giữa các thẻ */
+}

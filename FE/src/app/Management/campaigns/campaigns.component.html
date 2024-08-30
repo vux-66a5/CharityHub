@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>List of Campaigns</h2>
+  <div class="search-bar">
+    <div class="d-flex">
+      <input type="text" placeholder="Search..." class="form-control" #queryText [(ngModel)]="searchTerm"/>
+      <button type="button" class="btn btn-warning" (click)="onSearch(queryText.value)">Search</button> 
+    </div>
+    <button class="btn btn-primary" (click)="addNewCampaign()">Add New Campaign</button>
+  </div>
+  <ng-container *ngIf="campaignsCard">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Campaign Code</th>
+          <th>Campaign Title</th>
+          <th>Partner Name</th>
+          <th>Campaign Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let campaign of campaignsCard">
+          <td>{{ campaign.campaignCode }}</td>
+          <td class="campaign-title">{{ campaign.campaignTitle }}</td>
+          <td>{{ campaign.partnerName }}</td>
+          <td>{{ campaign.campaignStatus }}</td>
+          <td>
+            <button type="button" class="btn btn-info me-2" (click)="viewCampaign(campaign)">View</button>
+            <button type="button" class="btn btn-success me-2" (click)="editCampaign(campaign)">Edit</button>
+            <button *ngIf="campaign.campaignStatus === 'New'" type="button" class="btn btn-success me-2" (click)="editTimeCampaign(campaign)">Edit Time</button>
+            <button type="button" class="btn btn-danger" (click)="deleteCampaign(campaign.campaignId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="payment-container">
+  <div *ngIf="!isSuccessful" class="payment-form">
+    <h2>Chiến dịch: {{ campaignCode }}</h2>
+    <label for="paymentMethod">Chọn phương thức thanh toán:</label>
+    <select id="paymentMethod" [(ngModel)]="paymentMethod">
+      <option value="PayPal">PayPal</option>
+      <option value="Momo">Momo</option>
+      <option value="VNPay">VNPay</option>
+    </select>
+
+    <div>
+      <label for="donationAmount">Số tiền quyên góp:</label>
+      <input id="donationAmount" type="text" [(ngModel)]="donationAmount" />
+    </div>
+
+    <button (click)="onDonate()">Quyên góp</button>
+  </div>
+
+  <div *ngIf="isSuccessful" class="payment-success">
+    <h3>Quyên góp thành công!</h3>
+    <p>Thời gian quyên góp: {{ donationTime }}</p>
+  </div>
+</div>

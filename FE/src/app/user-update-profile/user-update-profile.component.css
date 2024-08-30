@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    padding: 20px; 
+  }
+  
+  .form-wrapper {
+    max-width: 500px; 
+    width: 100%; 
+    background-color: #fff; 
+    padding: 20px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+    text-align: center; 
+  }
+  
+  h2 {
+    margin-bottom: 30px; 
+    color: #4189c8;
+    font-weight: 550;
+  }
+  
+  .form-label {
+    text-align: left; 
+    display: block; 
+  }
+  
+  .form-control {
+    text-align: left; 
+  }
+  
+  .btn-group {
+    margin-bottom: 20px; 
+  }
+  
+  .btn-group .btn {
+    margin-right: 10px;
+  }
+  
+  .btn-group .btn.active {
+    background-color: #4189c8;
+    color: #fff;
+  }
+  
+  .profile-info p {
+    margin-bottom: 10px;
+    text-align: left;
+    font-weight: bold;
+  }

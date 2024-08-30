@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h5 class="modal-title">User View</h5>
+  </div>
+  <div class="modal-body">
+    <div class="user-detail">
+      <p><strong>User Id:</strong> {{ data.id }}</p>
+      <p><strong>User Name:</strong> {{ data.userName }}</p>
+      <p><strong>Email:</strong> {{ data.email }}</p>
+      <p><strong>PhoneNumber:</strong> {{ data.phoneNumber }}</p>
+      <p><strong>DisplayName:</strong> {{ data.displayName }}</p>
+      <p><strong>Date Created:</strong> {{ data.dateCreated }}</p>
+      <p><strong>IsActive:</strong> {{ data.isActive }}</p>
+      <p><strong>Last Login Date:</strong> {{ data.lastLoginDate }}</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+  </div>
+  
