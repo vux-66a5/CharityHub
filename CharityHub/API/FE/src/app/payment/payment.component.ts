@@ -62,4 +62,24 @@ export class PaymentComponent {
       console.error('Error creating PayPal payment:', error);
     });
   }
+
+  onVnPayDonate() {
+    const donationRequest = {
+      CampaignCode: this.campaignCode,
+      Amount: this.donationAmount,
+      PaymentMethod: this.paymentMethod
+    };
+
+    this.paypalService.createVnPayPayment(donationRequest).subscribe(
+      (response) => {
+        if (response && response.paymentUrl) {
+          // Chuyển hướng đến URL trả về từ API để tiến hành thanh toán qua VNPay
+          window.location.href = response.paymentUrl;
+        }
+      },
+      (error) => {
+        console.error('Error creating VnPay donation', error);
+      }
+    );
+  }
 }

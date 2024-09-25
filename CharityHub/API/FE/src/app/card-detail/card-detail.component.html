@@ -1,19 +1,56 @@
 <!-- Modal -->
 <div class="modal fade" [id]="modalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Mã chiến dịch: {{ card.campaignCode }}</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="modal-dialog modal-lg">
+    <!-- Thêm class modal-lg để modal to hơn -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Mã chiến dịch: {{ card.campaignCode }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <b>{{ card.cardTitle }}</b> <br> <br>
+        <div class="formatted-text">
+          {{ card.cardDetail }}
         </div>
-        <div class="modal-body">
-            <b>{{ card.cardTitle}}</b> <br>
-            {{ card.cardDetail }}
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Đóng</button>
-          <button type="button" class="btn btn-primary" (click)="navigateToPayment()">Quyên góp</button>
-        </div>
+
+        <!-- Bảng Top Donate -->
+        <h5 class="mt-4">Nhà hảo tâm hàng đầu</h5>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Tên</th>
+              <th scope="col">Số tiền</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let donation of topDonations">
+              <td>{{ donation.displayName }}</td>
+              <td>{{ donation.amount | currency:'VND':'symbol' }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Bảng Recent Donate -->
+        <h5 class="mt-4">Nhà hảo tâm mới nhất</h5>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Tên</th>
+              <th scope="col">Số tiền</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let donation of recentDonations">
+              <td>{{ donation.displayName }}</td>
+              <td>{{ donation.amount | currency:'VND':'symbol' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary" (click)="navigateToPayment()">Quyên góp</button>
       </div>
     </div>
   </div>
+ </div>

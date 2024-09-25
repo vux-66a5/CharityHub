@@ -26,4 +26,12 @@ export class PaypalService {
   executeUserPayment(donationId: string, payerId: string): Observable<any> {
     return this.http.get(`${this.baseUrlUser}/ExecutePayment?donation_id=${donationId}&payer_id=${payerId}`);
   }
+
+  createVnPayPayment(donationRequest: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/Create-VnPay-Donation`, donationRequest);
+  }
+
+  createUserVnPayPayment(id: string, donationRequest: any): Observable<any> {
+    return this.http.post(`${this.baseUrlUser}/Create-VnPay-Donation/${id}?addAuth=true`, donationRequest);
+  }
 }

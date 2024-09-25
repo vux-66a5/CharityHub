@@ -55,7 +55,6 @@ export class DonationListComponent implements OnInit {
       achievedPercentage: parseFloat(((apiCard.currentAmount / apiCard.targetAmount) * 100).toFixed(2)),
       cardDetail: apiCard.campaignDescription,
       campaignCode: apiCard.campaignCode
-
     };
   }
 

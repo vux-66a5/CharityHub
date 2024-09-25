@@ -67,5 +67,27 @@ export class PaymentUserComponent {
     } else {
       console.error('User ID is missing.');
     }
-  }  
+  }
+  
+  onVnPayDonate() {
+    if (this.userId) {
+      const donationRequest = {
+        CampaignCode: this.campaignCode,
+        Amount: this.donationAmount,
+        PaymentMethod: this.paymentMethod
+      };
+      
+      this.paypalService.createUserVnPayPayment(this.userId, donationRequest).subscribe(response => {
+        if (response && response.paymentUrl) {
+          window.location.href = response.paymentUrl; // Chuyển hướng tới VnPay
+        } else {
+          console.error(response);
+        }
+      }, error => {
+        console.error('Error creating PayPal payment:', error);
+      });
+    } else {
+      console.error('User ID is missing.');
+    }
+  }
 }

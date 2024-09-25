@@ -16,18 +16,29 @@ namespace CharityHub.Business.Services.ViewDonationAndCampaignService
             this.dbContext = dbContext;
         }
 
-        public async Task<List<DonationInfo>> GetConfirmedDonationsByCampaignIdAsync(Guid campaignId)
+        public async Task<List<DonorDto>> GetConfirmedDonationsByCampaignCodeAsync(int code)
         {
-            var donations = await dbContext.Donations
-                .Where(d => d.CampaignId == campaignId && d.IsConfirm)
-                .Select(d => new DonationInfo
-                {
-                    DisplayName = d.UserId == null ? "Nha hao tam" : d.User.DisplayName,
-                    Amount = d.Amount
-                })
-                .ToListAsync();
+            var campaign = await dbContext.Campaigns
+                .Where(c => c.CampaignCode == code)
+                .FirstOrDefaultAsync();
 
-            return donations;
+            if (campaign == null)
+            {
+                return null;
+            }
+
+            var donors = await (from d in dbContext.Donations
+                                join u in dbContext.Users on d.UserId equals u.Id into userGroup
+                                from u in userGroup.DefaultIfEmpty()
+                                where d.CampaignId == campaign.CampaignId && d.IsConfirm
+                                orderby d.DateDonated descending
+                                select new DonorDto
+                                {
+                                    DisplayName = u != null ? u.DisplayName : "Nhà hảo tâm ẩn danh",
+                                    Amount = d.Amount
+                                }).ToListAsync();
+
+            return donors;
         }
 
         public async Task<List<dynamic>> GetAllCampaignsExceptNewAsync()
@@ -36,6 +47,7 @@ namespace CharityHub.Business.Services.ViewDonationAndCampaignService
                 .Where(c => c.CampaignStatus != "New") // Filter out campaigns with status "New"
                 .Select(c => new
                 {
+                    c.CampaignId,
                     c.CampaignTitle,
                     c.CampaignCode,
                     c.CampaignThumbnail,
@@ -59,6 +71,7 @@ namespace CharityHub.Business.Services.ViewDonationAndCampaignService
             var campaigns = await dbContext.Campaigns
                 .Select(c => new CampaignCardDto
                 {
+                    CampaignId = c.CampaignId,
                     CampaignTitle = c.CampaignTitle,
                     CampaignCode = c.CampaignCode,
                     CampaignThumbnail = c.CampaignThumbnail,

@@ -10,6 +10,6 @@ namespace CharityHub.Business.Services.ViewDonationAndCampaignService
         public Task<int> GetCampaignCodeByDonationIdAsync(Guid donationId);
 
         public Task<string> GetCampaignStatusAsync(Guid campaignId);
-        Task<List<DonationInfo>> GetConfirmedDonationsByCampaignIdAsync(Guid campaignId);
+        Task<List<DonorDto>> GetConfirmedDonationsByCampaignCodeAsync(int code);
     }
 }

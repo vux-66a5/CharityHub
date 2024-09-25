@@ -1,35 +1,39 @@
-﻿using CharityHub.Business.Services;
-using CharityHub.Data.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿//using CharityHub.Business.Services;
+//using CharityHub.Business.Services.MomoService;
+//using CharityHub.Business.ViewModels;
+//using CharityHub.Data.Models;
+//using Microsoft.AspNetCore.Mvc;
 
-namespace CharityHub.WebAPI.Controllers
-{
-    public class HomeController : Controller
-    {
-        private readonly IPayPalService _payPalService;
+//namespace CharityHub.WebAPI.Controllers
+//{
+//    public class HomeController : Controller
+//    {
+//        private readonly IPayPalService _payPalService;
+//        private readonly IMomoService momoService;
 
-        public HomeController(IPayPalService payPalService)
-        {
-            _payPalService = payPalService;
-        }
+//        public HomeController(IPayPalService payPalService, IMomoService momoService)
+//        {
+//            _payPalService = payPalService;
+//            this.momoService = momoService;
+//        }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+//        public IActionResult Index()
+//        {
+//            return View();
+//        }
 
-        public async Task<IActionResult> CreatePaymentUrl(PaymentInformation model)
-        {
-            var url = await _payPalService.CreatePaymentUrl(model);
+//        [HttpPost]
+//        public async Task<IActionResult> CreatePaymentUrl(MomoPaymentInfomation model)
+//        {
+//            var response = await momoService.CreatePaymentAsync(model);
+//            return Redirect(response.PayUrl);
+//        }
 
-            return Redirect(url);
-        }
-
-        public IActionResult PaymentCallback()
-        {
-            var response = _payPalService.PaymentExecute(Request.Query);
-
-            return Json(response);
-        }
-    }
-}
+//        [HttpGet]
+//        public IActionResult PaymentCallBack()
+//        {
+//            var response = momoService.PaymentExecuteAsync(HttpContext.Request.Query);
+//            return View(response);
+//        }
+//    }
+//}

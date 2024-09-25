@@ -42,10 +42,10 @@ namespace CharityHub.WebAPI.Controllers.ViewDonationList
             return Ok(campaigns);
         }
 
-        [HttpGet("Get-Donations-By-CampaignId{campaignId}")]
-        public async Task<ActionResult<List<DonationInfo>>> GetConfirmedDonationsByCampaignId(Guid campaignId)
+        [HttpGet("Get-Donations-By-Campaign-Code/{code}")]
+        public async Task<ActionResult<List<DonationInfo>>> GetConfirmedDonationsByCampaignCode(int code)
         {
-            var donations = await campaignService.GetConfirmedDonationsByCampaignIdAsync(campaignId);
+            var donations = await campaignService.GetConfirmedDonationsByCampaignCodeAsync(code);
             return Ok(donations);
         }
 

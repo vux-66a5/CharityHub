@@ -19,8 +19,8 @@ export class UserServiceService {
     return this.http.get<Profile>(`${environment.apiBaseUrl}/api/User/Get-Profile/${id}?addAuth=true`);
   }
 
-  editPassword(editPass: EditPass): Observable<any> {
-    return this.http.put<any>(`${environment.apiBaseUrl}/api/User/Change-Password?addAuth=true`, editPass);
+  editPassword(userId: string, editPass: EditPass): Observable<any> {
+    return this.http.put<any>(`${environment.apiBaseUrl}/api/User/Change-Password/${userId}?addAuth=true`, editPass);
   }
   
 }

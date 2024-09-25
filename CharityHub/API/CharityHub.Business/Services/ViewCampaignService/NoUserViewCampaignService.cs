@@ -56,7 +56,7 @@ namespace CharityHub.Business.Services.ViewCampaignService
                                orderby d.Amount descending
                                select new DonorDto
                                {
-                                   DisplayName = u != null ? u.DisplayName : "Nha hao tam",
+                                   DisplayName = u != null ? u.DisplayName : "Nhà hảo tâm ẩn danh",
                                    Amount = d.Amount
                                }).ToListAsync();
 

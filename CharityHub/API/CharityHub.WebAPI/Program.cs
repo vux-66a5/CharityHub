@@ -154,6 +154,7 @@ using CharityHub.Business.Services.ViewCampaignService;
 using CharityHub.Business.Services.ViewDonationAndCampaignService;
 using CharityHub.Business.Services.AdminCampaignService;
 using CharityHub.WebAPI;
+using CharityHub.Business.VNPay.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -218,7 +219,7 @@ builder.Services.AddScoped<IDonationService, DonationService>();
 builder.Services.AddScoped<ICampaignService, CampaignService>();
 builder.Services.AddScoped<IAdminCampaignService, AdminCampaignService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
-
+builder.Services.AddScoped<IVnPayService, VnPayService>();
 
 
 // Mapper

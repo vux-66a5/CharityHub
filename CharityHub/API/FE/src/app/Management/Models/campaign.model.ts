@@ -65,8 +65,7 @@ export interface Profile {
 }
 
 export interface EditPass {
-  id: string;
   currentPassword: string;
   newPassword: string;
-  confirmPasword: string;
+  confirmNewPassword: string;
 }

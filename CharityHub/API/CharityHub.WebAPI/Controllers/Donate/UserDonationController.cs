@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using CharityHub.Business.Services;
 using CharityHub.Business.ViewModels;
+using CharityHub.Business.VNPay.Models;
+using CharityHub.Business.VNPay.Services;
 using CharityHub.Data.Data;
 using CharityHub.Data.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -18,13 +20,15 @@ namespace CharityHub.WebAPI.Controllers.Donations
     {
         private readonly CharityHubDbContext dbContext;
         private readonly IPayPalService payPalService;
+        private readonly IVnPayService vnPayService;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly IMapper mapper;
 
-        public UserDonationController(CharityHubDbContext dbContext, IPayPalService payPalService, IHttpContextAccessor httpContextAccessor, IMapper mapper)
+        public UserDonationController(CharityHubDbContext dbContext, IPayPalService payPalService, IVnPayService vnPayService, IHttpContextAccessor httpContextAccessor, IMapper mapper)
         {
             this.dbContext = dbContext;
             this.payPalService = payPalService;
+            this.vnPayService = vnPayService;
             this.httpContextAccessor = httpContextAccessor;
             this.mapper = mapper;
         }
@@ -72,6 +76,53 @@ namespace CharityHub.WebAPI.Controllers.Donations
 
             return Ok(new { PaymentUrl = paymentUrl });
         }
+
+        [HttpPost("Create-VnPay-Donation/{id}")]
+        public async Task<IActionResult> CreateVnPayDonation(Guid id, [FromBody] AddDonationRequestDto donationRequest)
+        {
+            var donationId = Guid.NewGuid();
+
+            var campaign = await dbContext.Campaigns
+                .Where(c => c.CampaignCode == donationRequest.CampaignCode)
+                .FirstOrDefaultAsync();
+
+            if (campaign == null)
+            {
+                return NoContent();
+            }
+
+            var donation = new Donation
+            {
+                CampaignId = campaign.CampaignId,
+                DonationId = donationId,
+                DateDonated = DateTime.Now,
+                IsConfirm = false,
+                Amount = donationRequest.Amount,
+                PaymentMethod = donationRequest.PaymentMethod,
+                UserId = id
+            };
+
+            var url = vnPayService.CreatePaymentUrl(new PaymentInformationModel
+            {
+                Amount = donationRequest.Amount,
+                DonationId = donationId,
+                CampaignCode = donationRequest.CampaignCode,
+                OrderType = donationRequest.PaymentMethod,
+                UserId = donation.UserId,
+                CampaignId = donation.CampaignId
+            }, HttpContext);
+
+            if (string.IsNullOrEmpty(url))
+            {
+                return BadRequest("Unable to create VnPay payment.");
+            }
+
+            dbContext.Donations.Add(donation);
+            await dbContext.SaveChangesAsync();
+
+            return Ok(new { PaymentUrl = url });
+        }
+
 
         // GET: api/NoUserDonation/ExecutePayment
         [HttpGet("Execute-Payment")]
@@ -127,7 +178,7 @@ namespace CharityHub.WebAPI.Controllers.Donations
                     await transaction.CommitAsync();
 
                     // Return the updated donation object as JSON
-                    return Redirect($"http://localhost:4200/paymentsuccess?payment_method={existingDonation.PaymentMethod}&success=1&donation_id={existingDonation.DonationId}&amount={existingDonation.Amount}");
+                    return Redirect($"https://localhost:4200/paymentsuccess?payment_method={existingDonation.PaymentMethod}&success=1&donation_id={existingDonation.DonationId}&amount={existingDonation.Amount}");
                 }
                 catch (Exception ex)
                 {

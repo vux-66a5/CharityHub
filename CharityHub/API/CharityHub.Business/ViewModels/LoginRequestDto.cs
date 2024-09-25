@@ -12,4 +12,9 @@ namespace CharityHub.Business.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }
+
+    public class GoogleLoginRequestDto
+    {
+        public string IdToken { get; set; }
+    }
 }

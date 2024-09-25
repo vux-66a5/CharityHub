@@ -1,9 +1,5 @@
 ﻿
 
-using CharityHub.Data.Models;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
 namespace CharityHub.Business.ViewModels
 {
     public class DonationDto

@@ -23,6 +23,19 @@
         </div>
     </form>
 
+    <div class="auth-form__social-login">
+        <p>Hoặc đăng nhập bằng:</p>
+        <button (click)="signInWithFB()" class="btn btn-primary">Đăng nhập với Facebook</button>
+    </div>
+
+    <div class="flex justify-center">
+            @if(name) {
+                <h4 class="text-x1">hi, {{name}}</h4>
+            } @else {
+                <asl-google-signin-button type='standard' size='medium'></asl-google-signin-button>
+            }
+    </div>
+
     <div class="auth-form__notlogin">
         <p>Hoặc là không cần đăng nhập? <a href="/">Quyên góp ngay</a></p>
     </div>

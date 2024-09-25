@@ -76,13 +76,12 @@ export class UserUpdateProfileComponent implements OnInit, OnDestroy{
 
     if (this.userId) {
       const editPass: EditPass = {
-        id: this.userId,
         currentPassword: this.currentPassword,
         newPassword: this.newPassword,
-        confirmPasword: this.confirmNewPassword
+        confirmNewPassword: this.confirmNewPassword
       }
-
-      this.editPassSubscription = this.userService.editPassword(editPass)
+      console.log(this.userId);
+      this.editPassSubscription = this.userService.editPassword(this.userId, editPass)
       .subscribe({
         next: (reponse) => {
           this.router.navigateByUrl(`update-profile`);

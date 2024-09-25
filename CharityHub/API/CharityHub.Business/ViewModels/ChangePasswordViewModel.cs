@@ -5,13 +5,13 @@ namespace CharityHub.Business.ViewModels
 {
     public class ChangePasswordViewModel
     {
-        public Guid id { get; set; }
-        [Required, DataType(DataType.Password), Display(Name = "Current password")]
+        [Required]
         public string CurrentPassword { get; set; }
-        [Required, DataType(DataType.Password), Display(Name = "New password")]
+
+        [Required]
         public string NewPassword { get; set; }
-        [Required, DataType(DataType.Password), Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "Confirm new password does not match!")]
+
+        [Required]
         public string ConfirmNewPassword { get; set; }
     }
 }

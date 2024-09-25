@@ -64,6 +64,20 @@
     text-align: center;
 }
 
+@media (-ms-high-contrast: active) {
+    /* Old styles */
+}
+
+@media (forced-colors: active) {
+    /* Styles for users with forced colors enabled */
+    .auth-form__input {
+        background-color: Highlight;
+        color: HighlightText;
+    }
+}
+
+
+
  
 
 

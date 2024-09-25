@@ -13,7 +13,8 @@
         <input id="donationAmount" type="text" [(ngModel)]="donationAmount" />
       </div>
   
-      <button (click)="onDonate()">Quyên góp</button>
+      <button *ngIf="paymentMethod === 'PayPal'" (click)="onDonate()">Quyên góp qua PayPal</button>
+      <button *ngIf="paymentMethod === 'VNPay'" (click)="onVnPayDonate()">Quyên góp qua VNPay</button>
     </div>
   
     <div *ngIf="isSuccessful" class="payment-success">
